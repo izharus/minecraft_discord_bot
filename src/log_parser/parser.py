@@ -102,11 +102,12 @@ class FileChangesHandler(FileChangesUtillity):
         filename (str): The path to the file to be monitored and read.
 
     Attributes:
-        worker_thread (threading.Thread): A thread used for asynchronous file
+        _worker_thread (threading.Thread): A thread used for asynchronous file
             observation.
-        line_buffer (collections.deque): A double-ended queue used to store
+        _line_buffer (collections.deque): A double-ended queue used to store
             lines read from the file.
-
+        _max_buffer_len (int): max len of buffer for storing file changes.
+        _observing_delay (int)L delay in secodns between besrve iterations.
     Methods:
         _save_new_lines(): Internal method to save and log new lines from the
             file.
@@ -115,10 +116,17 @@ class FileChangesHandler(FileChangesUtillity):
         get_new_line(): Retrieve the next line from the line buffer.
     """
 
-    def __init__(self, filename: str) -> None:
+    def __init__(
+        self,
+        filename: str,
+        max_buffer_len: int = 1000,
+        observing_delay: int = 1,
+    ) -> None:
         super().__init__(filename)
-        self.worker_thread: threading.Thread
-        self.line_buffer: deque = deque()
+        self._worker_thread: threading.Thread
+        self._line_buffer: deque = deque()
+        self._max_buffer_len: int = max_buffer_len
+        self._observing_delay = observing_delay
 
     def _save_new_lines(self) -> None:
         """Save and log new lines from a file.
@@ -129,19 +137,34 @@ class FileChangesHandler(FileChangesUtillity):
         """
         for line in self.get_new_lines():
             logging.info(line)
-            self.line_buffer.append(line)
+            self._line_buffer.append(line)
 
     def file_observer(self, is_working: Callable[[], bool]):
         """
-        Continuously observe a file for changes and save new lines.
+        Continuously observes a file for changes and saves new lines.
+
         Args:
             is_working (Callable[[], bool]): A callable function that
                 returns True as long as the observation should continue,
                 and False to stop it.
 
+        Notes:
+            This function runs in a loop, periodically checking for changes in
+            the observed file. It sleeps for one second between iterations to
+            avoid unnecessary resource consumption. If the line buffer exceeds
+            the maximum allowed length, a warning message is logged,
+            and the observation continues. Upon detecting file modifications,
+            new lines are saved.
+
+        Returns:
+            None
+
         """
         while is_working():
-            time.sleep(1)
+            time.sleep(self._observing_delay)
+            if self._max_buffer_len < len(self._line_buffer):
+                logging.warning("Buffer is overloaded.")
+                continue
             if self.is_file_modified():
                 self._save_new_lines()
 
@@ -155,8 +178,8 @@ class FileChangesHandler(FileChangesUtillity):
             str: The next line from the line buffer, or an empty string if the
                 buffer is empty.
         """
-        if self.line_buffer:
-            return self.line_buffer.popleft()
+        if self._line_buffer:
+            return self._line_buffer.popleft()
         else:
             # print("buffer is empty")
             return ""
@@ -197,12 +220,12 @@ class FileCnageObserver(FileChangesHandler):
 
         """
         self.is_working = True
-        self.worker_thread = threading.Thread(
+        self._worker_thread = threading.Thread(
             target=self.file_observer, args=[lambda: self.is_working]
         )
         # Make the thread a daemon so it exits when the main program exits
-        self.worker_thread.daemon = True
-        self.worker_thread.start()
+        self._worker_thread.daemon = True
+        self._worker_thread.start()
 
     def stop(self) -> None:
         """
