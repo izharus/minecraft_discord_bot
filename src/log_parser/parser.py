@@ -143,6 +143,8 @@ class FileChangesHandler(FileChangesUtillity):
         for line in self.get_new_lines():
             logging.info(line)
             self._line_buffer.append(line)
+            if len(self._line_buffer) >= self._max_buffer_len:
+                break
 
     def file_observer(self, is_working: Callable[[], bool]):
         """
@@ -167,7 +169,7 @@ class FileChangesHandler(FileChangesUtillity):
         """
         while is_working():
             time.sleep(self._observing_delay)
-            if self._max_buffer_len < len(self._line_buffer):
+            if self._max_buffer_len <= len(self._line_buffer):
                 logging.warning("Buffer is overloaded.")
                 continue
             if self.is_file_modified():
