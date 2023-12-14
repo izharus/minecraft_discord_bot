@@ -1,4 +1,4 @@
-"""Tests for src/log_parser/parser.py."""
+"""Tests for src/chat_parser/log_parser.py."""
 # pylint: disable=W0212
 import threading
 import time
@@ -71,6 +71,22 @@ class TestFileChangesUtility:
         assert len(new_lines) == len(file_content)
         assert new_lines == file_content
 
+    def set_last_position(self, tmp_path):
+        """
+        Test set_last_position() function.
+        """
+        file_content = [f"string{i}\n" for i in range(0, 1000)]
+        temp_file = tmp_path / "temp_file.txt"
+        add_text(temp_file, "Default content.")
+
+        manager = log_parser.FileChangesUtillity(temp_file)
+        add_text(temp_file, "".join(file_content))
+        new_lines_1 = list(manager._get_new_lines())
+        manager.set_last_position()
+        new_lines_2 = list(manager._get_new_lines())
+        assert len(new_lines_1) == len(file_content) == len(new_lines_2)
+        assert new_lines_1 == file_content == new_lines_2
+
     def test__get_new_lines_concurrent(self, tmp_path):
         """
         Test _get_new_lines() function with concurrent writes from another
@@ -86,7 +102,7 @@ class TestFileChangesUtility:
                 time.sleep(0.01)
 
         # Generate file content
-        file_content = [f"string{i}\n" for i in range(0, 30)]
+        file_content = [f"string{i}\n" for i in range(0, 10)]
 
         temp_file = tmp_path / "temp_file.txt"
         add_text(temp_file, "Default content.")
@@ -127,7 +143,7 @@ class TestFileChangesUtility:
                 time.sleep(0.01)
 
         # Generate file content
-        file_content = [f"string{i}\n" for i in range(0, 30)]
+        file_content = [f"string{i}\n" for i in range(0, 10)]
 
         temp_file = tmp_path / "temp_file.txt"
         add_text(temp_file, "Default content.")

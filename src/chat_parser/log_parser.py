@@ -107,6 +107,17 @@ class FileChangesUtillity:
             except StopIteration:
                 return ""
 
+    def set_last_position(self, new_position: int = 0) -> None:
+        """
+        Sets the last position in the monitored file to the specified
+        new position.
+
+        Args:
+            new_position (int): The new position to set as the last read
+                position. Defaults to 0, indicating the beginning of the file.
+        """
+        self._last_position = new_position
+
 
 def main() -> None:
     """Example usage."""
