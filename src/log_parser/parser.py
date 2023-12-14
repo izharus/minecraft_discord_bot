@@ -24,6 +24,7 @@ class FileChangesUtillity:
         _cached_stamp (float): The cached last modification timestamp of the
             file.
         _last_position (int): The last position in the file that was read.
+        _iterator (iterator): Iterator for continuous reading of the file.
 
     Methods:
         is_file_modified(): Checks if the file has been modified since the
@@ -116,6 +117,3 @@ def main() -> None:
     while 1:
         time.sleep(1)
         print(observer.get_new_line(), end="")  # noqa: T201
-
-
-# main()
