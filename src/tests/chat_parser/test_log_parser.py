@@ -5,7 +5,7 @@ import time
 from typing import List
 
 import pytest
-from src.log_parser import parser
+from src.chat_parser import log_parser
 
 
 def add_text(file_path: str, text: str) -> None:
@@ -26,8 +26,8 @@ class TestFileChangesUtility:
         instance with incorrect log file path.
         """
         non_existing_file = "non_existing_file"
-        with pytest.raises(parser.LogFileNotExists):
-            parser.FileChangesUtillity(non_existing_file)
+        with pytest.raises(log_parser.LogFileNotExists):
+            log_parser.FileChangesUtillity(non_existing_file)
 
     def test_with_existing_log_file(self, tmp_path):
         """
@@ -39,7 +39,7 @@ class TestFileChangesUtility:
         # Write some content to the file
         content = "Hello, this is a test content."
         temp_file.write_text(content)
-        parser.FileChangesUtillity(temp_file)
+        log_parser.FileChangesUtillity(temp_file)
 
     def test_is_file_modified_modify_file(self, tmp_path):
         """
@@ -49,7 +49,7 @@ class TestFileChangesUtility:
         temp_file = tmp_path / "temp_file.txt"
         add_text(temp_file, "Default content.")
 
-        manager = parser.FileChangesUtillity(temp_file)
+        manager = log_parser.FileChangesUtillity(temp_file)
 
         assert manager.is_file_modified() is False
 
@@ -65,7 +65,7 @@ class TestFileChangesUtility:
         temp_file = tmp_path / "temp_file.txt"
         add_text(temp_file, "Default content.")
 
-        manager = parser.FileChangesUtillity(temp_file)
+        manager = log_parser.FileChangesUtillity(temp_file)
         add_text(temp_file, "".join(file_content))
         new_lines = list(manager._get_new_lines())
         assert len(new_lines) == len(file_content)
@@ -91,7 +91,7 @@ class TestFileChangesUtility:
         temp_file = tmp_path / "temp_file.txt"
         add_text(temp_file, "Default content.")
 
-        manager = parser.FileChangesUtillity(temp_file)
+        manager = log_parser.FileChangesUtillity(temp_file)
 
         # Start a thread to write lines to the file concurrently
         write_thread = threading.Thread(
@@ -132,7 +132,7 @@ class TestFileChangesUtility:
         temp_file = tmp_path / "temp_file.txt"
         add_text(temp_file, "Default content.")
 
-        manager = parser.FileChangesUtillity(temp_file)
+        manager = log_parser.FileChangesUtillity(temp_file)
 
         # Start a thread to write lines to the file concurrently
         write_thread = threading.Thread(

@@ -1,4 +1,4 @@
 """Main entry point."""
-from src.log_parser.parser import main
+from src.chat_parser.log_parser import main
 
 main()
