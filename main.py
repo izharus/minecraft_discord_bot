@@ -1,4 +1,8 @@
-"""Main entry point."""
-from src.chat_parser.chat_parser import main
+"""
+Main entry point.
+version 1.0.0
+"""
+
+from src.discord_bot.bot_main import main
 
 main()

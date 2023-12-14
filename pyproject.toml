@@ -15,6 +15,7 @@ multi_line_output = 3
 skip_gitignore = true
 skip_glob = ["**/migrations/*", "**/settings/*"]
 src_paths = ["<your_code_dir>"]
+known_third_party = ["access"]
 
 [tool.mypy]
 ignore_missing_imports = true
