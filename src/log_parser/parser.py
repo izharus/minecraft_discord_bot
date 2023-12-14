@@ -32,6 +32,8 @@ class FileChangesUtillity:
             last check.
         get_new_lines(): Generator function to read and yield new lines from
             the file.
+    Raises:
+        LogFileNotExists: is log file not exists.
     """
 
     def __init__(self, filename: str):
@@ -55,13 +57,19 @@ class FileChangesUtillity:
         Returns:
             bool: True if the file has been modified, False otherwise.
         """
-        stamp = os.stat(self.filename).st_mtime
-        if stamp != self._cached_stamp:
-            self._cached_stamp = stamp
-            if os.path.getsize(self.filename) < self._last_position:
-                self._last_position = 0
-            return True
-        return False
+        try:
+            stamp = os.stat(self.filename).st_mtime
+            if stamp != self._cached_stamp:
+                self._cached_stamp = stamp
+                if os.path.getsize(self.filename) < self._last_position:
+                    self._last_position = 0
+                return True
+            return False
+        except Exception as error:
+            logging.error(
+                f"is_file_modified() function failed with error: {error}"
+            )
+            return False
 
     def get_new_lines(self) -> Generator[str, None, None]:
         """
@@ -73,10 +81,6 @@ class FileChangesUtillity:
 
         Returns:
             str: The next line from the file.
-
-        Raises:
-            Exception: If there is an error while reading the file, an error
-                message is logged using the logging module.
         """
         try:
             with open(self.filename, encoding="utf-8") as file:
@@ -107,6 +111,7 @@ class FileChangesHandler(FileChangesUtillity):
         _line_buffer (collections.deque): A double-ended queue used to store
             lines read from the file.
         _max_buffer_len (int): max len of buffer for storing file changes.
+            Other lines may be lost.
         _observing_delay (int)L delay in secodns between besrve iterations.
     Methods:
         _save_new_lines(): Internal method to save and log new lines from the
@@ -219,6 +224,9 @@ class FileCnageObserver(FileChangesHandler):
         is set as a daemon to exit when the main program exits.
 
         """
+        if self.is_working:
+            logging.warning("FileCnageObserver is working now!")
+            return
         self.is_working = True
         self._worker_thread = threading.Thread(
             target=self.file_observer, args=[lambda: self.is_working]
