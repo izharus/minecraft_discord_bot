@@ -89,6 +89,31 @@ def test_extract_chat_message_left_the_game(tmp_path):
     assert test_message == "Iluvator left the game"
 
 
+def test_extract_chat_message_slain_message(tmp_path):
+    """
+    Test extract_chat_message() with "player slain by" message.
+    """
+    # Create a temporary text file
+    temp_dir = os.path.join(
+        tmp_path,
+        "logs",
+    )
+    os.makedirs(temp_dir)
+    temp_log = os.path.join(
+        temp_dir,
+        "latest.log",
+    )
+    add_text(temp_log, "")
+    chat = chat_parser.MinecraftChatParser(tmp_path)
+    test_message = (
+        "[14Dec2023 07:29:06.982] [Server thread/INFO]"
+        " [net.minecraft.server.dedicated.DedicatedServer/]:"
+        " Iluvator was slain by Zombie"
+    )
+    test_message = chat.extract_chat_message(test_message)
+    assert test_message == "Iluvator was slain by Zombie"
+
+
 def test_extract_chat_message_empty(tmp_path):
     """
     Test extract_chat_message() with empty chat message.
@@ -194,6 +219,7 @@ def test_get_chat_message():
         # "[Iluvator: Set own game mode to Creative Mode]",
         "<Iluvator> TEST",
         "<Iluvator> из игры",
+        "Iluvator was slain by Zombie",
         "<Iluvator> из игры",
         "Iluvator left the game",
         "Iluvator joined the game",
