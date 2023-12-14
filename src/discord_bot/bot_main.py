@@ -8,6 +8,7 @@ from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN
 from discord.ext import commands
 
 from ..chat_parser.chat_parser import MinecraftChatParser
+from ..rcon_sender.rcon import RconLocalDocker
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -61,12 +62,23 @@ async def on_message(message: str) -> None:
     Returns:
         None
     """
+    rcon = RconLocalDocker("minecraft_server_tfc_halloween")
     if message.author == bot.user:
         return
     # Check if the message is from the desired channel
     if message.channel.id == CHANNEL_ID:
         # Process the message or reply to it
-        await message.channel.send(f"You said: {message.content}")
+        try:
+            if message.content == "/list":
+                # TODO create method: get_list_of_player()
+                await message.channel.send(rcon.send_command("/list"))
+            else:
+                rcon.send_say_command(message.content)
+            # await message.channel.send(f"You said: {message.content}")
+        except Exception:
+            await message.channel.send(
+                "Не удалось отправить сообщение не сервер..."
+            )
 
 
 @bot.command()
