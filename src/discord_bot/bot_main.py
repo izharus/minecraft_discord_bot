@@ -2,6 +2,7 @@
 # pylint: disable=C0411
 import asyncio
 import sys
+from typing import Any
 
 import discord
 from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN
@@ -12,7 +13,7 @@ from ..rcon_sender.rcon import RconLocalDocker
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
 
@@ -51,8 +52,59 @@ async def on_ready():
         await asyncio.sleep(1)
 
 
+@bot.command(name="list")
+async def get_list_of_players(ctx: commands.Context) -> None:
+    """
+    Get the list of online players on the Minecraft server.
+
+    Parameters:
+    - ctx: Context object for the command execution.
+    """
+    rcon = RconLocalDocker("minecraft_server_tfc_halloween")
+    # Check if the message is from the desired channel
+    if ctx.channel.id == CHANNEL_ID:
+        try:
+            players_list = rcon.send_command("/list")
+            if players_list:
+                players_list = players_list.split("\n")[0]
+                await ctx.send(players_list)
+            else:
+                await ctx.send("Не удалось получить список игроков.")
+        except Exception:
+            await ctx.send("Не удалось отправить сообщение не сервер...")
+
+
+@bot.command(name="info")
+async def get_list_of_cammands(ctx: commands.Context) -> None:
+    """
+    Get the list of available commands.
+
+    Parameters:
+    - ctx: Context object for the command execution.
+    """
+    # Check if the message is from the desired channel
+    if ctx.channel.id == CHANNEL_ID:
+        await ctx.send("Доступные команды: /list, /info")
+
+
 @bot.event
-async def on_message(message: str) -> None:
+async def on_command_error(ctx: commands.Context, error: Any) -> None:
+    """
+    Handle errors that occur during command execution.
+
+    Parameters:
+    - ctx: Context object for the command execution.
+    - error: The error that occurred during command execution.
+    """
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send(
+            "Неизвестная комманда, введите /info "
+            "чтобы узнать все доступные команды."
+        )
+
+
+@bot.event
+async def on_message(message: discord.Message) -> None:
     """
     Event handler for processing incoming messages.
 
@@ -62,6 +114,7 @@ async def on_message(message: str) -> None:
     Returns:
         None
     """
+    await bot.process_commands(message)
     rcon = RconLocalDocker("minecraft_server_tfc_halloween")
     if message.author == bot.user:
         return
@@ -69,12 +122,9 @@ async def on_message(message: str) -> None:
     if message.channel.id == CHANNEL_ID:
         # Process the message or reply to it
         try:
-            if message.content == "/list":
-                # TODO create method: get_list_of_player()
-                await message.channel.send(rcon.send_command("/list"))
-            else:
-                rcon.send_say_command(message.content)
-            # await message.channel.send(f"You said: {message.content}")
+            rcon.send_say_command(
+                f"<{message.author.display_name}>: {message.content}"
+            )
         except Exception:
             await message.channel.send(
                 "Не удалось отправить сообщение не сервер..."
@@ -82,7 +132,7 @@ async def on_message(message: str) -> None:
 
 
 @bot.command()
-async def send_message(message: str) -> None:
+async def send_message(message: discord.Message) -> None:
     """
     Send a message to a specified channel.
 
