@@ -31,7 +31,7 @@ class RconBase:
         Send a /say command into rcon.
         This command will print a message for the all users.
         """
-        self.send_command("/say", message)
+        self.send_command("/say", f'"{message}"')
 
 
 class RconLocalDocker(RconBase):
@@ -77,7 +77,6 @@ class RconLocalDocker(RconBase):
             )
             return result.stdout.strip()
         except subprocess.CalledProcessError:
-            # print(f"error: {error}")
             return None
 
 
