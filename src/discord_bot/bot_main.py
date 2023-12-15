@@ -5,7 +5,7 @@ import sys
 from typing import Any
 
 import discord
-from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN
+from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN, MINECRAFT_SERVER_PATH
 from discord.ext import commands
 from loguru import logger
 
@@ -37,7 +37,7 @@ async def on_ready():
 
     if DEBUG_MODE:
         # pylint: disable = C0301
-        log_file_path = "F:\\minecraft_servers\\server_tfc_halloween\\itzg\\minecraft-server"
+        log_file_path = MINECRAFT_SERVER_PATH
     else:
         log_file_path = "minecraft-server"
     chat_parser = MinecraftChatParser(log_file_path)
