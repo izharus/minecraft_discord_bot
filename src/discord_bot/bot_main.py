@@ -7,6 +7,7 @@ from typing import Any
 import discord
 from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN
 from discord.ext import commands
+from loguru import logger
 
 from ..chat_parser.chat_parser import MinecraftChatParser
 from ..rcon_sender.rcon import RconLocalDocker
@@ -19,6 +20,7 @@ DEBUG_MODE = "--debug" in sys.argv
 
 
 @bot.event
+@logger.catch(reraise=True)
 async def on_ready():
     """
     Event handler for when the bot has successfully connected to Discord.
@@ -31,7 +33,7 @@ async def on_ready():
             normal modes.
 
     """
-    # print(f"We have logged in as {bot.user}")
+    logger.info(f"We have logged in as {bot.user}")
 
     if DEBUG_MODE:
         # pylint: disable = C0301
@@ -45,6 +47,7 @@ async def on_ready():
     while True:
         message = chat_parser.get_chat_message()
         while message:
+            logger.info(f"Message received: {message}")
             await channel.send(message)
             await asyncio.sleep(0.1)
             message = chat_parser.get_chat_message()
@@ -53,6 +56,7 @@ async def on_ready():
 
 
 @bot.command(name="list")
+@logger.catch(reraise=True)
 async def get_list_of_players(ctx: commands.Context) -> None:
     """
     Get the list of online players on the Minecraft server.
@@ -60,21 +64,25 @@ async def get_list_of_players(ctx: commands.Context) -> None:
     Parameters:
     - ctx: Context object for the command execution.
     """
+    logger.info("Command received: list")
     rcon = RconLocalDocker("minecraft_server_tfc_halloween")
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         try:
             players_list = rcon.send_command("/list")
-            if players_list:
-                players_list = players_list.split("\n")[0]
-                await ctx.send(players_list)
-            else:
-                await ctx.send("Не удалось получить список игроков.")
-        except Exception:
-            await ctx.send("Не удалось отправить сообщение не сервер...")
+        except Exception as error:
+            logger.error(f"Failed to receive players_list: {error}")
+            await ctx.send("Некорректный ответ от сервера.")
+        if players_list:
+            players_list = players_list.split("\n")[0]
+            await ctx.send(players_list)
+        else:
+            logger.error("Unable to get players_list")
+            await ctx.send("Не удалось получить список игроков.")
 
 
 @bot.command(name="info")
+@logger.catch(reraise=True)
 async def get_list_of_cammands(ctx: commands.Context) -> None:
     """
     Get the list of available commands.
@@ -84,10 +92,12 @@ async def get_list_of_cammands(ctx: commands.Context) -> None:
     """
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
+        logger.info("get_list_of_cammands entry")
         await ctx.send("Доступные команды: /list, /info")
 
 
 @bot.event
+@logger.catch(reraise=True)
 async def on_command_error(ctx: commands.Context, error: Any) -> None:
     """
     Handle errors that occur during command execution.
@@ -97,6 +107,7 @@ async def on_command_error(ctx: commands.Context, error: Any) -> None:
     - error: The error that occurred during command execution.
     """
     if isinstance(error, commands.CommandNotFound):
+        logger.info("on_command_error entry")
         await ctx.send(
             "Неизвестная комманда, введите /info "
             "чтобы узнать все доступные команды."
@@ -104,6 +115,7 @@ async def on_command_error(ctx: commands.Context, error: Any) -> None:
 
 
 @bot.event
+@logger.catch(reraise=True)
 async def on_message(message: discord.Message) -> None:
     """
     Event handler for processing incoming messages.
@@ -120,33 +132,10 @@ async def on_message(message: discord.Message) -> None:
         return
     # Check if the message is from the desired channel
     if message.channel.id == CHANNEL_ID:
-        # Process the message or reply to it
-        try:
-            rcon.send_say_command(
-                f"<{message.author.display_name}>: {message.content}"
-            )
-        except Exception:
-            await message.channel.send(
-                "Не удалось отправить сообщение не сервер..."
-            )
-
-
-@bot.command()
-async def send_message(message: discord.Message) -> None:
-    """
-    Send a message to a specified channel.
-
-    Parameters:
-        message (str): The message to be sent.
-
-    Returns:
-        None
-    """
-    # Get the desired channel by ID
-    channel = bot.get_channel(CHANNEL_ID)
-
-    # Send a message to the channel
-    await channel.send(message)
+        logger.info(f"<{message.author.display_name}>: {message.content}")
+        rcon.send_say_command(
+            f"<{message.author.display_name}>: {message.content}"
+        )
 
 
 def main():

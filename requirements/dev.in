@@ -2,3 +2,4 @@ watchdog
 pytest
 pylint
 discord
+loguru
