@@ -114,6 +114,31 @@ def test_extract_chat_message_slain_message(tmp_path):
     assert test_message == "Iluvator was slain by Zombie"
 
 
+def test_extract_chat_message_goal_message(tmp_path):
+    """
+    Test extract_chat_message() with "player slain by" message.
+    """
+    # Create a temporary text file
+    temp_dir = os.path.join(
+        tmp_path,
+        "logs",
+    )
+    os.makedirs(temp_dir)
+    temp_log = os.path.join(
+        temp_dir,
+        "latest.log",
+    )
+    add_text(temp_log, "")
+    chat = chat_parser.MinecraftChatParser(tmp_path)
+    test_message = (
+        "[14Dec2023 07:29:06.982] [Server thread/INFO]"
+        " [net.minecraft.server.dedicated.DedicatedServer/]:"
+        " MACTEP has reached the goal [Pink Unicorn]"
+    )
+    test_message = chat.extract_chat_message(test_message)
+    assert test_message == "MACTEP has reached the goal [Pink Unicorn]"
+
+
 def test_extract_chat_message_empty(tmp_path):
     """
     Test extract_chat_message() with empty chat message.

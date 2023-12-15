@@ -28,10 +28,7 @@ class MinecraftChatParser(FileChangesUtillity):
         # pylint: disable=C0301
         self._chat_message_pattern = "[Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: "
         self._message_struct_pattern = (
-            r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|"
-            r"^[a-zA-Z]+[a-zA-z0-9]* left the game$|"
-            r"^[a-zA-Z]+[a-zA-z0-9]* joined the game$|"
-            r"^[a-zA-Z]+[a-zA-z0-9]* .*?$"
+            r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|^[a-zA-Z]+[a-zA-z0-9]* .*?$"
         )
         FileChangesUtillity.__init__(self, self.log_path)
 
