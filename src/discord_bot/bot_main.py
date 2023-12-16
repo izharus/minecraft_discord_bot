@@ -2,11 +2,12 @@
 # pylint: disable=C0411
 import asyncio
 import sys
+from datetime import datetime
 from typing import Any
 
 import discord
 from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN, MINECRAFT_SERVER_PATH
-from discord.ext import commands
+from discord.ext import commands, tasks
 from loguru import logger
 
 from ..chat_parser.chat_parser import MinecraftChatParser
@@ -17,6 +18,24 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
+
+
+# Every 30 seconds
+@tasks.loop(seconds=30)
+async def send_heartbeat():
+    """
+    Task for sending a ping every 30 seconds.
+
+    Calculates the latency in milliseconds and prints it to the console.
+
+    Returns:
+        None
+    """
+
+    # send info about ping once in an hour
+    latency = round(bot.latency * 1000)
+    if datetime.strftime(datetime.now(), "%M") == "00":
+        logger.info(f"Ping: {latency}ms")
 
 
 @bot.event
@@ -34,7 +53,7 @@ async def on_ready():
 
     """
     logger.info(f"We have logged in as {bot.user}")
-
+    send_heartbeat.start()
     if DEBUG_MODE:
         # pylint: disable = C0301
         log_file_path = MINECRAFT_SERVER_PATH
