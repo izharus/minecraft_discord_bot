@@ -7,21 +7,23 @@ from loguru import logger
 
 async def parse_message_reference(
     message: discord.Message,
-) -> Tuple[Optional[str], Optional[str]]:
+) -> Tuple[Optional[str], Optional[str], Optional[str]]:
     """
     Parse a Discord message reference and return the nickname
     (or display name if server-nickname not exists), of the referenced
-    user and the content of the referenced message.
+    user, the content (text) of the referenced message and information
+    about attachment images.
 
     Args:
         message (discord.Message): The incoming message.
 
     Returns:
-        Tuple[Optional[str], Optional[str]]: A tuple containing the nickname
-            of the referenced user (or None) and the content of the referenced
-            message (or None).
+        Tuple[Optional[str], Optional[str], Optional[str]]: A tuple
+            containing the nickname of the referenced user (or None),
+            the content of the referenced message (or None) and information
+            about attachment images (or None).
     """
-    ref_author_name, ref_content = None, None
+    ref_author_name, ref_content, attachment_images = None, None, None
     if message.reference:
         try:
             ref_message = await message.channel.fetch_message(
@@ -31,7 +33,7 @@ async def parse_message_reference(
         except discord.NotFound:
             # Handle case where the referenced message is not found.
             logger.warning("Message reference NotFound.")
-            return ref_author_name, ref_content
+            return ref_author_name, ref_content, attachment_images
 
         # Retrieve the user associated with the referenced message.
         ref_message_users = await message.guild.query_members(
@@ -45,9 +47,11 @@ async def parse_message_reference(
             ref_author_name = (
                 ref_message_user.nick or ref_message_user.display_name
             )
+        if ref_message.attachments:
+            attachment_images = "[картинка] "
         # Get the content of the referenced message.
         ref_content = ref_message.content
-    return ref_author_name, ref_content
+    return ref_author_name, ref_content, attachment_images
 
 
 async def parse_formatted_message_reference(
@@ -84,16 +88,24 @@ async def parse_formatted_message_reference(
             logger.warning("Message reference NotFound.")
             return ""
 
-        ref_author_name, ref_content = await parse_message_reference(message)
+        (
+            ref_author_name,
+            ref_content,
+            attachment_images,
+        ) = await parse_message_reference(message)
         if ref_content:
             if not ref_author_name:
                 ref_author_name = "unknown"
 
+        if not attachment_images:
+            attachment_images = ""
         if ref_content and len(ref_content) > max_ref_message_length:
             ref_content = f"{ref_content[:max_ref_message_length]}..."
         if ref_author_name and len(ref_author_name) > max_nickname_length:
             ref_author_name = f"{ref_author_name[:max_nickname_length]}..."
-        ref_message = f"[{ref_author_name}: {ref_content}] -> "
+        ref_message = (
+            f"[{ref_author_name}: {attachment_images}{ref_content}] -> "
+        )
     return ref_message
 
 

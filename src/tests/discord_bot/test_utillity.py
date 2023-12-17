@@ -23,11 +23,16 @@ async def test_parse_message_reference_reference_not_found():
         response=MagicMock(), message="Resource not found"
     )
     # Call the function under test
-    ref_author_name, ref_content = await parse_message_reference(mock_message)
+    (
+        ref_author_name,
+        ref_content,
+        attachment_images,
+    ) = await parse_message_reference(mock_message)
 
     # Assert that the result is an empty string
     assert ref_author_name is None
     assert ref_content is None
+    assert attachment_images is None
 
 
 @pytest.mark.asyncio
@@ -40,6 +45,7 @@ async def test_parse_message_reference_reference_author_name_is_none():
     mock_ref_message = AsyncMock()
     # Set the content attribute
     mock_ref_message.content = "Reference text"
+    mock_ref_message.attachments = None
     # Create a mock message
     mock_message = AsyncMock()
     mock_message.channel.fetch_message.return_value = mock_ref_message
@@ -49,11 +55,16 @@ async def test_parse_message_reference_reference_author_name_is_none():
     mock_ref_message_user.display_name = None
     mock_message.guild.query_members.return_value = [mock_ref_message_user]
 
-    ref_author_name, ref_content = await parse_message_reference(mock_message)
+    (
+        ref_author_name,
+        ref_content,
+        attachment_images,
+    ) = await parse_message_reference(mock_message)
 
     # Assert that the result is an empty string
     assert ref_author_name is None
     assert ref_content == "Reference text"
+    assert attachment_images is None
 
 
 @pytest.mark.asyncio
@@ -75,7 +86,11 @@ async def test_parse_message_reference_reference_nickname_is_empty():
     mock_ref_message_user.display_name = "display_name"
     mock_message.guild.query_members.return_value = [mock_ref_message_user]
 
-    ref_author_name, ref_content = await parse_message_reference(mock_message)
+    (
+        ref_author_name,
+        ref_content,
+        _,
+    ) = await parse_message_reference(mock_message)
 
     # Assert that the result is an empty string
     assert ref_author_name is not None
@@ -91,8 +106,34 @@ async def test_parse_message_reference_reference_nickname_non_empty():
     """
     # Create a mock reference message
     mock_ref_message = AsyncMock()
+    # Create a mock message
+    mock_message = AsyncMock()
+    mock_message.channel.fetch_message.return_value = mock_ref_message
+
+    mock_ref_message_user = AsyncMock()
+    mock_message.guild.query_members.return_value = [mock_ref_message_user]
+
+    (
+        _,
+        _,
+        attachment_images,
+    ) = await parse_message_reference(mock_message)
+
+    # Assert that the result is an empty string
+    assert attachment_images == "[картинка] "
+
+
+@pytest.mark.asyncio
+async def test_parse_message_reference_reference_attachment_non_empty():
+    """
+    Test case for parse_message_reference when the author name of referenced
+    message is None.
+    """
+    # Create a mock reference message
+    mock_ref_message = AsyncMock()
     # Set the content attribute
     mock_ref_message.content = "Reference text"
+    mock_ref_message.attachment = MagicMock()
     # Create a mock message
     mock_message = AsyncMock()
     mock_message.channel.fetch_message.return_value = mock_ref_message
@@ -102,7 +143,11 @@ async def test_parse_message_reference_reference_nickname_non_empty():
     mock_ref_message_user.display_name = "display_name"
     mock_message.guild.query_members.return_value = [mock_ref_message_user]
 
-    ref_author_name, ref_content = await parse_message_reference(mock_message)
+    (
+        ref_author_name,
+        ref_content,
+        _,
+    ) = await parse_message_reference(mock_message)
 
     # Assert that the result is an empty string
     assert ref_author_name == "nick_name"
@@ -122,7 +167,11 @@ async def test_parse_message_reference_reference_is_empty():
     mock_message = AsyncMock()
     mock_message.reference = None
 
-    ref_author_name, ref_content = await parse_message_reference(mock_message)
+    (
+        ref_author_name,
+        ref_content,
+        _,
+    ) = await parse_message_reference(mock_message)
 
     # Assert that the result is an empty string
     assert ref_author_name is None
@@ -143,6 +192,7 @@ async def test_parse_formatted_message_reference_found_message():
         return_value=(
             "JohnDoe",
             "Hello, world!",
+            None,
         ),
     ):
         result = await parse_formatted_message_reference(message_mock)
@@ -162,7 +212,7 @@ async def test_parse_formatted_message_reference_not_found_message():
     # Mock the parse_message_reference function
     with patch(
         "src.discord_bot.utillity.parse_message_reference",
-        return_value=(None, None),
+        return_value=(None, None, None),
     ):
         result = await parse_formatted_message_reference(message_mock)
 
@@ -180,12 +230,34 @@ async def test_parse_formatted_message_reference_no_content():
     # Mock the parse_message_reference function
     with patch(
         "src.discord_bot.utillity.parse_message_reference",
-        return_value=("JohnDoe", None),
+        return_value=("JohnDoe", None, None),
     ):
         result = await parse_formatted_message_reference(message_mock)
 
     # Assert the expected formatted message
     assert result == "[JohnDoe: None] -> "
+
+
+@pytest.mark.asyncio
+async def test_parse_formatted_message_only_attachment():
+    """
+    Test the case where the referenced message has no content.
+    """
+    message_mock = AsyncMock()
+
+    # Mock the parse_message_reference function
+    with patch(
+        "src.discord_bot.utillity.parse_message_reference",
+        return_value=(
+            "JohnDoe",
+            "",
+            "[картинка] ",
+        ),
+    ):
+        result = await parse_formatted_message_reference(message_mock)
+
+    # Assert the expected formatted message
+    assert result == "[JohnDoe: [картинка] ] -> "
 
 
 @pytest.mark.asyncio
@@ -198,7 +270,7 @@ async def test_parse_formatted_message_reference_author_name():
     # Mock the parse_message_reference function
     with patch(
         "src.discord_bot.utillity.parse_message_reference",
-        return_value=(None, "Hello, world!"),
+        return_value=(None, "Hello, world!", None),
     ):
         result = await parse_formatted_message_reference(message_mock)
 
@@ -216,7 +288,7 @@ async def test_parse_formatted_message_reference_long_message():
     # Mock the parse_message_reference function
     with patch(
         "src.discord_bot.utillity.parse_message_reference",
-        return_value=("JohnDoe", "Hello, world!"),
+        return_value=("JohnDoe", "Hello, world!", None),
     ):
         result = await parse_formatted_message_reference(
             message_mock,
@@ -229,7 +301,7 @@ async def test_parse_formatted_message_reference_long_message():
 
 
 @pytest.mark.asyncio
-async def test_pparse_message_all_prefixes():
+async def test_parse_message_all_prefixes():
     """
     Test the case where a message has both attachments and a referenced
     message.
@@ -238,16 +310,17 @@ async def test_pparse_message_all_prefixes():
     message_mock.attachments = MagicMock()
     message_mock.author.display_name = "JohnDoe"
     message_mock.content = "Message text"
+    message_mock.reference.attachments = MagicMock()
 
     # Mock the parse_message_reference function
     with patch(
         "src.discord_bot.utillity.parse_formatted_message_reference",
-        return_value="[JohnDoe: test reference message] -> ",
+        return_value="[JohnDoe: [картинка] test reference message] -> ",
     ):
         result = await parse_message(message_mock)
 
     # pylint: disable=C0301
     assert (
         result
-        == "<JohnDoe>: [картинка] [JohnDoe: test reference message] -> Message text"
+        == "<JohnDoe>: [картинка] [JohnDoe: [картинка] test reference message] -> Message text"
     )
