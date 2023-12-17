@@ -8,9 +8,9 @@ import pytest
 from src.chat_parser import log_parser
 
 
-def add_text(file_path: str, text: str) -> None:
+def add_text(file_path: str, text: str, mode: str = "a") -> None:
     """Add text into file."""
-    with open(file_path, "a", encoding="utf-8") as fw:
+    with open(file_path, mode, encoding="utf-8") as fw:
         fw.write(text)
 
     # wait until system update file information
@@ -56,6 +56,24 @@ class TestFileChangesUtility:
         add_text(temp_file, "New content!")
 
         assert manager.is_file_modified() is True
+
+    def test_is_file_modified_rotate_file(self, tmp_path):
+        """
+        Check if is_file_modified() recognises if file
+        was rotated.
+        """
+        temp_file = tmp_path / "temp_file.txt"
+        add_text(temp_file, "Default content.")
+
+        manager = log_parser.FileChangesUtillity(temp_file)
+
+        assert manager.is_file_modified() is False
+        assert manager._last_position != 0
+
+        add_text(temp_file, "", mode="w")
+
+        assert manager.is_file_modified() is True
+        assert manager._last_position == 0
 
     def test__get_new_lines(self, tmp_path):
         """
@@ -168,3 +186,18 @@ class TestFileChangesUtility:
 
         assert len(new_lines) == len(file_content)
         assert new_lines == file_content
+
+    def test_get_new_line_rotate_file(self, tmp_path):
+        """doc string"""
+        temp_file = tmp_path / "temp_file.txt"
+        add_text(temp_file, "Line_0\n")
+        manager = log_parser.FileChangesUtillity(temp_file)
+        add_text(temp_file, "Line_1\n")
+        add_text(temp_file, "Line_2\n")
+
+        assert manager.get_new_line() == "Line_1\n"
+        assert manager.get_new_line() == "Line_2\n"
+        add_text(temp_file, "Line_3\n", mode="w")
+        add_text(temp_file, "Line_4\n")
+        assert manager.get_new_line() == "Line_3\n"
+        assert manager.get_new_line() == "Line_4\n"
