@@ -3,3 +3,5 @@ pytest
 pylint
 discord
 loguru
+pytest-mock
+pytest-asyncio
