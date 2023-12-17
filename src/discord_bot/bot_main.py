@@ -12,6 +12,7 @@ from loguru import logger
 
 from ..chat_parser.chat_parser import MinecraftChatParser
 from ..rcon_sender.rcon import RconLocalDocker
+from .utillity import parse_message
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -151,10 +152,9 @@ async def on_message(message: discord.Message) -> None:
         return
     # Check if the message is from the desired channel
     if message.channel.id == CHANNEL_ID:
-        logger.info(f"<{message.author.display_name}>: {message.content}")
-        rcon.send_say_command(
-            f"<{message.author.display_name}>: {message.content}"
-        )
+        message_text = await parse_message(message)
+        logger.info(message_text)
+        rcon.send_say_command(message_text)
 
 
 def main():
