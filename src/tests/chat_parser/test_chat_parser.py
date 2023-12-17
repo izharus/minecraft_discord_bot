@@ -234,6 +234,7 @@ def test_get_chat_message():
     temp_server_dir = os.path.dirname(__file__)
     chat = chat_parser.MinecraftChatParser(temp_server_dir)
     chat.set_last_position()
+    chat.reset_file_modified_timestamp()
     expected_messages = [
         "velada joined the game",
         "velada left the game",
