@@ -83,11 +83,12 @@ class FileChangesUtillity:
             str: The next line from the file.
         """
         try:
-            with open(self.filename, encoding="utf-8") as file:
-                file.seek(self._last_position)
-                while line := file.readline():
-                    yield line
-                self._last_position = file.tell()
+            if self.is_file_modified():
+                with open(self.filename, encoding="utf-8") as file:
+                    file.seek(self._last_position)
+                    while line := file.readline():
+                        yield line
+                    self._last_position = file.tell()
         except Exception as error:
             logging.error(f"Error reading log lines: {str(error)}")
 
@@ -117,6 +118,12 @@ class FileChangesUtillity:
                 position. Defaults to 0, indicating the beginning of the file.
         """
         self._last_position = new_position
+
+    def reset_file_modified_timestamp(self) -> None:
+        """
+        Reset the modified timestamp of the file to force recalculation.
+        """
+        self._cached_stamp = 0
 
 
 def main() -> None:
