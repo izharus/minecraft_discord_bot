@@ -6,6 +6,8 @@ import os
 import re
 import time
 
+from loguru import logger
+
 from .log_parser import FileChangesUtillity
 
 
@@ -19,6 +21,7 @@ class MinecraftChatParser(FileChangesUtillity):
     def __init__(
         self,
         minecraft_server_dir: str,
+        is_server_working: bool = True,
     ) -> None:
         self.log_path = os.path.join(
             minecraft_server_dir,
@@ -31,6 +34,50 @@ class MinecraftChatParser(FileChangesUtillity):
             r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|^[a-zA-Z]+[a-zA-z0-9]* .*?$"
         )
         FileChangesUtillity.__init__(self, self.log_path)
+        self._is_server_working = is_server_working
+
+        self._stopped_server_pattern = (
+            r"^\[.*?\] "
+            r"\[Server thread/INFO\] \[net.minecraft.server.MinecraftServer/\]: Stopping server$"
+        )
+        self._starting_server_pattern = (
+            r"^\[.*?\] \[main/INFO\] \[.*?\]: ModLauncher running: args "
+            r"\[.*?\]$"
+        )
+        self._started_server_pattern = (
+            r"^\[.*?\] \[VoiceChatServerThread/INFO\] \[voicechat/\]: \[voicechat\] "
+            r"Voice chat server started at port \d{4,6}$"
+        )
+
+    def _manage_server_status(
+        self,
+        message: str,
+    ) -> str:
+        """
+        Changes _is_server_working server status if any patterns im nessage
+        will found.
+
+        Args:
+            message (str): New string on log file from server.
+
+        Returns:
+            str: A custom server message in human-reading style or an
+                empty string, if no any patterns will be found.
+        """
+        if re.findall(self._stopped_server_pattern, message):
+            logger.info("SERVER WAS STOPPED")
+            self._is_server_working = False
+            return "# Сервер остановлен."
+        elif re.findall(self._starting_server_pattern, message):
+            logger.info("SERVER IS STARTING")
+            self._is_server_working = False
+            return "# Сервер запускается..."
+
+        elif re.findall(self._started_server_pattern, message):
+            logger.info("SERVER WAS STARTED")
+            self._is_server_working = True
+            return "# Сервер запущен."
+        return ""
 
     def extract_chat_message(self, message: str) -> str:
         """
@@ -44,7 +91,13 @@ class MinecraftChatParser(FileChangesUtillity):
             str: The extracted user chat message, or an empty
                 string if not found.
         """
-        if self._chat_message_pattern not in message:
+        server_message = self._manage_server_status(message)
+        if server_message:
+            return server_message
+        if (
+            not self._is_server_working
+            or self._chat_message_pattern not in message
+        ):
             return ""
         chat_message = message.split(self._chat_message_pattern)[-1]
 
