@@ -31,12 +31,12 @@ MINECRAFT_SERVER_PATH = PATH # Path to minecraft server dir
 ## Docker Container
 To create a Docker container on Windows:
 ```bash
-docker build -t halloween-discord-bot-image:version_1.0.2 .
-docker run -d -v F:/minecraft_servers/server_tfc_halloween/itzg/minecraft-server:/app/minecraft-server -v F:/minecraft_servers/discord_tfc_bot/logs:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.0.2
+docker build -t halloween-discord-bot-image:version_1.0.4 .
+docker run -d -v F:/minecraft_servers/server_tfc_halloween/itzg/minecraft-server:/app/minecraft-server -v F:/minecraft_servers/discord_tfc_bot/logs:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.0.4
 ```
 Command structure:
 ```bash
-docker run -d -v minecraft_server_root_dir_path:/app/minecraft-server -v your_custom_path_to_bot_logs_dir:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.0.2
+docker run -d -v minecraft_server_root_dir_path:/app/minecraft-server -v your_custom_path_to_bot_logs_dir:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.0.4
 ```
 
 ## Args

@@ -1,4 +1,5 @@
 """Tests for src/chat_parser/chat_parser.py."""
+# pylint: disable = W0212
 import os
 import time
 
@@ -12,6 +13,78 @@ def add_text(file_path: str, text: str = "") -> None:
 
     # wait until system update file information
     time.sleep(0.1)
+
+
+def test_manage_server_status_stopped_message():
+    """Simulate message with 'stopped' pattern from server."""
+    temp_server_dir = os.path.dirname(__file__)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    # pylint: disable = C0301
+    test_message = "[05Dec2023 22:03:16.966] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server"
+
+    assert chat._is_server_working is True
+    server_message = chat._manage_server_status(test_message)
+
+    assert server_message == "# Сервер остановлен."
+    assert chat._is_server_working is False
+
+
+def test_manage_server_status_starting_message():
+    """Simulate message with 'starting' pattern from server."""
+    temp_server_dir = os.path.dirname(__file__)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    # pylint: disable = C0301
+    test_message = "[20Dec2023 07:50:48.256] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserver, --fml.forgeVersion, 40.2.9, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220404.173914]"
+
+    assert chat._is_server_working is True
+
+    server_message = chat._manage_server_status(test_message)
+
+    assert server_message == "# Сервер запускается..."
+    assert chat._is_server_working is False
+
+
+def test_manage_server_status_started_message():
+    """Simulate message with 'started' pattern from server."""
+    temp_server_dir = os.path.dirname(__file__)
+    chat = chat_parser.MinecraftChatParser(
+        temp_server_dir,
+        is_server_working=False,
+    )
+    # pylint: disable = C0301
+    test_message = "[20Dec2023 07:51:15.915] [VoiceChatServerThread/INFO] [voicechat/]: [voicechat] Voice chat server started at port 3520"
+
+    assert chat._is_server_working is False
+
+    server_message = chat._manage_server_status(test_message)
+    assert server_message == "# Сервер запущен."
+    assert chat._is_server_working is True
+
+
+def test_extract_chat_message_server_not_working(tmp_path):
+    """Check if message do not extracts when server status is stopped."""
+    # Create a temporary text file
+    temp_dir = os.path.join(
+        tmp_path,
+        "logs",
+    )
+    os.makedirs(temp_dir)
+    temp_log = os.path.join(
+        temp_dir,
+        "latest.log",
+    )
+    add_text(temp_log, "")
+    chat = chat_parser.MinecraftChatParser(
+        tmp_path,
+        is_server_working=False,
+    )
+    test_message = (
+        "[14Dec2023 07:29:06.982] [Server thread/INFO]"
+        " [net.minecraft.server.dedicated.DedicatedServer/]:"
+        " <Iluvator> TEST"
+    )
+    test_message = chat.extract_chat_message(test_message)
+    assert test_message == ""
 
 
 def test_extract_chat_message_existing(tmp_path):
@@ -243,6 +316,9 @@ def test_get_chat_message():
         # "[Rcon] test11",
         "Iluvator joined the game",
         # "[Iluvator: Set own game mode to Creative Mode]",
+        "# Сервер остановлен.",
+        "# Сервер запускается...",
+        "# Сервер запущен.",
         "<Iluvator> TEST",
         "<Iluvator> из игры",
         "Iluvator was slain by Zombie",
