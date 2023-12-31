@@ -18,6 +18,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
+APP_VERSION = "1.0.5"
 
 
 @bot.event
@@ -34,6 +35,7 @@ async def on_ready():
             normal modes.
 
     """
+    logger.info(f"APP_VERSION: {APP_VERSION}")
     logger.info(f"We have logged in as {bot.user}")
     if DEBUG_MODE:
         # pylint: disable = C0301
