@@ -32,7 +32,7 @@ MINECRAFT_SERVER_PATH = PATH # Path to minecraft server dir
 To create a Docker container on Windows:
 ```bash
 docker build -t halloween-discord-bot-image:version_1.0.5 .
-docker run -d -v F:/minecraft_servers/server_tfc_halloween/itzg/minecraft-server:/app/minecraft-server -v F:/minecraft_servers/discord_tfc_bot/logs:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.0.5
+docker run -d -v F:/minecraft_servers/server_dac/itzg/minecraft-server:/app/minecraft-server -v F:/minecraft_servers/discord_tfc_bot/logs:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.0.5
 ```
 Command structure:
 ```bash
