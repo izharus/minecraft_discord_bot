@@ -45,7 +45,10 @@ def test_manage_server_status_starting_message():
 
 
 def test_manage_server_status_started_message():
-    """Simulate message with 'started' pattern from server."""
+    """
+    Simulate message with 'started' pattern from server
+    with the voice chat mode.
+    """
     temp_server_dir = os.path.dirname(__file__)
     chat = chat_parser.MinecraftChatParser(
         temp_server_dir,
@@ -53,6 +56,26 @@ def test_manage_server_status_started_message():
     )
     # pylint: disable = C0301
     test_message = "[20Dec2023 07:51:15.915] [VoiceChatServerThread/INFO] [voicechat/]: [voicechat] Voice chat server started at port 3520"
+
+    assert chat._is_server_working is False
+
+    server_message = chat._manage_server_status(test_message)
+    assert server_message == "# Сервер запущен."
+    assert chat._is_server_working is True
+
+
+def test_manage_server_status_started_message_1_19_2():
+    """
+    Simulate message with 'started' pattern from
+    server version 1.19.2.
+    """
+    temp_server_dir = os.path.dirname(__file__)
+    chat = chat_parser.MinecraftChatParser(
+        temp_server_dir,
+        is_server_working=False,
+    )
+    # pylint: disable = C0301
+    test_message = "[29Apr2024 17:46:01.085] [Server thread/INFO] [net.minecraft.server.rcon.thread.RconThread/]: RCON running on 0.0.0.0:25575"
 
     assert chat._is_server_working is False
 
