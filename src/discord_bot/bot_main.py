@@ -19,7 +19,7 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
 APP_VERSION = "1.0.5"
-
+CONTAINER_NAME = "minecraft_dac"
 
 @bot.event
 @logger.catch()
@@ -129,7 +129,7 @@ async def on_message(message: discord.Message) -> None:
         None
     """
     await bot.process_commands(message)
-    rcon = RconLocalDocker("minecraft_server_tfc_halloween")
+    rcon = RconLocalDocker(CONTAINER_NAME)
     if message.author == bot.user:
         return
     # Check if the message is from the desired channel
