@@ -67,7 +67,7 @@ async def get_list_of_players(ctx: commands.Context) -> None:
     - ctx: Context object for the command execution.
     """
     logger.info("Command received: list")
-    rcon = RconLocalDocker("minecraft_server_tfc_halloween")
+    rcon = RconLocalDocker("minecraft_dac")
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         try:
