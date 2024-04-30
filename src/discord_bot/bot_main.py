@@ -18,8 +18,9 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
-APP_VERSION = "1.0.5"
+APP_VERSION = "1.1.0"
 CONTAINER_NAME = "minecraft_dac"
+
 
 @bot.event
 @logger.catch()
