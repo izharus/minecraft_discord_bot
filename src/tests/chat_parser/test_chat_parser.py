@@ -360,3 +360,46 @@ def test_get_chat_message():
     assert len(expected_messages) == len(new_messages)
     for expected, actual in zip(expected_messages, new_messages):
         assert expected == actual, f"Expected: {expected}, Actual: {actual}"
+
+
+def test_get_chat_message_1_19_2():
+    """
+    Test for minecraft version 1.19.2
+    Test the extraction of chat messages from a Minecraft log file.
+
+    This test sets up a MinecraftChatParser, sets the last position,
+    and then retrieves chat messages until none are left. It compares
+    the extracted messages with the expected ones.
+
+    Note: Uncommented lines in expected_messages are exist in the log
+    file.
+
+    """
+    temp_server_dir = os.path.join(
+        os.path.dirname(__file__),
+        "1.19.2",
+    )
+    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat.set_last_position()
+    chat.reset_file_modified_timestamp()
+    expected_messages = [
+        "# Сервер запускается...",
+        "# Сервер запущен.",
+        "Iluvator joined the game",
+        "Iluvator has made the advancement [Alex's Mobs]",
+        "Iluvator has made the advancement [A Small Smackerel]",
+        "<Iluvator> Test",
+        "<Iluvator> kill",
+        "Iluvator fell out of the world",
+        "Iluvator left the game",
+    ]
+    new_messages = []
+    while True:
+        message = chat.get_chat_message()
+        if not message:
+            break
+        new_messages.append(message)
+
+    assert len(expected_messages) == len(new_messages)
+    for expected, actual in zip(expected_messages, new_messages):
+        assert expected == actual, f"Expected: {expected}, Actual: {actual}"

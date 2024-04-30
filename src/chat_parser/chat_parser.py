@@ -30,7 +30,13 @@ class MinecraftChatParser(FileChangesUtillity):
             "latest.log",
         )
         # pylint: disable=C0301
-        self._chat_message_pattern = "[Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: "
+        self._chat_message_patterns_list = [
+            # Minecraft version 1.19.2
+            "[Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ",
+            # Minecraft version 1.18.4
+            "[Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: ",
+            "[Not Secure] ",
+        ]
         self._message_struct_pattern = (
             r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|^[a-zA-Z]+[a-zA-z0-9]* .*?$"
         )
@@ -127,12 +133,16 @@ class MinecraftChatParser(FileChangesUtillity):
         server_message = self._manage_server_status(message)
         if server_message:
             return server_message
-        if (
-            not self._is_server_working
-            or self._chat_message_pattern not in message
+        if not self._is_server_working or (
+            self._chat_message_patterns_list[0] not in message
+            and self._chat_message_patterns_list[1] not in message
         ):
             return ""
-        chat_message = message.split(self._chat_message_pattern)[-1]
+
+        # Apply the split_message function to each pattern in the list
+        chat_message = message
+        for pattern in self._chat_message_patterns_list:
+            chat_message = chat_message.split(pattern)[-1]
 
         if re.findall(self._message_struct_pattern, chat_message):
             return chat_message
