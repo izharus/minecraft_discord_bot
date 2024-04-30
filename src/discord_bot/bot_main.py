@@ -23,7 +23,7 @@ CONTAINER_NAME = "minecraft_dac"
 
 
 @bot.event
-@logger.catch()
+@logger.catch(reraise=True)
 async def on_ready():
     """
     Event handler for when the bot has successfully connected to Discord.
@@ -59,7 +59,7 @@ async def on_ready():
 
 
 @bot.command(name="list")
-@logger.catch()
+@logger.catch(reraise=True)
 async def get_list_of_players(ctx: commands.Context) -> None:
     """
     Get the list of online players on the Minecraft server.
@@ -85,7 +85,7 @@ async def get_list_of_players(ctx: commands.Context) -> None:
 
 
 @bot.command(name="info")
-@logger.catch()
+@logger.catch(reraise=True)
 async def get_list_of_cammands(ctx: commands.Context) -> None:
     """
     Get the list of available commands.
@@ -100,7 +100,7 @@ async def get_list_of_cammands(ctx: commands.Context) -> None:
 
 
 @bot.event
-@logger.catch()
+@logger.catch(reraise=True)
 async def on_command_error(ctx: commands.Context, error: Any) -> None:
     """
     Handle errors that occur during command execution.
@@ -118,7 +118,7 @@ async def on_command_error(ctx: commands.Context, error: Any) -> None:
 
 
 @bot.event
-@logger.catch()
+@logger.catch(reraise=True)
 async def on_message(message: discord.Message) -> None:
     """
     Event handler for processing incoming messages.
