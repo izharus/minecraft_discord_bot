@@ -38,7 +38,8 @@ class MinecraftChatParser(FileChangesUtillity):
             "[Not Secure] ",
         ]
         self._message_struct_pattern = (
-            r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|^[a-zA-Z]+[a-zA-z0-9]* .*?$"
+            r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|"
+            r"^[a-zA-Z]+[a-zA-z0-9]* [a-zA-Z]+[a-zA-z0-9]* .*?$"
         )
         FileChangesUtillity.__init__(self, self.log_path)
         self._is_server_working = is_server_working

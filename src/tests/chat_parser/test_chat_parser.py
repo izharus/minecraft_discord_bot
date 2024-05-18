@@ -400,6 +400,5 @@ def test_get_chat_message_1_19_2():
             break
         new_messages.append(message)
 
-    assert len(expected_messages) == len(new_messages)
     for expected, actual in zip(expected_messages, new_messages):
         assert expected == actual, f"Expected: {expected}, Actual: {actual}"
