@@ -26,3 +26,7 @@
 ## Fixes:
 - Bot now handles correctly server_started_pattern in servers log without voice chat mode.
 
+# Version 1.1.1 - May 18, 2024
+## Fixes:
+- Stop sending messages like "world saved" into discord channel.
+
