@@ -18,8 +18,8 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
-APP_VERSION = "1.1.0"
-CONTAINER_NAME = "minecraft_dac"
+APP_VERSION = "1.1.2"
+CONTAINER_NAME = "server_dac-minecraft_server-1"
 
 
 @bot.event
@@ -68,7 +68,7 @@ async def get_list_of_players(ctx: commands.Context) -> None:
     - ctx: Context object for the command execution.
     """
     logger.info("Command received: list")
-    rcon = RconLocalDocker("minecraft_dac")
+    rcon = RconLocalDocker(CONTAINER_NAME)
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         try:
