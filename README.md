@@ -19,24 +19,21 @@ pre-commit install
 pip-compile requirements/dev.in
 
 ```
+Edit the config.ini file and set the following variables
+CHANNEL_ID - Discord channel ID
+DISCORD_ACCESS_TOKEN - Discord access token
+CONTAINER_NAME - Docker container name with minecraft server
 
-## Access Configuration
-Edit the access.py file and set the following variables:
-```python
-CHANNEL_ID = YOUR_CHANGE_ID  # Replace with your Discord channel ID
-DISCORD_ACCESS_TOKEN = YOUR_ACCESS_TOKEN  # Replace with your Discord access token
-MINECRAFT_SERVER_PATH = PATH # Path to minecraft server dir
-```
+Forward the root directory of the Minecraft server:
+/path/to/your/server:/app/minecraft-root-dir:ro 
+
+
 
 ## Docker Container
 To create a Docker container on Windows:
 ```bash
-docker build -t halloween-discord-bot-image:version_1.1.2 .
-docker run -d -v F:/minecraft_servers/server_dac/itzg/minecraft-server:/app/minecraft-server -v F:/minecraft_servers/discord_tfc_bot/logs:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.1.2
-```
-Command structure:
-```bash
-docker run -d -v minecraft_server_root_dir_path:/app/minecraft-server -v your_custom_path_to_bot_logs_dir:/app/logs -v "//var/run/docker.sock:/var/run/docker.sock" --name halloween-discord-bot halloween-discord-bot-image:version_1.1.2
+docker build -t halloween-discord-bot-image:version_1.2.0 .
+docker run -d -v E:/MAIN/source/repos/Retsam/minecraft_discord_bot/data:/app/data -v F:/minecraft_servers/server_dac/itzg/minecraft-server:/app/minecraft-root-dir:ro --name halloween-discord-bot halloween-discord-bot-image:version_1.2.0
 ```
 
 ## Args

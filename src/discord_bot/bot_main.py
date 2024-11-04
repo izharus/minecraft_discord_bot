@@ -2,24 +2,34 @@
 # pylint: disable=C0411
 import asyncio
 import sys
+from pathlib import Path
 from typing import Any
 
 import discord
-from access import CHANNEL_ID, DISCORD_ACCESS_TOKEN, MINECRAFT_SERVER_PATH
 from discord.ext import commands
 from loguru import logger
 
 from ..chat_parser.chat_parser import MinecraftChatParser
 from ..rcon_sender.rcon import RconLocalDocker
-from .utillity import parse_message
+from .utillity import get_config, parse_message
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
-APP_VERSION = "1.1.2"
-CONTAINER_NAME = "server_dac-minecraft_server-1"
+APP_VERSION = "1.2.0"
+
+DATA_PATH = Path("data")
+
+config = get_config(DATA_PATH / "config.ini")
+CONTAINER_NAME = config["DISCORD"]["CONTAINER_NAME"]
+try:
+    CHANNEL_ID = config.getint("DISCORD", "CHANNEL_ID")
+except ValueError as e:
+    raise ValueError(f"Invalid CHANNEL_ID: {e}") from e
+DISCORD_ACCESS_TOKEN = config["DISCORD"]["DISCORD_ACCESS_TOKEN"]
+MINECRAFT_SERVER_PATH = "minecraft-root-dir"
 
 
 @bot.event
@@ -38,12 +48,8 @@ async def on_ready():
     """
     logger.info(f"APP_VERSION: {APP_VERSION}")
     logger.info(f"We have logged in as {bot.user}")
-    if DEBUG_MODE:
-        # pylint: disable = C0301
-        log_file_path = MINECRAFT_SERVER_PATH
-    else:
-        log_file_path = "minecraft-server"
-    chat_parser = MinecraftChatParser(log_file_path)
+
+    chat_parser = MinecraftChatParser(MINECRAFT_SERVER_PATH)
     channel = bot.get_channel(CHANNEL_ID)
 
     # Check for a new messages every 1 second
