@@ -142,4 +142,14 @@ async def on_message(message: discord.Message) -> None:
 
 def main():
     """Main entry point."""
+    # Configure logging to create a new log file each month
+    # without deleting old ones
+    logger.add(
+        DATA_PATH / "logs/file_{time:YYYY-MM}.log",
+        rotation="1 month",
+        retention="1 month",  # Retain log files for 1 month after rotation
+        compression="zip",  # Optional: Enable compression for rotated logs
+        level="DEBUG",
+        serialize=False,
+    )
     bot.run(DISCORD_ACCESS_TOKEN)
