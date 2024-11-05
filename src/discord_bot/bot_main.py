@@ -18,7 +18,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
 DEBUG_MODE = "--debug" in sys.argv
-APP_VERSION = "1.2.0"
+APP_VERSION = "1.3.0"
 
 DATA_PATH = Path("data")
 

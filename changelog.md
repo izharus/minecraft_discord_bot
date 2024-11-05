@@ -29,4 +29,6 @@
 # Version 1.1.1 - May 18, 2024
 ## Fixes:
 - Stop sending messages like "world saved" into discord channel.
-
+# Version 1.3.0 - Nov 05, 2024
+## Changes:
+- Added config.ini
