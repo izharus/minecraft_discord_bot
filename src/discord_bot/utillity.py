@@ -164,7 +164,6 @@ def get_config(config_path: str | os.PathLike) -> ConfigParser:
         "DISCORD": {
             "CHANNEL_ID": "",
             "DISCORD_ACCESS_TOKEN": "",
-            "MINECRAFT_SERVER_PATH": "",
             "CONTAINER_NAME": "",
         },
     }
