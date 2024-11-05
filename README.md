@@ -32,8 +32,8 @@ Forward the root directory of the Minecraft server:
 ## Docker Container
 To create a Docker container on Windows:
 ```bash
-docker build -t halloween-discord-bot-image:version_1.2.0 .
-docker run -d -v E:/MAIN/source/repos/Retsam/minecraft_discord_bot/data:/app/data -v F:/minecraft_servers/server_dac/itzg/minecraft-server:/app/minecraft-root-dir:ro --name halloween-discord-bot halloween-discord-bot-image:version_1.2.0
+docker build -t discord-bot:1.3.0 .
+docker run -d -v E:/MAIN/source/repos/Retsam/minecraft_discord_bot/data:/app/data -v F:/minecraft_servers/server_dac/itzg/minecraft-server:/app/minecraft-root-dir:ro --name halloween-discord-bot halloween-discord-bot-image:1.3.0
 ```
 
 ## Args
