@@ -340,7 +340,7 @@ def test_get_config_creating_new_config(
 
     assert "CHANNEL_ID" in config["DISCORD"].keys()
     assert "DISCORD_ACCESS_TOKEN" in config["DISCORD"].keys()
-    assert "MINECRAFT_SERVER_PATH" in config["DISCORD"].keys()
+    assert "CONTAINER_NAME" in config["DISCORD"].keys()
 
 
 def test_get_config_amending_new_config(
@@ -366,5 +366,4 @@ def test_get_config_amending_new_config(
 
     assert config["DISCORD"]["CHANNEL_ID"] == channel_id
     assert config["DISCORD"]["DISCORD_ACCESS_TOKEN"] == ""
-    assert config["DISCORD"]["MINECRAFT_SERVER_PATH"] == server_path
     assert config["DISCORD"]["CONTAINER_NAME"] == ""
