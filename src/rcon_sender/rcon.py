@@ -6,6 +6,8 @@ import subprocess
 from abc import abstractmethod
 from typing import Optional
 
+from loguru import logger as log
+
 
 class RconBase:
     """Base class for RCON communication."""
@@ -76,7 +78,8 @@ class RconLocalDocker(RconBase):
                 check=True,
             )
             return result.stdout.strip()
-        except subprocess.CalledProcessError:
+        except subprocess.CalledProcessError as error:
+            log.error(f"Failed to send command: {error.stderr}")
             return None
 
 

@@ -1,9 +1,12 @@
 """Unittests for src/discord_bot/utillity.py."""
+from configparser import ConfigParser
+from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import discord
 import pytest
 from src.discord_bot.utillity import (
+    get_config,
     parse_formatted_message_reference,
     parse_message,
     parse_message_reference,
@@ -324,3 +327,43 @@ async def test_parse_message_all_prefixes():
         result
         == "<JohnDoe>: [картинка] [JohnDoe: [картинка] test reference message] -> Message text"
     )
+
+
+def test_get_config_creating_new_config(
+    tmp_path: Path,
+):
+    """
+    Test the `get_config` function for creating a new configuration file.
+    """
+
+    config = get_config(tmp_path / "config.ini")
+
+    assert "CHANNEL_ID" in config["DISCORD"].keys()
+    assert "DISCORD_ACCESS_TOKEN" in config["DISCORD"].keys()
+    assert "CONTAINER_NAME" in config["DISCORD"].keys()
+
+
+def test_get_config_amending_new_config(
+    tmp_path: Path,
+):
+    """
+    Test the `get_config` function for amending an existing
+    configuration file.
+    """
+    channel_id = "id_12345"
+    server_path = "/etc/server/test_server"
+    tmp_path = tmp_path / "config.ini"
+    config = ConfigParser()
+    config.add_section("DISCORD")
+
+    config["DISCORD"]["CHANNEL_ID"] = channel_id
+    config["DISCORD"]["MINECRAFT_SERVER_PATH"] = server_path
+
+    with tmp_path.open("w", encoding="utf-8") as fw:
+        config.write(fw)
+
+    config = get_config(tmp_path)
+
+    assert config["DISCORD"]["CHANNEL_ID"] == channel_id
+    assert config["DISCORD"]["DISCORD_ACCESS_TOKEN"] == ""
+    assert config["DISCORD"]["CONTAINER_NAME"] == ""
