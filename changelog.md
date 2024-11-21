@@ -32,3 +32,6 @@
 # Version 1.3.0 - Nov 05, 2024
 ## Changes:
 - Added config.ini
+
+# Version 1.3.1 - Nov 21, 2024
+- Deleted an infinite loop in on_ready method.
