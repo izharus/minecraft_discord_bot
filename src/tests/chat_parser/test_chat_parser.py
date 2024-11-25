@@ -736,3 +736,50 @@ class TestVanishHandlerMasterPerki:
         handler = VanishHandlerMasterPerki(tmp_path / "temp")
         msg = ""
         assert handler.is_unvanished(msg) is False
+
+    def test_get_chat_message_with_vanish_mod_1_20_1(
+        self,
+        vanish_handler,
+    ):
+        """
+        Test whether MinecraftChatParser correctly parses chat messages,
+        including scenarios where players vanish or unvanish.
+        """
+        temp_server_dir = os.path.join(
+            os.path.dirname(__file__),
+            "1.20.1_vanish_master_perki",
+        )
+        chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
+        chat.set_last_position()
+        chat.reset_file_modified_timestamp()
+        expected_messages = [
+            "Iluvator joined the game",
+            "<Iluvator> 213",
+            "Iluvator was killed",
+            # [Iluvator: Killed Iluvator]\n
+            "Iluvator left the game",  # Here vanished
+            # <Iluvator> 213
+            # Iluvator left the game
+            # Iluvator joined the game
+            # "<Iluvator> 123",
+            # "Iluvator left the game",
+            # Iluvator joined the game
+            # "<Iluvator> 456",
+            "Iluvator joined the game",  # Here unvanished
+            "<Iluvator> 123",
+            "Iluvator left the game",
+        ]
+        new_messages = []
+        for _ in range(len(expected_messages)):
+            message = chat.get_chat_message()
+            new_messages.append(message)
+
+        for index, (expected, actual) in enumerate(
+            zip(expected_messages, new_messages)
+        ):
+            assert expected == actual, (
+                f"Message mismatch at index {index}:\n"
+                f"  Expected: {expected}\n"
+                f"  Actual: {actual}\n"
+                f"  Full context: {new_messages}"
+            )
