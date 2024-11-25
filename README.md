@@ -27,6 +27,10 @@ CONTAINER_NAME - Docker container name with minecraft server
 Forward the root directory of the Minecraft server:
 /path/to/your/server:/app/minecraft-root-dir:ro 
 
+Discord bot excepts patterns from your run.sh server scripts:
+- '"^.*\[Rcon\] SERVER STOPPED\.\.\.$"' - '[Rcon] SERVER STOPPED...'
+- '^.*\[Rcon\] SERVER STARTED!!!$' - [Rcon] SERVER STARTED!!!
+
 
 
 ## Docker Container

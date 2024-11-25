@@ -8,7 +8,7 @@ import re
 import time
 from abc import abstractmethod
 from pathlib import Path
-from typing import Final, List, Optional
+from typing import Final, Optional
 
 from loguru import logger
 
@@ -51,50 +51,8 @@ class MinecraftChatParser(FileChangesUtillity):
         FileChangesUtillity.__init__(self, self.log_path)
         self._is_server_working = is_server_working
 
-        self._stopped_server_pattern = (
-            r"^\[.*?\] "
-            r"\[Server thread/INFO\] \[net.minecraft.server.MinecraftServer/\]: Stopping server$"
-        )
-        self._starting_server_pattern = (
-            r"^\[.*?\] \[main/INFO\] \[.*?\]: ModLauncher running: args "
-            r"\[.*?\]$"
-        )
-
-        self._started_server_patterns_list = [
-            (
-                # server with the with the voicechat mode
-                r"^\[.*?\] \[VoiceChatServerThread/INFO\] \[voicechat/\]: \[voicechat\] "
-                r"Voice chat server started at port \d{4,6}$"
-            ),
-            (
-                # server version 1.19.2
-                r"^\[.*?\] \[Server thread/INFO\] \[net.minecraft.server.rcon.thread.RconThread/\]: "
-                r"RCON running on .*?:\d{4,6}$"
-            ),
-        ]
-
-    @staticmethod
-    def _match_patterns(patterns: List[str], text: str):
-        """
-        Checks if the text matches at least one of the regular expressions
-        in the provided list of patterns.
-
-        Args:
-            text (str): The text to check.
-            patterns (list): A list of regular expressions
-                to match against the text.
-
-        Returns:
-            bool: True if at least one expression in patterns
-                matches the text, False otherwise.
-        """
-        # Iterate through the list of patterns
-        for pattern in patterns:
-            # If at least one pattern matches the text, return True
-            if re.search(pattern, text):
-                return True
-        # If no pattern matches, return False
-        return False
+        self._stopped_server_pattern = r"^.*\[Rcon\] SERVER STOPPED\.\.\.$"
+        self._started_server_pattern = r"^.*\[Rcon\] SERVER STARTED!!!$"
 
     def _manage_server_status(
         self,
@@ -111,16 +69,11 @@ class MinecraftChatParser(FileChangesUtillity):
             str: A custom server message in human-reading style or an
                 empty string, if no any patterns will be found.
         """
-        if re.findall(self._stopped_server_pattern, message):
+        if re.match(self._stopped_server_pattern, message):
             logger.info("SERVER WAS STOPPED")
             self._is_server_working = False
             return "# Сервер остановлен."
-        elif re.findall(self._starting_server_pattern, message):
-            logger.info("SERVER IS STARTING")
-            self._is_server_working = False
-            return "# Сервер запускается..."
-
-        elif self._match_patterns(self._started_server_patterns_list, message):
+        elif re.match(self._started_server_pattern, message):
             logger.info("SERVER WAS STARTED")
             self._is_server_working = True
             return "# Сервер запущен."
