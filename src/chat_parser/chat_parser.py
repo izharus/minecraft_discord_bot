@@ -2,9 +2,12 @@
 This modules provides class for extracting a new chat messages from
 a minecraft log file.
 """
+import json
 import os
 import re
 import time
+from abc import abstractmethod
+from pathlib import Path
 from typing import List
 
 from loguru import logger
@@ -166,6 +169,103 @@ class MinecraftChatParser(FileChangesUtillity):
             if chat_message:
                 return chat_message.rstrip()
         return ""
+
+
+class VanishHandlerBase:
+    """A class to handle vanished players for a given data file."""
+
+    def __init__(self, data_path: Path):
+        """
+        Initializes the VanishHandler with the specified data file path.
+
+        Args:
+            data_path (Path): The path to the data file.
+        """
+        self._data_path = data_path
+        self._vanished_players = self._load_data(self._data_path)
+
+    def _load_data(self, data_path: Path) -> set:
+        """
+        Loads vanished players from the data file, creating it if necessary.
+
+        Args:
+            data_path (Path): The path to the data file.
+
+        Returns:
+            set: A set of vanished players.
+        """
+        try:
+            with data_path.open(encoding="utf-8") as fr:
+                data = json.load(fr)
+                if not isinstance(data, list):
+                    logger.warning("Data file must contain a set.")
+                else:
+                    return set(data)
+        except FileNotFoundError:
+            logger.info(f"Data file {data_path} does not exist.")
+        except json.JSONDecodeError as e:
+            logger.warning(
+                f"Data file {data_path} is corrupted: {e}. "
+                "Replacing with an empty list."
+            )
+        return set()
+
+    def _dump_data(self):
+        with self._data_path.open("w", encoding="utf-8") as fw:
+            json.dump(list(self._vanished_players), fw)
+
+    def _extract_username(self, msg: str) -> str:
+        return msg.split(" ")[0].lower()
+
+    @abstractmethod
+    def is_vanished(self, msg: str) -> bool:
+        """True if msg indicates that player was vanished."""
+
+    @abstractmethod
+    def is_unvanished(self, msg: str) -> bool:
+        """True if msg indicates that player was unvanished."""
+
+    def _vanish_player(self, username: str) -> None:
+        """Make username vanished."""
+        self._vanished_players.add(username.lower())
+        self._dump_data()
+
+    def _unvanish_player(self, username: str) -> None:
+        """Make username vanished."""
+        try:
+            self._vanished_players.remove(username.lower())
+        except KeyError:
+            logger.warning(f"Player is not vanished: {username}")
+            return
+        self._dump_data()
+
+    def process_message(self, msg: str) -> str:
+        """
+        Processes a message to determine if a player is vanishing,
+        unvanishing, or is already vanished. Takes actions accordingly
+        and logs the events.
+
+        Args:
+            msg (str): The message to be processed.
+
+        Returns:
+            str: An empty string if the player vanishes or unvanishes, or
+                if the player is already vanished. Otherwise, returns
+                the original message.
+        """
+        username = self._extract_username(msg)
+        if self.is_vanished(msg):
+            self._vanish_player(username)
+            logger.info(f"Player vanished: {username}")
+            return ""
+        if self.is_unvanished(msg):
+            self._unvanish_player(username)
+            logger.info(f"Player unvanished: {username}")
+            return ""
+        if username in self._vanished_players:
+            logger.info(f"Skipping vanished player msg: {msg}")
+            return ""
+        return msg
 
 
 def main() -> None:

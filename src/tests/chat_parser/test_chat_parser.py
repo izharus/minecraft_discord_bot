@@ -1,9 +1,26 @@
 """Tests for src/chat_parser/chat_parser.py."""
 # pylint: disable = W0212
+import json
 import os
 import time
+from pathlib import Path
+from unittest.mock import MagicMock
 
+from pytest_mock import MockerFixture
 from src.chat_parser import chat_parser
+from src.chat_parser.chat_parser import VanishHandlerBase
+
+
+class MockVanishHandlerBase(VanishHandlerBase):
+    """Mock VanishHandlerBase."""
+
+    def is_vanished(self, _: str) -> bool:
+        """Mock is_vanished."""
+        return False
+
+    def is_unvanished(self, _: str) -> bool:
+        """Mock is_unvanished."""
+        return False
 
 
 def add_text(file_path: str, text: str = "") -> None:
@@ -402,3 +419,227 @@ def test_get_chat_message_1_19_2():
 
     for expected, actual in zip(expected_messages, new_messages):
         assert expected == actual, f"Expected: {expected}, Actual: {actual}"
+
+
+class TestVanishHandlerBase:
+    """Tests for VanishHandler class."""
+
+    def test_initialize_handler_if_vanished_file_is_not_exists(
+        self, tmp_path: Path
+    ):
+        """
+        Test initialization when the vanished file does not exist.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+
+        assert handler._vanished_players == set()
+
+    def test_load_data_with_valid_file(self, tmp_path: Path):
+        """
+        Test loading data from a valid file.
+        """
+        data = {"player1", "player2"}
+        path = tmp_path / "temp"
+        path.write_text(json.dumps(list(data)), encoding="utf-8")
+        handler = MockVanishHandlerBase(path)
+
+        assert handler._vanished_players == data
+
+    def test_load_data_with_invalid_format(self, tmp_path: Path):
+        """
+        Test loading data from a file with invalid format.
+        """
+        path = tmp_path / "temp"
+        path.write_text('{"invalid": "format"}', encoding="utf-8")
+
+        handler = MockVanishHandlerBase(path)
+
+        assert handler._vanished_players == set()
+
+    def test_extract_username(self, tmp_path: Path):
+        """
+        Test extracting a username from a message.
+        """
+        handler = MockVanishHandlerBase(tmp_path / "temp")
+        message = "Player123 joined the game"
+        result = handler._extract_username(message)
+
+        assert result == "player123"
+
+    def test_dump_data_creates_file(self, tmp_path: Path):
+        """
+        Test that _dump_data creates the file if it does not exist
+        and writes the data.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+        handler._vanished_players = {"player1", "player2"}
+
+        handler._dump_data()
+
+        assert path.exists()
+        with path.open(encoding="utf-8") as fr:
+            data = json.load(fr)
+        assert set(data) == handler._vanished_players
+
+    def test_dump_data_overwrites_existing_file(self, tmp_path: Path):
+        """
+        Test that _dump_data overwrites the content of an existing file.
+        """
+        path = tmp_path / "temp"
+        initial_data = ["initial_player"]
+        path.write_text(json.dumps(initial_data), encoding="utf-8")
+
+        handler = MockVanishHandlerBase(path)
+        handler._vanished_players = {"player1", "player2"}
+
+        handler._dump_data()
+
+        with path.open(encoding="utf-8") as fr:
+            data = json.load(fr)
+        assert set(data) == handler._vanished_players
+
+    def test_dump_data_with_empty_list(self, tmp_path: Path):
+        """
+        Test that _dump_data correctly writes an empty list.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+        handler._vanished_players = set()
+
+        handler._dump_data()
+
+        with path.open(encoding="utf-8") as fr:
+            data = json.load(fr)
+        assert data == []
+
+    def test__vanish_player(self, tmp_path: Path):
+        """
+        Test that _unvanish_player removes a username from vanished players
+        and updates the data file.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+        vanished_players = ["test1", "test2"]
+
+        handler._vanish_player(vanished_players[0])
+        handler._vanish_player(vanished_players[1])
+
+        assert handler._vanished_players == set(vanished_players)
+        with path.open(encoding="utf-8") as fr:
+            data = json.load(fr)
+        assert data == vanished_players
+
+    def test__vanish_player_is_case_insensitive(self, tmp_path: Path):
+        """
+        Test that _vanish_player treats usernames case-insensitively.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+
+        handler._vanish_player("TestUser")
+        handler._vanish_player("testuser")  # Same name, different case
+
+        assert handler._vanished_players == {"testuser"}
+        with path.open(encoding="utf-8") as fr:
+            data = json.load(fr)
+        assert data == ["testuser"]
+
+    def test__unvanish_player_raises_keyerror_if_not_found(
+        self, tmp_path: Path
+    ):
+        """
+        Test that _unvanish_player raises KeyError if the username
+        does not exist.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+
+        handler._vanished_players = {"test1"}
+        handler._unvanish_player("test2")  # Username not in the set
+
+        assert handler._vanished_players == {"test1"}
+
+    def test__vanish_and_unvanish_combined(self, tmp_path: Path):
+        """
+        Test the combined behavior of _vanish_player and _unvanish_player.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+
+        # Vanish players
+        handler._vanish_player("user1")
+        handler._vanish_player("user2")
+        assert handler._vanished_players == {"user1", "user2"}
+
+        # Unvanish one player
+        handler._unvanish_player("user1")
+        assert handler._vanished_players == {"user2"}
+
+        # Vanish another player
+        handler._vanish_player("user3")
+        assert handler._vanished_players == {"user2", "user3"}
+
+        # Check final state in file
+        with path.open(encoding="utf-8") as fr:
+            data = json.load(fr)
+        assert data == ["user2", "user3"]
+
+    def test_process_message_vanished_msg(
+        self, tmp_path: Path, mocker: MockerFixture
+    ):
+        """
+        Test processing a "vanished" message adds the player
+        to the vanished list and calls _dump_data.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+        mocker.patch.object(handler, "is_vanished", return_value=True)
+        handler._dump_data = MagicMock()  # type: ignore
+
+        username = "MACTEP"
+        msg = f"{username} vanished"
+        output = handler.process_message(msg)
+
+        assert output == ""
+        assert username.lower() in handler._vanished_players
+        handler._dump_data.assert_called_once()
+
+    def test_process_message_unvanished_msg(
+        self, tmp_path: Path, mocker: MockerFixture
+    ):
+        """
+        Test processing an "unvanished" message removes the player
+        from the vanished list and calls _dump_data.
+        """
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+        mocker.patch.object(handler, "is_unvanished", return_value=True)
+        handler._dump_data = MagicMock()  # type: ignore
+        handler._vanished_players = {"mactep", "velada"}
+        username = "MACTEP"
+        msg = f"{username} unvanished"
+        output = handler.process_message(msg)
+
+        assert output == ""
+        assert username.lower() not in handler._vanished_players
+        handler._dump_data.assert_called_once()
+
+    def test_process_message_simple_msg(self, tmp_path: Path):
+        """
+        Test processing a normal message does not modify vanished
+        players or call _dump_data.
+        """
+
+        path = tmp_path / "temp"
+        handler = MockVanishHandlerBase(path)
+        handler._dump_data = MagicMock()  # type: ignore
+        handler._vanished_players = {"velada"}
+        username = "MACTEP"
+        msg = f"{username} unvanished"
+        output = handler.process_message(msg)
+
+        assert output == msg
+        assert username.lower() not in handler._vanished_players
+        handler._dump_data.assert_not_called()
