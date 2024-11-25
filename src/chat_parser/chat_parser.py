@@ -16,6 +16,7 @@ from .log_parser import FileChangesUtillity
 
 USERNAME_P: Final = r"[a-zA-Z]+[a-zA-z0-9]*"
 
+
 class MinecraftChatParser(FileChangesUtillity):
     """
     This class extends a FileChangesUtillity class and
@@ -26,7 +27,7 @@ class MinecraftChatParser(FileChangesUtillity):
     def __init__(
         self,
         minecraft_server_dir: str,
-        vanish_handler: "VanishHandlerMasterPerki",
+        vanish_handler: "VanishHandlerBase",
         is_server_working: bool = True,
     ) -> None:
         self.log_path = os.path.join(
@@ -151,9 +152,8 @@ class MinecraftChatParser(FileChangesUtillity):
         for pattern in self._chat_message_patterns_list:
             chat_message = chat_message.split(pattern)[-1]
 
-        if re.findall(self._message_struct_pattern, chat_message):
-            return self._vanish_handler.process_message(chat_message)
-        return ""
+        username = self._extract_username(chat_message)
+        return self._vanish_handler.process_message(chat_message, username)
 
     def get_chat_message(self) -> str:
         """
@@ -270,21 +270,38 @@ class VanishHandlerBase:
             return
         self._dump_data()
 
-    def process_message(self, msg: str) -> str:
+    def process_message(self, msg: str, username: Optional[str] = None) -> str:
         """
-        Processes a message to determine if a player is vanishing,
-        unvanishing, or is already vanished. Takes actions accordingly
-        and logs the events.
+        Processes a message to handle vanished/unvanished player actions.
 
         Args:
             msg (str): The message to be processed.
+            username (str): Username from the message.
 
         Returns:
-            str: An empty string if the player vanishes or unvanishes, or
-                if the player is already vanished. Otherwise, returns
-                the original message.
+            str:
+                - For valid user messages:
+                    - An empty string if the player is vanished.
+                    - The original message otherwise.
+                - For vanish mod messages:
+                    - A fake "player left" message if the player vanishes.
+                    - A fake "player joined" message if the player unvanishes.
+                - For unrecognized server messages: An empty string.
         """
+        if username:
+            # If message recognized as valid user message
+            if username.lower() in self._vanished_players:
+                logger.info(f"Skipping vanished player msg: {msg}")
+                return ""
+            return msg
+
+        # It's not a valid user message
+        # Check if it's a message from a vanish mod
         username = self.extract_username(msg)
+        if not username:  # Log unexpected failure to extract
+            logger.warning(f"Could not extract username from message: {msg}")
+            return ""
+
         if self.is_vanished(msg):
             self._vanish_player(username)
             logger.info(f"Player vanished: {username}")
@@ -293,10 +310,8 @@ class VanishHandlerBase:
             self._unvanish_player(username)
             logger.info(f"Player unvanished: {username}")
             return self.JOINED_GAME_PATTERN.format(username)
-        if username in self._vanished_players:
-            logger.info(f"Skipping vanished player msg: {msg}")
-            return ""
-        return msg
+        # Message is no recognized, it's a server message
+        return ""
 
 
 class VanishHandlerMasterPerki(VanishHandlerBase):
@@ -306,9 +321,9 @@ class VanishHandlerMasterPerki(VanishHandlerBase):
     """
 
     # [Iluvator: [Vanishmod] Iluvator vanished]
-    VANISHED_PATTERN = fr"^\[({USERNAME_P}): \[Vanishmod\] {USERNAME_P} vanished\]$"  # pylint: disable=C0301 
+    VANISHED_PATTERN = rf"^\[({USERNAME_P}): \[Vanishmod\] {USERNAME_P} vanished\]$"  # pylint: disable=C0301
     # [Iluvator: [Vanishmod] Iluvator unvanished]
-    UNVANISHED_PATTERN = fr"^\[({USERNAME_P}): \[Vanishmod\] {USERNAME_P} unvanished\]$"  # pylint: disable=C0301 
+    UNVANISHED_PATTERN = rf"^\[({USERNAME_P}): \[Vanishmod\] {USERNAME_P} unvanished\]$"  # pylint: disable=C0301
 
     def extract_username(self, msg):
         for pattern in (self.VANISHED_PATTERN, self.UNVANISHED_PATTERN):
