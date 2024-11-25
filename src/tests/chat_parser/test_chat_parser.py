@@ -14,6 +14,8 @@ from src.chat_parser.chat_parser import (
     VanishHandlerMasterPerki,
 )
 
+TEST_DATA_DIR = Path(__file__).parent / "test_data"
+
 
 class MockVanishHandlerBase(VanishHandlerBase):
     """Mock VanishHandlerBase."""
@@ -42,8 +44,9 @@ def add_text(file_path: str, text: str = "") -> None:
 
 def test_manage_server_status_stopped_message(vanish_handler):
     """Simulate message with 'stopped' pattern from server."""
-    temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.18.2", vanish_handler
+    )
     # pylint: disable = C0301
     test_message = "[25Nov2024 23:05:38.154] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] SERVER STOPPED..."
 
@@ -59,9 +62,8 @@ def test_manage_server_status_started_message(vanish_handler):
     Simulate message with 'started' pattern from server
     with the voice chat mode.
     """
-    temp_server_dir = os.path.dirname(__file__)
     chat = chat_parser.MinecraftChatParser(
-        temp_server_dir,
+        TEST_DATA_DIR / "1.18.2",
         vanish_handler,
         is_server_working=False,
     )
@@ -256,8 +258,9 @@ def test_extract_chat_message_dismatch_pattern(vanish_handler):
     """
     Test extract_chat_message() with dismatching pattern.
     """
-    temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.18.2", vanish_handler
+    )
     test_message = (
         "test 1"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -271,8 +274,9 @@ def test_extract_chat_message_anti_pattern(vanish_handler):
     """
     Test extract_chat_message() with anti pattern.
     """
-    temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.18.2", vanish_handler
+    )
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -319,8 +323,9 @@ def test_get_chat_message(vanish_handler):
     file.
 
     """
-    temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.18.2", vanish_handler
+    )
     chat.set_last_position()
     chat.reset_file_modified_timestamp()
     expected_messages = [
@@ -372,11 +377,9 @@ def test_get_chat_message_1_19_2(vanish_handler):
     file.
 
     """
-    temp_server_dir = os.path.join(
-        os.path.dirname(__file__),
-        "1.19.2",
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.19.2", vanish_handler
     )
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     chat.set_last_position()
     chat.reset_file_modified_timestamp()
     expected_messages = [
@@ -391,6 +394,7 @@ def test_get_chat_message_1_19_2(vanish_handler):
         "Iluvator left the game",
     ]
     new_messages = []
+
     while True:
         message = chat.get_chat_message()
         if not message:
@@ -421,11 +425,9 @@ def test___extract_username_valid_format(
     Tests the `_extract_username` method with messages
     that follow valid formats.
     """
-    temp_server_dir = os.path.join(
-        os.path.dirname(__file__),
-        "1.19.2",
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.19.2", vanish_handler
     )
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
 
     username = chat._extract_username(msg)
 
@@ -714,11 +716,9 @@ class TestVanishHandlerMasterPerki:
         Test whether MinecraftChatParser correctly parses chat messages,
         including scenarios where players vanish or unvanish.
         """
-        temp_server_dir = os.path.join(
-            os.path.dirname(__file__),
-            "1.20.1_vanish_master_perki",
+        chat = chat_parser.MinecraftChatParser(
+            TEST_DATA_DIR / "1.20.1_vanish_master_perki", vanish_handler
         )
-        chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
         chat.set_last_position()
         chat.reset_file_modified_timestamp()
         expected_messages = [
@@ -739,6 +739,7 @@ class TestVanishHandlerMasterPerki:
             "Iluvator left the game",
         ]
         new_messages = []
+
         for _ in range(len(expected_messages)):
             message = chat.get_chat_message()
             new_messages.append(message)

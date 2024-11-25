@@ -1,0 +1,1623 @@
+[25Nov2024 23:03:07.224] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserver, --fml.forgeVersion, 47.1.3, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412]
+[25Nov2024 23:03:07.225] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 21.0.5 by Eclipse Adoptium; OS Linux arch amd64 version 6.1.0-26-amd64
+[25Nov2024 23:03:07.589] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserver
+[25Nov2024 23:03:07.608] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/data/libraries/org/spongepowered/mixin/0.8.5/mixin-0.8.5.jar%2365!/ Service=ModLauncher Env=SERVER
+[25Nov2024 23:03:07.757] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /data/libraries/net/minecraftforge/fmlcore/1.20.1-47.1.3/fmlcore-1.20.1-47.1.3.jar is missing mods.toml file
+[25Nov2024 23:03:07.758] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /data/libraries/net/minecraftforge/javafmllanguage/1.20.1-47.1.3/javafmllanguage-1.20.1-47.1.3.jar is missing mods.toml file
+[25Nov2024 23:03:07.758] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /data/libraries/net/minecraftforge/lowcodelanguage/1.20.1-47.1.3/lowcodelanguage-1.20.1-47.1.3.jar is missing mods.toml file
+[25Nov2024 23:03:07.758] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /data/libraries/net/minecraftforge/mclanguage/1.20.1-47.1.3/mclanguage-1.20.1-47.1.3.jar is missing mods.toml file
+[25Nov2024 23:03:07.832] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 6 dependencies adding them to mods collection
+[25Nov2024 23:03:08.816] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[25Nov2024 23:03:08.847] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserver' with arguments []
+[25Nov2024 23:03:08.865] [main/WARN] [mixin/]: Reference map 'dttfc.refmap.json' for dttfc.mixins.json could not be read. If this is a development environment you can ignore this message
+[25Nov2024 23:03:08.917] [main/WARN] [mixin/]: Reference map 'grieflogger-forge-refmap.json' for grieflogger.mixins.json could not be read. If this is a development environment you can ignore this message
+[25Nov2024 23:03:09.039] [main/WARN] [mixin/]: Reference map 'immersive_paintings-common-refmap.json' for immersive_paintings.mixin.json could not be read. If this is a development environment you can ignore this message
+[25Nov2024 23:03:09.443] [main/WARN] [mixin/]: Error loading class: loaderCommon/forge/com/seibel/distanthorizons/common/wrappers/worldGeneration/mimicObject/ChunkLoader (java.lang.ClassNotFoundException: loaderCommon.forge.com.seibel.distanthorizons.common.wrappers.worldGeneration.mimicObject.ChunkLoader)
+[25Nov2024 23:03:09.691] [main/INFO] [memoryleakfix/]: [MemoryLeakFix] Will be applying 1 memory leak fixes!
+[25Nov2024 23:03:09.691] [main/INFO] [memoryleakfix/]: [MemoryLeakFix] Currently enabled memory leak fixes: [biomeTemperatureLeak]
+[25Nov2024 23:03:09.722] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via ca.fxco.memoryleakfix.mixinextras.service.MixinExtrasServiceImpl(version=0.3.2).
+[25Nov2024 23:03:09.916] [main/INFO] [mixin/]: Mixing server.MixinDedicatedServer from mixins/common/nochatreports.mixins.json into net.minecraft.server.dedicated.DedicatedServer
+[25Nov2024 23:03:10.220] [main/WARN] [mixin/]: @Redirect conflict. Skipping servercore.common.mixins.json:optimizations.ticking.chunk.random.ServerLevelMixin->@Redirect::servercore$replaceIceAndSnowCheck(Lnet/minecraft/util/RandomSource;I)I with priority 900, already redirected by tfc.mixins.json:ServerLevelMixin->@Redirect::preventVanillaSnowAndIce(Lnet/minecraft/util/RandomSource;ILnet/minecraft/world/level/chunk/LevelChunk;I)I with priority 1000
+[25Nov2024 23:03:11.686] [main/INFO] [mixin/]: Mixing common.MixinFriendlyByteBuf from mixins/common/nochatreports.mixins.json into net.minecraft.network.FriendlyByteBuf
+[25Nov2024 23:03:11.686] [main/INFO] [mixin/]: Renaming synthetic method lambda$onWriteJsonWithCodec$1(Ljava/lang/Object;Ljava/lang/String;)Lio/netty/handler/codec/EncoderException; to md661b95$lambda$onWriteJsonWithCodec$1$0 in mixins/common/nochatreports.mixins.json:common.MixinFriendlyByteBuf
+[25Nov2024 23:03:11.686] [main/INFO] [mixin/]: Renaming synthetic method lambda$onReadJsonWithCodec$0(Ljava/lang/String;)Lio/netty/handler/codec/DecoderException; to md661b95$lambda$onReadJsonWithCodec$0$1 in mixins/common/nochatreports.mixins.json:common.MixinFriendlyByteBuf
+[25Nov2024 23:03:11.860] [main/INFO] [mixin/]: Mixing server.MixinServerGamePacketListenerImpl from mixins/common/nochatreports.mixins.json into net.minecraft.server.network.ServerGamePacketListenerImpl
+[25Nov2024 23:03:12.463] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.1.3, for MC 1.20.1 with MCP 20230612.114412
+[25Nov2024 23:03:12.464] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.1.3 Initialized
+[25Nov2024 23:03:12.467] [modloading-worker-0/INFO] [net.dries007.tfc.TerraFirmaCraft/]: Initializing TerraFirmaCraft
+[25Nov2024 23:03:12.468] [modloading-worker-0/INFO] [net.dries007.tfc.TerraFirmaCraft/]: Options: Assertions Enabled = false, Boostrap = false, Test = false, Debug Logging = true
+[25Nov2024 23:03:12.501] [modloading-worker-0/INFO] [mixin/]: Mixing server.MixinPlayerList from mixins/common/nochatreports.mixins.json into net.minecraft.server.players.PlayerList
+[25Nov2024 23:03:12.588] [modloading-worker-0/INFO] [NoChatReports/]: KONNICHIWA ZA WARUDO!
+[25Nov2024 23:03:12.588] [modloading-worker-0/INFO] [NoChatReports/]: Default JVM text encoding is: UTF-8
+[25Nov2024 23:03:12.589] [modloading-worker-0/INFO] [NoChatReports/]: Reading config file NoChatReports/NCR-Common.json...
+[25Nov2024 23:03:12.590] [modloading-worker-0/INFO] [NoChatReports/]: Writing config file NoChatReports/NCR-Common.json...
+[25Nov2024 23:03:12.643] [modloading-worker-0/INFO] [KubeJS/]: Loaded common.properties
+[25Nov2024 23:03:12.643] [modloading-worker-0/INFO] [KubeJS/]: Loaded dev.properties
+[25Nov2024 23:03:12.737] [modloading-worker-0/INFO] [com.notenoughmail.kubejs_tfc.KubeJSTFC/]: KubeJS TFC configuration:
+[25Nov2024 23:03:12.737] [modloading-worker-0/INFO] [com.notenoughmail.kubejs_tfc.KubeJSTFC/]: 	Debug mode enabled: false
+[25Nov2024 23:03:12.738] [modloading-worker-0/INFO] [com.notenoughmail.kubejs_tfc.KubeJSTFC/]: 	Self tests console insertion enabled: true
+[25Nov2024 23:03:12.835] [modloading-worker-0/INFO] [Collective/]: Loading Collective version 7.87.
+[25Nov2024 23:03:12.843] [modloading-worker-0/INFO] [me.wesley1808.servercore.common.ServerCore/]: [ServerCore] Loaded V1.5.1+1.20.1!
+[25Nov2024 23:03:12.937] [modloading-worker-0/INFO] [KubeJS/]: Looking for KubeJS plugins...
+[25Nov2024 23:03:12.941] [modloading-worker-0/INFO] [KubeJS/]: Found plugin source kubejs
+[25Nov2024 23:03:12.948] [modloading-worker-0/WARN] [KubeJS/]: Plugin dev.latvian.mods.kubejs.forge.BuiltinKubeJSForgeClientPlugin does not load on server side, skipping
+[25Nov2024 23:03:12.949] [modloading-worker-0/WARN] [KubeJS/]: Plugin dev.latvian.mods.kubejs.integration.forge.gamestages.GameStagesIntegration does not have required mod gamestages loaded, skipping
+[25Nov2024 23:03:12.949] [modloading-worker-0/INFO] [KubeJS/]: Found plugin source kubejs_tfc
+[25Nov2024 23:03:12.950] [modloading-worker-0/WARN] [KubeJS/]: Plugin com.notenoughmail.kubejs_tfc.addons.precpros.PrecProsPlugin does not have required mod precisionprospecting loaded, skipping
+[25Nov2024 23:03:12.950] [modloading-worker-0/WARN] [KubeJS/]: Plugin com.notenoughmail.kubejs_tfc.addons.afc.AFCPlugin does not have required mod afc loaded, skipping
+[25Nov2024 23:03:12.951] [modloading-worker-0/WARN] [KubeJS/]: Plugin com.notenoughmail.kubejs_tfc.addons.tfccc.TFCCCPlugin does not have required mod tfcchannelcasting loaded, skipping
+[25Nov2024 23:03:12.951] [modloading-worker-0/WARN] [KubeJS/]: Plugin com.notenoughmail.kubejs_tfc.addons.entityjs.EntityJSTFCPlugin does not have required mod entityjs loaded, skipping
+[25Nov2024 23:03:12.951] [modloading-worker-0/INFO] [KubeJS/]: Done in 13.39 ms
+[25Nov2024 23:03:12.969] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id architectury:sync_ids
+[25Nov2024 23:03:13.004] [ForkJoinPool-3-worker-1/INFO] [com.daqem.grieflogger.GriefLogger/]: Preparing database asynchronously.
+[25Nov2024 23:03:13.006] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/jdbc3/JDBC3Connection for class org/sqlite/jdbc4/JDBC4Connection in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.006] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.jdbc3.JDBC3Connection
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Unknown Source) ~[?:?]
+	at java.lang.Class.forName(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:35) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.008] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/SQLiteConnection for class org/sqlite/jdbc3/JDBC3Connection in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.008] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.SQLiteConnection
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.Class.forName0(Native Method) ~[?:?]
+	at java.lang.Class.forName(Unknown Source) ~[?:?]
+	at java.lang.Class.forName(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:35) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.015] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/jdbc3/JDBC3DatabaseMetaData for class org/sqlite/jdbc4/JDBC4DatabaseMetaData in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.015] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.jdbc3.JDBC3DatabaseMetaData
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.017] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/core/CoreDatabaseMetaData for class org/sqlite/jdbc3/JDBC3DatabaseMetaData in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.017] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.core.CoreDatabaseMetaData
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.020] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/core/DB for class org/sqlite/core/NativeDB in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.021] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.core.DB
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.055] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FormatCache for class org/sqlite/date/FastDateFormat$1 in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.056] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FormatCache
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.071] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$NumberStrategy for class org/sqlite/date/FastDateParser$1 in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.071] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$NumberStrategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.072] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$Strategy for class org/sqlite/date/FastDateParser$NumberStrategy in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.072] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$Strategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.073] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$NumberStrategy for class org/sqlite/date/FastDateParser$2 in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.082] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$NumberStrategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.084] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$NumberStrategy for class org/sqlite/date/FastDateParser$3 in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.084] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$NumberStrategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.089] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$NumberStrategy for class org/sqlite/date/FastDateParser$4 in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.089] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$NumberStrategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.093] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$Strategy for class org/sqlite/date/FastDateParser$ISO8601TimeZoneStrategy in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.094] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$Strategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.099] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$Strategy for class org/sqlite/date/FastDateParser$CopyQuotedStrategy in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.099] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$Strategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.103] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$Strategy for class org/sqlite/date/FastDateParser$TimeZoneStrategy in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.103] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$Strategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.113] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/date/FastDateParser$Strategy for class org/sqlite/date/FastDateParser$CaseInsensitiveTextStrategy in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.113] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.date.FastDateParser$Strategy
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:357) ~[?:?]
+	at org.sqlite.date.FastDateFormat.<init>(FastDateFormat.java:336) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:89) ~[?:?]
+	at org.sqlite.date.FastDateFormat$1.createInstance(FastDateFormat.java:85) ~[?:?]
+	at org.sqlite.date.FormatCache.getInstance(FormatCache.java:78) ~[?:?]
+	at org.sqlite.date.FastDateFormat.getInstance(FastDateFormat.java:114) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.<init>(SQLiteConnectionConfig.java:17) ~[?:?]
+	at org.sqlite.SQLiteConnectionConfig.fromPragmaTable(SQLiteConnectionConfig.java:37) ~[?:?]
+	at org.sqlite.SQLiteConfig.<init>(SQLiteConfig.java:92) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:226) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.198] [modloading-worker-0/INFO] [Rhino Script Remapper/]: Loading Rhino Minecraft remapper...
+[25Nov2024 23:03:13.199] [modloading-worker-0/INFO] [dev.latvian.mods.rhino.mod.util.RhinoProperties/]: Rhino properties loaded.
+[25Nov2024 23:03:13.210] [modloading-worker-0/INFO] [Rhino Script Remapper/]: Loading mappings for 1.20.1
+[25Nov2024 23:03:13.230] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/Function for class org/sqlite/Function$Aggregate in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.231] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.Function
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.NativeLibraries.load(Native Method) ~[?:?]
+	at jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(Unknown Source) ~[?:?]
+	at jdk.internal.loader.NativeLibraries.loadLibrary(Unknown Source) ~[?:?]
+	at jdk.internal.loader.NativeLibraries.loadLibrary(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadLibrary(Unknown Source) ~[?:?]
+	at java.lang.Runtime.load0(Unknown Source) ~[?:?]
+	at java.lang.System.load(Unknown Source) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.loadNativeLibrary(SQLiteJDBCLoader.java:266) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.extractAndLoadLibraryFile(SQLiteJDBCLoader.java:223) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.loadSQLiteNativeLibrary(SQLiteJDBCLoader.java:330) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.initialize(SQLiteJDBCLoader.java:75) ~[?:?]
+	at org.sqlite.core.NativeDB.load(NativeDB.java:69) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:280) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.232] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/Function$Aggregate for class org/sqlite/Function$Window in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.232] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.Function$Aggregate
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.NativeLibraries.load(Native Method) ~[?:?]
+	at jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(Unknown Source) ~[?:?]
+	at jdk.internal.loader.NativeLibraries.loadLibrary(Unknown Source) ~[?:?]
+	at jdk.internal.loader.NativeLibraries.loadLibrary(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadLibrary(Unknown Source) ~[?:?]
+	at java.lang.Runtime.load0(Unknown Source) ~[?:?]
+	at java.lang.System.load(Unknown Source) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.loadNativeLibrary(SQLiteJDBCLoader.java:266) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.extractAndLoadLibraryFile(SQLiteJDBCLoader.java:223) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.loadSQLiteNativeLibrary(SQLiteJDBCLoader.java:330) ~[?:?]
+	at org.sqlite.SQLiteJDBCLoader.initialize(SQLiteJDBCLoader.java:75) ~[?:?]
+	at org.sqlite.core.NativeDB.load(NativeDB.java:69) ~[?:?]
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:280) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:67) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.245] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/jdbc3/JDBC3Statement for class org/sqlite/jdbc4/JDBC4Statement in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.245] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.jdbc3.JDBC3Statement
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.createStatement(JDBC4Connection.java:26) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.createStatement(JDBC3Connection.java:169) ~[?:?]
+	at org.sqlite.SQLiteConfig.apply(SQLiteConfig.java:192) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:70) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.246] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/core/CoreStatement for class org/sqlite/jdbc3/JDBC3Statement in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.246] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.core.CoreStatement
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.createStatement(JDBC4Connection.java:26) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.createStatement(JDBC3Connection.java:169) ~[?:?]
+	at org.sqlite.SQLiteConfig.apply(SQLiteConfig.java:192) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:70) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.252] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/jdbc3/JDBC3ResultSet for class org/sqlite/jdbc4/JDBC4ResultSet in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.253] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.jdbc3.JDBC3ResultSet
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.createStatement(JDBC4Connection.java:26) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.createStatement(JDBC3Connection.java:169) ~[?:?]
+	at org.sqlite.SQLiteConfig.apply(SQLiteConfig.java:192) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:70) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.255] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/core/CoreResultSet for class org/sqlite/jdbc3/JDBC3ResultSet in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.255] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.core.CoreResultSet
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.createStatement(JDBC4Connection.java:26) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.createStatement(JDBC3Connection.java:169) ~[?:?]
+	at org.sqlite.SQLiteConfig.apply(SQLiteConfig.java:192) ~[?:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:70) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:19) ~[?:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:106) ~[?:?]
+	at org.sqlite.JDBC.connect(JDBC.java:79) ~[?:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at java.sql.DriverManager.getConnection(Unknown Source) ~[java.sql:?]
+	at com.daqem.grieflogger.database.Database.<init>(Database.java:42) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:59) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.263] [ForkJoinPool-3-worker-1/INFO] [com.daqem.grieflogger.GriefLogger/]: Connected to database
+[25Nov2024 23:03:13.265] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/BlockRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.265] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.BlockService.<init>(BlockService.java:22) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:7) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.266] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/ChatRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.267] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.ChatService.<init>(ChatService.java:16) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:8) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.267] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/CommandRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.267] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.CommandService.<init>(CommandService.java:16) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:9) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.268] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/ContainerRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.268] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.ContainerService.<init>(ContainerService.java:24) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:10) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.270] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/EntityRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.270] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.EntityService.<init>(EntityService.java:12) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:11) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.271] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/ItemRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.271] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.ItemService.<init>(ItemService.java:23) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:12) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.272] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/LevelRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.272] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.<init>(LevelService.java:12) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:13) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.273] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/MaterialRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.273] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.MaterialService.<init>(MaterialService.java:12) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:14) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.274] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/SessionRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.274] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.SessionService.<init>(SessionService.java:20) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:15) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.275] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/UsernameRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.275] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.UsernameService.<init>(UsernameService.java:14) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:16) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.276] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/daqem/grieflogger/database/repository/Repository for class com/daqem/grieflogger/database/repository/UserRepository in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:13.276] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: com.daqem.grieflogger.database.repository.Repository
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at com.daqem.grieflogger.database.service.UserService.<init>(UserService.java:16) ~[?:?]
+	at com.daqem.grieflogger.database.service.Services.<clinit>(Services.java:17) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.prepareDatabase(GriefLogger.java:61) ~[?:?]
+	at com.daqem.grieflogger.GriefLogger.lambda$prepareDatabaseAsync$0(GriefLogger.java:52) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:13.277] [ForkJoinPool-3-worker-1/INFO] [com.daqem.grieflogger.GriefLogger/]: Database prepared in 273ms.
+[25Nov2024 23:03:13.277] [modloading-worker-0/INFO] [Rhino Script Remapper/]: Done in 0.079 s
+[25Nov2024 23:03:13.417] [modloading-worker-0/ERROR] [net.minecraftforge.fml.loading.RuntimeDistCleaner/DISTXFORM]: Attempted to load class com/mojang/blaze3d/vertex/PoseStack for invalid dist DEDICATED_SERVER
+[25Nov2024 23:03:13.531] [modloading-worker-0/INFO] [KubeJS Startup/]: example.js#5: Hello, World! (Loaded startup scripts)
+[25Nov2024 23:03:13.533] [modloading-worker-0/INFO] [KubeJS Startup/]: Loaded script startup_scripts:example.js in 0.021 s
+[25Nov2024 23:03:13.535] [modloading-worker-0/INFO] [KubeJS Startup/]: Loaded 1/1 KubeJS startup scripts in 0.256 s with 0 errors and 0 warnings
+[25Nov2024 23:03:13.562] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id kubejs:send_data_from_client
+[25Nov2024 23:03:13.564] [modloading-worker-0/INFO] [dev.architectury.networking.forge.NetworkManagerImpl/]: Registering C2S receiver with id kubejs:first_click
+[25Nov2024 23:03:14.899] [Worker-Main-1/WARN] [com.ferreusveritas.dynamictrees.tree.species.PalmSpecies/]: Family dttfc:palm for palm species dttfc:palm is not of type class com.ferreusveritas.dynamictrees.tree.family.PalmFamily
+[25Nov2024 23:03:14.899] [Worker-Main-1/WARN] [com.ferreusveritas.dynamictrees.tree.species.PalmSpecies/]: LeavesProperties dynamictrees:null for palm species dttfc:palm is not of type class com.ferreusveritas.dynamictrees.block.leaves.PalmLeavesProperties
+[25Nov2024 23:03:15.251] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Configuration file /data/config/PlayerShops-Common.toml is not correct. Correcting
+[25Nov2024 23:03:15.251] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key Common configs for Player Shops.AllowanceTime was corrected from 24000 to its default, 24000. 
+[25Nov2024 23:03:15.253] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Configuration file /data/config/simpledivegear-common.toml is not correct. Correcting
+[25Nov2024 23:03:15.253] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key General.airDisplayVerticalAlignment was corrected from 69.0 to its default, 69.0. 
+[25Nov2024 23:03:15.254] [Thread-1/WARN] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Configuration file /data/config/simpledivegear-common.toml is not correct. Correcting
+[25Nov2024 23:03:15.262] [modloading-worker-0/INFO] [com.therighthon.rnr.RoadsAndRoofs/]: ROADS AND ROOFS COMMON SETUP
+[25Nov2024 23:03:15.267] [modloading-worker-0/INFO] [net.dries007.tfc.TerraFirmaCraft/]: TFC Common Setup
+[25Nov2024 23:03:15.268] [modloading-worker-0/INFO] [com.gmail.rohzek.dive.util.LogHelper/]: Hello Minecraft, how are you? Did you know that Tony loves Amy? 8 years and 1 month together. <3
+[25Nov2024 23:03:15.272] [modloading-worker-0/INFO] [voicechat/]: [voicechat] Compatibility version 18
+[25Nov2024 23:03:15.293] [modloading-worker-0/INFO] [net.jotred.playershops_tfc.PlayershopsTFC/]: Playershops, now with TFC and AFC support, loading in...
+[25Nov2024 23:03:15.314] [modloading-worker-0/INFO] [voicechat/]: [voicechat] Loading plugins
+[25Nov2024 23:03:15.324] [modloading-worker-0/INFO] [voicechat/]: [voicechat] Loaded 0 plugin(s)
+[25Nov2024 23:03:15.331] [modloading-worker-0/INFO] [voicechat/]: [voicechat] Initializing plugins
+[25Nov2024 23:03:15.333] [modloading-worker-0/INFO] [voicechat/]: [voicechat] Initialized 0 plugin(s)
+[25Nov2024 23:03:15.453] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [journeymap] Starting version check at https://forge.curseupdate.com/32274/journeymap
+[25Nov2024 23:03:15.575] [modloading-worker-0/INFO] [com.sk89q.worldedit.extension.platform.PlatformManager/]: Got request to register class com.sk89q.worldedit.forge.ForgePlatform with WorldEdit [com.sk89q.worldedit.extension.platform.PlatformManager@4a186ca2]
+[25Nov2024 23:03:15.578] [modloading-worker-0/INFO] [com.sk89q.worldedit.forge.ForgeWorldEdit/]: WorldEdit for Forge (version 7.2.15+6463-5ca4dff) is loaded
+[25Nov2024 23:03:15.579] [main/INFO] [journeymap/]: Initializing Packet Registries
+[25Nov2024 23:03:15.625] [modloading-worker-0/INFO] [de.mennomax.astikorcarts.AstikorCarts/]: Automatic pull animal configuration:
+pull_animals = [
+    "minecraft:camel",
+    "minecraft:donkey",
+    "minecraft:horse",
+    "minecraft:mule",
+    "minecraft:skeleton_horse",
+    "minecraft:zombie_horse",
+    "minecraft:player",
+    "tfc:donkey",
+    "tfc:mule",
+    "tfc:horse"
+  ]
+[25Nov2024 23:03:15.636] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at com.therighthon.rnr.compat.jade.JadeIntegration
+[25Nov2024 23:03:15.642] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at de.maxhenkel.corpse.integration.waila.PluginCorpse
+[25Nov2024 23:03:15.644] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at com.floweytf.tfcsupportindicator.JadePlugin
+[25Nov2024 23:03:15.644] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at net.dries007.tfc.compat.jade.JadeIntegration
+[25Nov2024 23:03:15.644] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at snownee.jade.addon.vanilla.VanillaPlugin
+[25Nov2024 23:03:15.652] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at snownee.jade.addon.universal.UniversalPlugin
+[25Nov2024 23:03:15.656] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at snownee.jade.addon.core.CorePlugin
+[25Nov2024 23:03:15.659] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at com.alekiponi.alekiships.compat.waila.JadeIntegration
+[25Nov2024 23:03:15.660] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at com.alekiponi.firmaciv.compat.waila.JadeIntegration
+[25Nov2024 23:03:15.661] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at com.eerussianguy.firmalife.compat.tooltip.JadeIntegration
+[25Nov2024 23:03:15.661] [modloading-worker-0/INFO] [Jade/]: Start loading plugin at com.ferreusveritas.dynamictrees.compat.waila.WailaCompat
+[25Nov2024 23:03:16.010] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [journeymap] Found status: UP_TO_DATE Current: 5.10.3 Target: null
+[25Nov2024 23:03:16.010] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[25Nov2024 23:03:16.461] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.1.3 Target: 47.3.0
+[25Nov2024 23:03:16.461] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [corpse] Starting version check at https://update.maxhenkel.de/forge/corpse
+[25Nov2024 23:03:16.617] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [corpse] Found status: AHEAD Current: 1.20.1-1.0.17 Target: null
+[25Nov2024 23:03:16.620] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [voicechat] Starting version check at https://update.maxhenkel.de/forge/voicechat
+[25Nov2024 23:03:16.667] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [voicechat] Found status: OUTDATED Current: 1.20.1-2.5.24 Target: 1.20.1-2.5.26
+[25Nov2024 23:03:16.668] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [serversleep_mr] Starting version check at https://api.modrinth.com/updates/Cw8IlnGM/forge_updates.json
+[25Nov2024 23:03:16.935] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [serversleep_mr] Found status: AHEAD Current: 1-datapack Target: null
+[25Nov2024 23:03:16.935] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [dynamictrees] Starting version check at https://github.com/DynamicTreesTeam/DynamicTreesVersionInfo/blob/master/DynamicTrees.json?raw=true
+[25Nov2024 23:03:17.273] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [dynamictrees] Found status: BETA Current: 1.20.1-1.3.4 Target: null
+[25Nov2024 23:03:17.273] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [dynamictreesplus] Starting version check at https://github.com/DynamicTreesTeam/DynamicTreesVersionInfo/blob/master/DynamicTreesPlus.json?raw=true
+[25Nov2024 23:03:17.705] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [dynamictreesplus] Found status: BETA Current: 1.20.1-1.2.0-BETA3 Target: null
+[25Nov2024 23:03:20.059] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[25Nov2024 23:03:20.062] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService/]: SkinFix by TaoGunner
+[25Nov2024 23:03:23.852] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/data/libraries/net/minecraft/server/1.20.1-20230612.114412/server-1.20.1-20230612.114412-srg.jar%23221!/assets/.mcassetsroot' uses unexpected schema
+[25Nov2024 23:03:23.852] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/data/libraries/net/minecraft/server/1.20.1-20230612.114412/server-1.20.1-20230612.114412-srg.jar%23221!/data/.mcassetsroot' uses unexpected schema
+[25Nov2024 23:03:23.911] [main/ERROR] [net.minecraftforge.fml.loading.RuntimeDistCleaner/DISTXFORM]: Attempted to load class com/mojang/blaze3d/vertex/PoseStack for invalid dist DEDICATED_SERVER
+[25Nov2024 23:03:23.920] [main/INFO] [KubeJS Server/]: example.js#5: Hello, World! (Loaded server scripts)
+[25Nov2024 23:03:23.922] [main/INFO] [KubeJS Server/]: Loaded script server_scripts:example.js in 0.005 s
+[25Nov2024 23:03:23.923] [main/INFO] [KubeJS Server/]: Loaded 1/1 KubeJS server scripts in 0.014 s with 0 errors and 0 warnings
+[25Nov2024 23:03:23.923] [main/INFO] [KubeJS Server/]: Scripts loaded
+[25Nov2024 23:03:23.927] [main/INFO] [KubeJS Server/]: Initializing recipe event...
+[25Nov2024 23:03:24.429] [main/INFO] [com.sk89q.worldedit.extension.platform.PlatformCommandManager/]: Registering commands with com.sk89q.worldedit.forge.ForgePlatform
+[25Nov2024 23:03:24.557] [Worker-Main-1/ERROR] [net.minecraft.tags.TagLoader/]: Couldn't load tag [tfc:stone/knife/bismuth_bronze (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/black_bronze (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/bronze (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/copper (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/wrought_iron (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/black_steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/blue_steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), tfc:stone/knife/red_steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar)] as it is missing following references: tfc:stone/knife/bismuth_bronze (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/black_bronze (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/bronze (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/copper (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/wrought_iron (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/black_steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/blue_steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar), 
+	tfc:stone/knife/red_steel (from FarmersDelightTFC-1.0.5-forge-1.20.1.jar)
+[25Nov2024 23:03:25.064] [main/INFO] [KubeJS Server/]: Processing recipes...
+[25Nov2024 23:03:25.076] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:bamboo_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.090] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/cypress[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.093] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:oak_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.105] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/mahogany[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.111] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:dark_oak_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.112] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/ipe[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.120] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:acacia_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.131] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:birch_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.137] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:warped_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.145] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/tualang[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.156] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/hevea[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.157] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/teak[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.159] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:mangrove_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.161] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/baobab[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.163] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:jungle_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.177] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/fig[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.180] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/eucalyptus[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.181] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:spruce_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.182] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:cherry_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.182] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops_tfc:crafting/wood/player_shops/ironwood[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.183] [main/WARN] [KubeJS Server/]: Failed to parse recipe 'playershops:crimson_player_shop[minecraft:crafting_shaped]'! Falling back to vanilla: ItemStack 'result' can't be empty!
+[25Nov2024 23:03:25.193] [main/INFO] [KubeJS Server/]: Found 11817 recipes in 127.7 ms
+[25Nov2024 23:03:25.250] [main/INFO] [KubeJS Server/]: Posted recipe events in 56.27 ms
+[25Nov2024 23:03:25.376] [main/INFO] [KubeJS Server/]: Added 6 recipes, removed 0 recipes, modified 6 recipes, with 0 failed recipes in 124.9 ms
+[25Nov2024 23:03:25.447] [main/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 5288 advancements
+[25Nov2024 23:03:25.451] [main/INFO] [atomicstryker.dynamiclights.server.ItemLightLevels/]: Clearing item tag to light level mapping cache
+[25Nov2024 23:03:25.459] [main/INFO] [top.theillusivec4.curios.Curios/]: Loaded 15 curio slots
+[25Nov2024 23:03:25.462] [main/INFO] [top.theillusivec4.curios.Curios/]: Loaded 1 curio entities
+[25Nov2024 23:03:25.463] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 4 greenhouse(s).
+[25Nov2024 23:03:25.464] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 55 plantable(s).
+[25Nov2024 23:03:25.529] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 30 metal(s).
+[25Nov2024 23:03:25.529] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 6 knapping_types(s).
+[25Nov2024 23:03:25.529] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 29 fuel(s).
+[25Nov2024 23:03:25.530] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 14 drinkable(s).
+[25Nov2024 23:03:25.530] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 1 support(s).
+[25Nov2024 23:03:25.530] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 80 panning(s).
+[25Nov2024 23:03:25.531] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 80 sluicing(s).
+[25Nov2024 23:03:25.531] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 3 lamp_fuel(s).
+[25Nov2024 23:03:25.531] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 10 fertilizer(s).
+[25Nov2024 23:03:25.531] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 73 item size(s).
+[25Nov2024 23:03:25.532] [main/INFO] [net.dries007.tfc.util.RegisteredDataManager/]: Loaded 48 / 48 climate range(s).
+[25Nov2024 23:03:25.532] [main/INFO] [net.dries007.tfc.util.RegisteredDataManager/]: Loaded 63 / 63 fauna(s).
+[25Nov2024 23:03:25.534] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 660 item heat(s).
+[25Nov2024 23:03:25.534] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:farmersdelight/quiche_side' failed to parse. JsonSyntaxException: Unknown item 'coffee_delight:quiche_side'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:farmersdelight/nether_wart_sourdough' failed to parse. JsonSyntaxException: Unknown item 'farmersrespite:nether_wart_sourdough'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/dought' failed to parse. JsonSyntaxException: Unknown item 'create:dough'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/chocolate_berries' failed to parse. JsonSyntaxException: Unknown item 'create:chocolate_glazed_berries'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/chocolate_cake' failed to parse. JsonSyntaxException: Unknown item 'createaddition:chocolate_cake'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/honeyed_apple' failed to parse. JsonSyntaxException: Unknown item 'create:honeyed_apple'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:farmersdelight/iron_knife' failed to parse. JsonParseException: Missing required key: ingredient
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/cake_base' failed to parse. JsonSyntaxException: Unknown item 'createaddition:cake_base'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/honey_cake' failed to parse. JsonSyntaxException: Unknown item 'createaddition:honey_cake'
+[25Nov2024 23:03:25.535] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/sweet_roll' failed to parse. JsonSyntaxException: Unknown item 'create:sweet_roll'
+[25Nov2024 23:03:25.536] [main/ERROR] [net.dries007.tfc.util.DataManager/]: food 'tfc:create/cake_base_baked' failed to parse. JsonSyntaxException: Unknown item 'createaddition:cake_base_baked'
+[25Nov2024 23:03:25.536] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 367 food(s).
+[25Nov2024 23:03:25.536] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 3 entity_damage_resistances(s).
+[25Nov2024 23:03:25.536] [main/INFO] [net.dries007.tfc.util.DataManager/]: Loaded 2 item_damage_resistances(s).
+[25Nov2024 23:03:29.036] [main/ERROR] [net.minecraftforge.fml.loading.RuntimeDistCleaner/DISTXFORM]: Attempted to load class net/minecraft/client/gui/screens/Screen for invalid dist DEDICATED_SERVER
+[25Nov2024 23:03:29.036] [main/INFO] [net.dries007.tfc.util.Helpers/]: ^ This is fine - No client or server recipe manager present upon initial resource reload on physical server
+[25Nov2024 23:03:29.037] [main/INFO] [net.dries007.tfc.util.Helpers/]: Successfully captured server recipe manager
+[25Nov2024 23:03:29.051] [main/INFO] [net.dries007.tfc.common.capabilities.size.ItemSizeManager/]: Performing setup for item stack size editing.
+[25Nov2024 23:03:29.057] [main/INFO] [net.dries007.tfc.common.capabilities.size.ItemSizeManager/]: Editing item stack sizes: found 9066 editable of 9760 total.
+[25Nov2024 23:03:29.184] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.20.1
+[25Nov2024 23:03:29.185] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[25Nov2024 23:03:29.185] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[25Nov2024 23:03:29.185] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[25Nov2024 23:03:29.233] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[25Nov2024 23:03:29.251] [Server thread/INFO] [net.minecraft.server.network.ServerConnectionListener/]: Using default channel type
+[25Nov2024 23:03:29.316] [Server thread/INFO] [journeymap/]: Loading JourneyMap Forge Configs
+[25Nov2024 23:03:29.316] [Thread-1/INFO] [journeymap/]: Loading JourneyMap Forge Configs
+[25Nov2024 23:03:29.316] [Thread-1/INFO] [journeymap/]: Loading JourneyMap Forge Configs
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.PlayerSelfLightSource/]: item config parser identified itemstack 1 torch
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.PlayerSelfLightSource/]: item config parser identified itemstack 1 torch
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.PlayerSelfLightSource/]: item config parser identified itemstack 1 glowstone
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.PlayerSelfLightSource/]: item config parser finished, item count: 3
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.PlayerSelfLightSource/]: item config parser identified itemstack 1 torch
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.PlayerSelfLightSource/]: item config parser finished, item count: 1
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.DroppedItemsLightSource/]: item config parser identified itemstack 1 torch
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.DroppedItemsLightSource/]: item config parser identified itemstack 1 torch
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.DroppedItemsLightSource/]: item config parser identified itemstack 1 glowstone
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.DroppedItemsLightSource/]: item config parser finished, item count: 3
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.DroppedItemsLightSource/]: item config parser identified itemstack 1 torch
+[25Nov2024 23:03:29.344] [Server thread/INFO] [atomicstryker.dynamiclights.server.modules.DroppedItemsLightSource/]: item config parser finished, item count: 1
+[25Nov2024 23:03:29.400] [Server thread/INFO] [spark/]: Starting background profiler...
+[25Nov2024 23:03:29.555] [Server thread/INFO] [com.lupicus.cc.manager.ClaimManager/]: Claims: 0 players, 0 dims, 0 chunks, 0 max chunks
+[25Nov2024 23:03:29.556] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[25Nov2024 23:03:29.710] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/jdbc3/JDBC3PreparedStatement for class org/sqlite/jdbc4/JDBC4PreparedStatement in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:29.710] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.jdbc3.JDBC3PreparedStatement
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.prepareStatement(JDBC4Connection.java:34) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:225) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:205) ~[?:?]
+	at com.daqem.grieflogger.database.Database.prepareStatement(Database.java:77) ~[?:?]
+	at com.daqem.grieflogger.database.repository.LevelRepository.insert(LevelRepository.java:50) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.insert(LevelService.java:20) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.lambda$insertAsync$0(LevelService.java:24) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:29.711] [Server thread/INFO] [net.dries007.tfc.ForgeEventHandler/]: Updating TFC Relevant Game Rules for level minecraft:overworld.
+[25Nov2024 23:03:29.712] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/core/CorePreparedStatement for class org/sqlite/jdbc3/JDBC3PreparedStatement in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:29.712] [Server thread/INFO] [net.dries007.tfc.common.capabilities.size.ItemSizeManager/]: Editing item stack sizes: found 9066 editable of 9760 total.
+[25Nov2024 23:03:29.712] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.core.CorePreparedStatement
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.prepareStatement(JDBC4Connection.java:34) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:225) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:205) ~[?:?]
+	at com.daqem.grieflogger.database.Database.prepareStatement(Database.java:77) ~[?:?]
+	at com.daqem.grieflogger.database.repository.LevelRepository.insert(LevelRepository.java:50) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.insert(LevelService.java:20) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.lambda$insertAsync$0(LevelService.java:24) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:29.713] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent org/sqlite/jdbc4/JDBC4Statement for class org/sqlite/core/CorePreparedStatement in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#39,ForkJoinPool-3-worker-1,5,main]
+[25Nov2024 23:03:29.713] [ForkJoinPool-3-worker-1/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: An error occurred building event handler
+java.lang.ClassNotFoundException: org.sqlite.jdbc4.JDBC4Statement
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(Unknown Source) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.buildEvents(EventSubclassTransformer.java:97) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventSubclassTransformer.transform(EventSubclassTransformer.java:48) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.EventBusEngine.processClass(EventBusEngine.java:26) ~[eventbus-6.0.5.jar%2352!/:?]
+	at net.minecraftforge.eventbus.service.ModLauncherService.processClassWithFlags(ModLauncherService.java:32) ~[eventbus-6.0.5.jar%2352!/:6.0.5+6.0.5+master.eb8e549b]
+	at cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:88) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:50) ~[modlauncher-10.0.9.jar%2355!/:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:113) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at java.lang.ClassLoader.defineClass1(Native Method) ~[?:?]
+	at java.lang.ClassLoader.defineClass(Unknown Source) ~[?:?]
+	at cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:119) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.lambda$findClass$15(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:229) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:219) ~[securejarhandler-2.1.10.jar:?]
+	at cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:135) ~[securejarhandler-2.1.10.jar:?]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[?:?]
+	at org.sqlite.jdbc4.JDBC4Connection.prepareStatement(JDBC4Connection.java:34) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:225) ~[?:?]
+	at org.sqlite.jdbc3.JDBC3Connection.prepareStatement(JDBC3Connection.java:205) ~[?:?]
+	at com.daqem.grieflogger.database.Database.prepareStatement(Database.java:77) ~[?:?]
+	at com.daqem.grieflogger.database.repository.LevelRepository.insert(LevelRepository.java:50) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.insert(LevelService.java:20) ~[?:?]
+	at com.daqem.grieflogger.database.service.LevelService.lambda$insertAsync$0(LevelService.java:24) ~[?:?]
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinTask.doExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.scan(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinPool.runWorker(Unknown Source) ~[?:?]
+	at java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source) ~[?:?]
+[25Nov2024 23:03:29.732] [Server thread/INFO] [net.dries007.tfc.ForgeEventHandler/]: Updating TFC Relevant Game Rules for level minecraft:the_end.
+[25Nov2024 23:03:29.735] [Server thread/INFO] [net.dries007.tfc.ForgeEventHandler/]: Updating TFC Relevant Game Rules for level minecraft:the_nether.
+[25Nov2024 23:03:29.737] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[25Nov2024 23:03:29.739] [Server thread/INFO] [KubeJS Server/]: Server resource reload complete!
+[25Nov2024 23:03:31.464] [Worker-Main-4/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[25Nov2024 23:03:31.474] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[25Nov2024 23:03:31.476] [Worker-Main-3/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[25Nov2024 23:03:31.481] [Worker-Main-4/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[25Nov2024 23:03:31.738] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
+[25Nov2024 23:03:32.091] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 2354 ms
+[25Nov2024 23:03:32.091] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (2.778s)! For help, type "help"
+[25Nov2024 23:03:32.092] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting GS4 status listener
+[25Nov2024 23:03:32.098] [Server thread/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread Query Listener started
+[25Nov2024 23:03:32.098] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting remote control listener
+[25Nov2024 23:03:32.098] [Server thread/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Listener started
+[25Nov2024 23:03:32.099] [Server thread/INFO] [net.minecraft.server.rcon.thread.RconThread/]: RCON running on 0.0.0.0:28016
+[25Nov2024 23:03:32.099] [Query Listener #1/INFO] [net.minecraft.server.rcon.thread.QueryThreadGs4/]: Query running on 0.0.0.0:25565
+[25Nov2024 23:03:32.117] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[25Nov2024 23:03:34.760] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:03:34.836] [Netty Server IO #1/INFO] [mixin/]: Mixing server.MixinServerboundChatCommandPacket from mixins/common/nochatreports.mixins.json into net.minecraft.network.protocol.game.ServerboundChatCommandPacket
+[25Nov2024 23:03:34.837] [Netty Server IO #1/INFO] [mixin/]: Mixing server.MixinServerboundChatPacket from mixins/common/nochatreports.mixins.json into net.minecraft.network.protocol.game.ServerboundChatPacket
+[25Nov2024 23:03:34.838] [Netty Server IO #1/INFO] [mixin/]: Mixing server.MixinServerboundChatSessionUpdatePacket from mixins/common/nochatreports.mixins.json into net.minecraft.network.protocol.game.ServerboundChatSessionUpdatePacket
+[25Nov2024 23:03:34.866] [Netty Server IO #1/INFO] [net.minecraftforge.server.ServerLifecycleHooks/SERVERHOOKS]: Disconnecting Player (server is still starting): literal{Server is still starting! Please wait before reconnecting.}
+[25Nov2024 23:03:38.316] [Server thread/INFO] [patchouli/]: Sending reload packet to clients
+[25Nov2024 23:03:38.322] [VoiceChatServerThread/INFO] [voicechat/]: [voicechat] Voice chat server started at port 24454
+[25Nov2024 23:03:38.339] [Server thread/INFO] [mixin/]: Mixing common.MixinServerStatus from mixins/common/nochatreports.mixins.json into net.minecraft.network.protocol.status.ServerStatus
+[25Nov2024 23:03:38.416] [RCON Client /127.0.0.1 #3/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down
+[25Nov2024 23:03:38.420] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:03:38.504] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon: Gamerule reducedDebugInfo is now set to: false]
+[25Nov2024 23:03:38.505] [RCON Client /127.0.0.1 #4/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down
+[25Nov2024 23:03:38.508] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:03:38.562] [RCON Client /127.0.0.1 #5/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down
+[25Nov2024 23:03:38.562] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] SERVER STARTED!!!
+[25Nov2024 23:03:38.646] [Server thread/WARN] [net.dries007.tfc.util.calendar.Calendar/]: Calendar is out of sync - trying to fix: Calendar = false, Daylight = false (true), Sync = -6
+[25Nov2024 23:04:39.933] [User Authenticator #1/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: Disconnecting /38.135.53.196:50707: Failed to verify username!
+[25Nov2024 23:04:39.934] [User Authenticator #1/ERROR] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: Username 'Iluvator' tried to join with an invalid session
+[25Nov2024 23:04:39.973] [Server thread/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: /38.135.53.196:50707 lost connection: Failed to verify username!
+[25Nov2024 23:04:43.030] [User Authenticator #2/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: Disconnecting /38.135.53.196:50711: Failed to verify username!
+[25Nov2024 23:04:43.030] [User Authenticator #2/ERROR] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: Username 'Iluvator' tried to join with an invalid session
+[25Nov2024 23:04:43.073] [Server thread/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: /38.135.53.196:50711 lost connection: Failed to verify username!
+[25Nov2024 23:04:45.055] [User Authenticator #3/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player Iluvator is e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 23:04:51.479] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Iluvator[/38.135.53.196:50713] logged in with entity id 155 at (218.40759865528221, 65.11650136792812, -162.50825839023716)
+[25Nov2024 23:04:51.514] [Netty Server IO #7/INFO] [net.dries007.tfc.config.CommonConfig/]: TFC Network Debugging = false
+[25Nov2024 23:04:51.544] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator joined the game
+[25Nov2024 23:04:51.605] [Server thread/INFO] [Jade/]: Syncing config to Iluvator (e6e59947-6186-371e-aef0-f1711c293196)
+[25Nov2024 23:04:51.611] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[25Nov2024 23:04:51.611] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = true, Daylight = true due to players logged in
+[25Nov2024 23:04:52.021] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of Iluvator (18)
+[25Nov2024 23:04:52.023] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to Iluvator
+[25Nov2024 23:05:00.355] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 23:05:01.353] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 23:05:01.357] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player Iluvator (e6e59947-6186-371e-aef0-f1711c293196) successfully connected to voice chat
+[25Nov2024 23:05:38.090] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:05:38.091] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] Сохранение мира...
+[25Nov2024 23:05:38.091] [RCON Client /127.0.0.1 #6/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down
+[25Nov2024 23:05:38.092] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:05:38.149] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon: Saved the game]
+[25Nov2024 23:05:38.149] [RCON Client /127.0.0.1 #7/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down
+[25Nov2024 23:05:38.152] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:05:38.154] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] SERVER STOPPED...
+[25Nov2024 23:05:38.154] [RCON Client /127.0.0.1 #8/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down
+[25Nov2024 23:05:38.156] [RCON Listener #2/INFO] [net.minecraft.server.rcon.thread.GenericThread/]: Thread RCON Client /127.0.0.1 started
+[25Nov2024 23:05:38.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon: Stopping the server]
+[25Nov2024 23:05:38.156] [RCON Client /127.0.0.1 #9/INFO] [net.minecraft.server.rcon.thread.RconClient/]: Thread RCON Client /127.0.0.1 shutting down

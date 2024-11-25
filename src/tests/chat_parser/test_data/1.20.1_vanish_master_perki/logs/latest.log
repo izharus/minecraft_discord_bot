@@ -1,0 +1,68 @@
+[25Nov2024 22:18:50.302] [User Authenticator #1/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player Iluvator is e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:18:56.802] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Iluvator[/38.135.53.196:57177] logged in with entity id 162 at (222.93955469084702, 67.78351091432364, -198.47835790064678)
+[25Nov2024 22:18:56.856] [Netty Server IO #3/INFO] [net.dries007.tfc.config.CommonConfig/]: TFC Network Debugging = false
+[25Nov2024 22:18:56.891] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator joined the game
+[25Nov2024 22:18:57.004] [Server thread/INFO] [Jade/]: Syncing config to Iluvator (e6e59947-6186-371e-aef0-f1711c293196)
+[25Nov2024 22:18:57.010] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[25Nov2024 22:18:57.010] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = true, Daylight = true due to players logged in
+[25Nov2024 22:18:58.497] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of Iluvator (18)
+[25Nov2024 22:18:58.498] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to Iluvator
+[25Nov2024 22:19:07.848] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:19:08.846] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:19:08.851] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player Iluvator (e6e59947-6186-371e-aef0-f1711c293196) successfully connected to voice chat
+[25Nov2024 22:19:24.636] [ForkJoinPool.commonPool-worker-2/ERROR] [net.minecraftforge.eventbus.EventSubclassTransformer/EVENTBUS]: Could not find parent com/google/common/reflect/AbstractInvocationHandler for class dev/architectury/event/EventFactory$2 in classloader jdk.internal.loader.ClassLoaders$AppClassLoader@5e9f23b4 on thread Thread[#103,ForkJoinPool.commonPool-worker-2,8,SERVER]
+[25Nov2024 22:19:24.641] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: <Iluvator> 213
+[25Nov2024 22:19:58.211] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator was killed
+[25Nov2024 22:19:58.218] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Iluvator: Killed Iluvator]
+[25Nov2024 22:20:30.863] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Iluvator: [Vanishmod] Iluvator vanished]
+[25Nov2024 22:20:31.338] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:octopoteuthis but it was marked as removed already
+[25Nov2024 22:20:46.738] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:squid but it was marked as removed already
+[25Nov2024 22:20:46.987] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:squid but it was marked as removed already
+[25Nov2024 22:20:46.987] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:squid but it was marked as removed already
+[25Nov2024 22:20:46.987] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:squid but it was marked as removed already
+[25Nov2024 22:20:53.986] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: <Iluvator> 213
+[25Nov2024 22:21:06.340] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Iluvator lost connection: Disconnected
+[25Nov2024 22:21:06.340] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator left the game
+[25Nov2024 22:21:06.342] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged Out - Checking for Calendar Updates.
+[25Nov2024 22:21:06.342] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = false, Daylight = false (true) due to no players logged in
+[25Nov2024 22:21:06.343] [Server thread/INFO] [voicechat/]: [voicechat] Disconnecting client Iluvator
+[25Nov2024 22:21:12.958] [User Authenticator #2/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player Iluvator is e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:21:19.401] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Iluvator[/38.135.53.196:57223] logged in with entity id 371 at (217.59563528971316, 65.11650136792812, -168.3132957790618)
+[25Nov2024 22:21:19.418] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator joined the game
+[25Nov2024 22:21:19.436] [Server thread/INFO] [Jade/]: Syncing config to Iluvator (e6e59947-6186-371e-aef0-f1711c293196)
+[25Nov2024 22:21:19.438] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[25Nov2024 22:21:19.438] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = true, Daylight = true due to players logged in
+[25Nov2024 22:21:20.078] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of Iluvator (18)
+[25Nov2024 22:21:20.078] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to Iluvator
+[25Nov2024 22:21:27.257] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:21:28.259] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:21:28.260] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player Iluvator (e6e59947-6186-371e-aef0-f1711c293196) successfully connected to voice chat
+[25Nov2024 22:21:28.837] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:octopoteuthis but it was marked as removed already
+[25Nov2024 22:22:08.211] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: <Iluvator> 123
+[25Nov2024 22:22:23.589] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Iluvator lost connection: Disconnected
+[25Nov2024 22:22:23.589] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator left the game
+[25Nov2024 22:22:23.589] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged Out - Checking for Calendar Updates.
+[25Nov2024 22:22:23.589] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = false, Daylight = false (true) due to no players logged in
+[25Nov2024 22:22:23.590] [Server thread/INFO] [voicechat/]: [voicechat] Disconnecting client Iluvator
+[25Nov2024 22:31:26.610] [User Authenticator #3/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player Iluvator is e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:31:33.248] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Iluvator[/77.239.232.50:57567] logged in with entity id 490 at (216.67594793305577, 65.11650136792812, -165.30403256240854)
+[25Nov2024 22:31:33.265] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator joined the game
+[25Nov2024 22:31:33.287] [Server thread/INFO] [Jade/]: Syncing config to Iluvator (e6e59947-6186-371e-aef0-f1711c293196)
+[25Nov2024 22:31:33.291] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[25Nov2024 22:31:33.291] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = true, Daylight = true due to players logged in
+[25Nov2024 22:31:33.780] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of Iluvator (18)
+[25Nov2024 22:31:33.781] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to Iluvator
+[25Nov2024 22:31:42.198] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:31:43.198] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player e6e59947-6186-371e-aef0-f1711c293196
+[25Nov2024 22:31:43.199] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player Iluvator (e6e59947-6186-371e-aef0-f1711c293196) successfully connected to voice chat
+[25Nov2024 22:32:00.637] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:octopoteuthis but it was marked as removed already
+[25Nov2024 22:32:00.787] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:octopoteuthis but it was marked as removed already
+[25Nov2024 22:32:00.837] [Server thread/WARN] [net.minecraft.server.level.ServerLevel/]: Tried to add entity tfc:octopoteuthis but it was marked as removed already
+[25Nov2024 22:32:02.601] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: <Iluvator> 456
+[25Nov2024 22:32:03.215] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Iluvator: [Vanishmod] Iluvator unvanished]
+[25Nov2024 22:32:10.601] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: <Iluvator> 123
+[25Nov2024 22:32:13.591] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Iluvator lost connection: Disconnected
+[25Nov2024 22:32:13.591] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Iluvator left the game
+[25Nov2024 22:32:13.591] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged Out - Checking for Calendar Updates.
+[25Nov2024 22:32:13.591] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Calendar = false, Daylight = false (true) due to no players logged in
+[25Nov2024 22:32:13.591] [Server thread/INFO] [voicechat/]: [voicechat] Disconnecting client Iluvator
