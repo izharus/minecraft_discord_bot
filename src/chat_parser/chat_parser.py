@@ -25,6 +25,7 @@ class MinecraftChatParser(FileChangesUtillity):
     def __init__(
         self,
         minecraft_server_dir: str,
+        vanish_handler: "VanishHandlerMasterPerki",
         is_server_working: bool = True,
     ) -> None:
         self.log_path = os.path.join(
@@ -32,6 +33,7 @@ class MinecraftChatParser(FileChangesUtillity):
             "logs",
             "latest.log",
         )
+        self._vanish_handler = vanish_handler
         # pylint: disable=C0301
         self._chat_message_patterns_list = [
             # Minecraft version 1.19.2
@@ -149,7 +151,7 @@ class MinecraftChatParser(FileChangesUtillity):
             chat_message = chat_message.split(pattern)[-1]
 
         if re.findall(self._message_struct_pattern, chat_message):
-            return chat_message
+            return self._vanish_handler.process_message(chat_message)
         return ""
 
     def get_chat_message(self) -> str:
@@ -295,7 +297,9 @@ def main() -> None:
         "F:\\minecraft_servers\\server_tfc_halloween\\itzg\\minecraft-server"
     )
     # filename = 'F:\\server_imperial\\itzg\\minecraft-server\\logs\\test.txt'
-    observer = MinecraftChatParser(filename)
+    observer = MinecraftChatParser(
+        filename, VanishHandlerMasterPerki(Path("data\\vanished.json"))
+    )
     while 1:
         time.sleep(1)
         print(observer.get_chat_message(), end="")  # noqa: T201
