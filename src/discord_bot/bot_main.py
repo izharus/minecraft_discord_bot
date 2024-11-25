@@ -9,7 +9,10 @@ import discord
 from discord.ext import commands, tasks
 from loguru import logger
 
-from ..chat_parser.chat_parser import MinecraftChatParser
+from ..chat_parser.chat_parser import (
+    MinecraftChatParser,
+    VanishHandlerMasterPerki,
+)
 from ..rcon_sender.rcon import RconLocalDocker
 from .utillity import get_config, parse_message
 
@@ -17,7 +20,7 @@ from .utillity import get_config, parse_message
 class MyBot(commands.Bot):
     """Initialize variables."""
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.chat_parser: Optional[MinecraftChatParser] = None
         self.channel: Optional[discord.TextChannel]
@@ -32,6 +35,7 @@ APP_VERSION = "1.3.1"
 
 DATA_PATH = Path("data")
 
+vanish_handler = VanishHandlerMasterPerki(DATA_PATH / "vanished.json")
 config = get_config(DATA_PATH / "config.ini")
 CONTAINER_NAME = config["DISCORD"]["CONTAINER_NAME"]
 try:
@@ -55,7 +59,10 @@ async def on_ready():
     logger.info(f"We have logged in as {bot.user}")
 
     # Initialize chat parser
-    bot.chat_parser = MinecraftChatParser(MINECRAFT_SERVER_PATH)
+    bot.chat_parser = MinecraftChatParser(
+        MINECRAFT_SERVER_PATH,
+        vanish_handler,
+    )
 
     # Get the channel
     bot.channel = bot.get_channel(CHANNEL_ID)
