@@ -2,6 +2,7 @@
 import logging
 import os
 import time
+from pathlib import Path
 from typing import Generator
 
 from .custom_exceptions import LogFileNotExists
@@ -35,8 +36,8 @@ class FileChangesUtillity:
         LogFileNotExists: is log file not exists.
     """
 
-    def __init__(self, filename: str):
-        self.filename = filename
+    def __init__(self, filename: os.PathLike):
+        self.filename = Path(filename)
         self._cached_stamp: float = 0
         try:
             self._last_position = os.path.getsize(self.filename)
@@ -129,9 +130,8 @@ class FileChangesUtillity:
 def main() -> None:
     """Example usage."""
     # pylint: disable = C0301
-    filename = "F:\\minecraft_servers\\server_tfc_halloween\\itzg\\minecraft-server\\logs\\latest.log"
-    # filename = 'F:\\server_imperial\\itzg\\minecraft-server\\logs\\test.txt'
-    observer = FileChangesUtillity(filename)
+    filename = r"src\tests\chat_parser\test_data\1.18.2\logs\latest.log"
+    observer = FileChangesUtillity(Path(filename))
     while 1:
         time.sleep(1)
         print(observer.get_new_line(), end="")  # noqa: T201
