@@ -35,10 +35,10 @@ def add_text(file_path: str, text: str = "") -> None:
     time.sleep(0.1)
 
 
-def test_manage_server_status_stopped_message():
+def test_manage_server_status_stopped_message(vanish_handler):
     """Simulate message with 'stopped' pattern from server."""
     temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     # pylint: disable = C0301
     test_message = "[05Dec2023 22:03:16.966] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server"
 
@@ -49,10 +49,10 @@ def test_manage_server_status_stopped_message():
     assert chat._is_server_working is False
 
 
-def test_manage_server_status_starting_message():
+def test_manage_server_status_starting_message(vanish_handler):
     """Simulate message with 'starting' pattern from server."""
     temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     # pylint: disable = C0301
     test_message = "[20Dec2023 07:50:48.256] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserver, --fml.forgeVersion, 40.2.9, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220404.173914]"
 
@@ -64,7 +64,7 @@ def test_manage_server_status_starting_message():
     assert chat._is_server_working is False
 
 
-def test_manage_server_status_started_message():
+def test_manage_server_status_started_message(vanish_handler):
     """
     Simulate message with 'started' pattern from server
     with the voice chat mode.
@@ -72,6 +72,7 @@ def test_manage_server_status_started_message():
     temp_server_dir = os.path.dirname(__file__)
     chat = chat_parser.MinecraftChatParser(
         temp_server_dir,
+        vanish_handler,
         is_server_working=False,
     )
     # pylint: disable = C0301
@@ -84,7 +85,7 @@ def test_manage_server_status_started_message():
     assert chat._is_server_working is True
 
 
-def test_manage_server_status_started_message_1_19_2():
+def test_manage_server_status_started_message_1_19_2(vanish_handler):
     """
     Simulate message with 'started' pattern from
     server version 1.19.2.
@@ -92,6 +93,7 @@ def test_manage_server_status_started_message_1_19_2():
     temp_server_dir = os.path.dirname(__file__)
     chat = chat_parser.MinecraftChatParser(
         temp_server_dir,
+        vanish_handler,
         is_server_working=False,
     )
     # pylint: disable = C0301
@@ -104,7 +106,7 @@ def test_manage_server_status_started_message_1_19_2():
     assert chat._is_server_working is True
 
 
-def test_extract_chat_message_server_not_working(tmp_path):
+def test_extract_chat_message_server_not_working(tmp_path, vanish_handler):
     """Check if message do not extracts when server status is stopped."""
     # Create a temporary text file
     temp_dir = os.path.join(
@@ -119,6 +121,7 @@ def test_extract_chat_message_server_not_working(tmp_path):
     add_text(temp_log, "")
     chat = chat_parser.MinecraftChatParser(
         tmp_path,
+        vanish_handler,
         is_server_working=False,
     )
     test_message = (
@@ -130,7 +133,7 @@ def test_extract_chat_message_server_not_working(tmp_path):
     assert test_message == ""
 
 
-def test_extract_chat_message_existing(tmp_path):
+def test_extract_chat_message_existing(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with existing chat message.
     """
@@ -145,7 +148,7 @@ def test_extract_chat_message_existing(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -155,7 +158,7 @@ def test_extract_chat_message_existing(tmp_path):
     assert test_message == "<Iluvator> TEST"
 
 
-def test_extract_chat_message_joined_the_game(tmp_path):
+def test_extract_chat_message_joined_the_game(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with "joined the game" message.
     """
@@ -170,7 +173,7 @@ def test_extract_chat_message_joined_the_game(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -180,7 +183,7 @@ def test_extract_chat_message_joined_the_game(tmp_path):
     assert test_message == "Iluvator joined the game"
 
 
-def test_extract_chat_message_left_the_game(tmp_path):
+def test_extract_chat_message_left_the_game(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with "left the game" message.
     """
@@ -195,7 +198,7 @@ def test_extract_chat_message_left_the_game(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -205,7 +208,7 @@ def test_extract_chat_message_left_the_game(tmp_path):
     assert test_message == "Iluvator left the game"
 
 
-def test_extract_chat_message_slain_message(tmp_path):
+def test_extract_chat_message_slain_message(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with "player slain by" message.
     """
@@ -220,7 +223,7 @@ def test_extract_chat_message_slain_message(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -230,7 +233,7 @@ def test_extract_chat_message_slain_message(tmp_path):
     assert test_message == "Iluvator was slain by Zombie"
 
 
-def test_extract_chat_message_goal_message(tmp_path):
+def test_extract_chat_message_goal_message(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with "player slain by" message.
     """
@@ -245,7 +248,7 @@ def test_extract_chat_message_goal_message(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -255,7 +258,7 @@ def test_extract_chat_message_goal_message(tmp_path):
     assert test_message == "MACTEP has reached the goal [Pink Unicorn]"
 
 
-def test_extract_chat_message_empty(tmp_path):
+def test_extract_chat_message_empty(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with empty chat message.
     """
@@ -270,7 +273,7 @@ def test_extract_chat_message_empty(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -280,12 +283,12 @@ def test_extract_chat_message_empty(tmp_path):
     assert test_message == ""
 
 
-def test_extract_chat_message_dismatch_pattern():
+def test_extract_chat_message_dismatch_pattern(vanish_handler):
     """
     Test extract_chat_message() with dismatching pattern.
     """
     temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     test_message = (
         "test 1"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -295,12 +298,12 @@ def test_extract_chat_message_dismatch_pattern():
     assert test_message == ""
 
 
-def test_extract_chat_message_anti_pattern():
+def test_extract_chat_message_anti_pattern(vanish_handler):
     """
     Test extract_chat_message() with anti pattern.
     """
     temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -310,7 +313,7 @@ def test_extract_chat_message_anti_pattern():
     assert test_message == ""
 
 
-def test_extract_chat_message_incorrect_message_type(tmp_path):
+def test_extract_chat_message_incorrect_message_type(tmp_path, vanish_handler):
     """
     Test extract_chat_message() with incorrect message type.
     """
@@ -325,7 +328,7 @@ def test_extract_chat_message_incorrect_message_type(tmp_path):
         "latest.log",
     )
     add_text(temp_log, "")
-    chat = chat_parser.MinecraftChatParser(tmp_path)
+    chat = chat_parser.MinecraftChatParser(tmp_path, vanish_handler)
     test_message = (
         "[14Dec2023 07:29:06.982] [Server thread/INFO]"
         " [net.minecraft.server.dedicated.DedicatedServer/]:"
@@ -335,7 +338,7 @@ def test_extract_chat_message_incorrect_message_type(tmp_path):
     assert test_message == ""
 
 
-def test_get_chat_message():
+def test_get_chat_message(vanish_handler):
     """
     Test the extraction of chat messages from a Minecraft log file.
 
@@ -348,7 +351,7 @@ def test_get_chat_message():
 
     """
     temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     chat.set_last_position()
     chat.reset_file_modified_timestamp()
     expected_messages = [
@@ -382,7 +385,7 @@ def test_get_chat_message():
         assert expected == actual, f"Expected: {expected}, Actual: {actual}"
 
 
-def test_get_chat_message_1_19_2():
+def test_get_chat_message_1_19_2(vanish_handler):
     """
     Test for minecraft version 1.19.2
     Test the extraction of chat messages from a Minecraft log file.
@@ -399,7 +402,7 @@ def test_get_chat_message_1_19_2():
         os.path.dirname(__file__),
         "1.19.2",
     )
-    chat = chat_parser.MinecraftChatParser(temp_server_dir)
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     chat.set_last_position()
     chat.reset_file_modified_timestamp()
     expected_messages = [
@@ -532,7 +535,7 @@ class TestVanishHandlerBase:
         assert handler._vanished_players == set(vanished_players)
         with path.open(encoding="utf-8") as fr:
             data = json.load(fr)
-        assert data == vanished_players
+        assert set(data) == set(vanished_players)
 
     def test__vanish_player_is_case_insensitive(self, tmp_path: Path):
         """
