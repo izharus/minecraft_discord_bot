@@ -17,6 +17,10 @@ from src.chat_parser.chat_parser import (
 class MockVanishHandlerBase(VanishHandlerBase):
     """Mock VanishHandlerBase."""
 
+    def extract_username(self, msg):
+        """Mock extract_username."""
+        return ""
+
     def is_vanished(self, _: str) -> bool:
         """Mock is_vanished."""
         return False
@@ -463,16 +467,6 @@ class TestVanishHandlerBase:
 
         assert handler._vanished_players == set()
 
-    def test_extract_username(self, tmp_path: Path):
-        """
-        Test extracting a username from a message.
-        """
-        handler = MockVanishHandlerBase(tmp_path / "temp")
-        message = "Player123 joined the game"
-        result = handler._extract_username(message)
-
-        assert result == "Player123"
-
     def test_dump_data_creates_file(self, tmp_path: Path):
         """
         Test that _dump_data creates the file if it does not exist
@@ -606,6 +600,7 @@ class TestVanishHandlerBase:
 
         username = "MACTEP"
         msg = f"{username} vanished"
+        mocker.patch.object(handler, "extract_username", return_value=username)
         output = handler.process_message(msg)
 
         assert output == handler.LEFT_GAME_PATTERN.format(username)
@@ -613,7 +608,9 @@ class TestVanishHandlerBase:
         handler._dump_data.assert_called_once()
 
     def test_process_message_unvanished_msg(
-        self, tmp_path: Path, mocker: MockerFixture
+        self,
+        tmp_path: Path,
+        mocker: MockerFixture,
     ):
         """
         Test processing an "unvanished" message removes the player
@@ -625,14 +622,20 @@ class TestVanishHandlerBase:
         handler._dump_data = MagicMock()  # type: ignore
         handler._vanished_players = {"mactep", "velada"}
         username = "MACTEP"
+        mocker.patch.object(handler, "extract_username", return_value=username)
         msg = f"{username} unvanished"
+
         output = handler.process_message(msg)
 
         assert output == handler.JOINED_GAME_PATTERN.format(username)
         assert username.lower() not in handler._vanished_players
         handler._dump_data.assert_called_once()
 
-    def test_process_message_simple_msg(self, tmp_path: Path):
+    def test_process_message_simple_msg(
+        self,
+        tmp_path: Path,
+        mocker: MockerFixture,
+    ):
         """
         Test processing a normal message does not modify vanished
         players or call _dump_data.
@@ -644,6 +647,8 @@ class TestVanishHandlerBase:
         handler._vanished_players = {"velada"}
         username = "MACTEP"
         msg = f"{username} unvanished"
+        mocker.patch.object(handler, "extract_username", return_value=username)
+
         output = handler.process_message(msg)
 
         assert output == msg
@@ -653,6 +658,16 @@ class TestVanishHandlerBase:
 
 class TestVanishHandlerMasterPerki:
     """Tests for VanishHandlerMasterPerki."""
+
+    def test_extract_username(self, tmp_path: Path):
+        """
+        Test extracting a username from a message.
+        """
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        message = "[Player123: [Vanishmod] Player123 vanished]"
+        result = handler.extract_username(message)
+
+        assert result == "Player123"
 
     def test_is_vanished_valid_message(self, tmp_path: Path):
         """Test is_vanished with a valid vanished message."""

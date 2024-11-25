@@ -8,7 +8,7 @@ import re
 import time
 from abc import abstractmethod
 from pathlib import Path
-from typing import Final, List
+from typing import List
 
 from loguru import logger
 
@@ -219,8 +219,19 @@ class VanishHandlerBase:
         with self._data_path.open("w", encoding="utf-8") as fw:
             json.dump(list(self._vanished_players), fw)
 
-    def _extract_username(self, msg: str) -> str:
-        return msg.split(" ")[0]
+    @abstractmethod
+    def extract_username(self, msg: str) -> str:
+        """
+        Extracts the username from the message if it matches
+        a vanished or unvanished pattern.
+
+        Args:
+            msg (str): The message string.
+
+        Returns:
+            str: The extracted username in lowercase, or
+                an empty string if no match is found.
+        """
 
     @abstractmethod
     def is_vanished(self, msg: str) -> bool:
@@ -258,7 +269,7 @@ class VanishHandlerBase:
                 if the player is already vanished. Otherwise, returns
                 the original message.
         """
-        username = self._extract_username(msg)
+        username = self.extract_username(msg)
         if self.is_vanished(msg):
             self._vanish_player(username)
             logger.info(f"Player vanished: {username}")
@@ -283,6 +294,12 @@ class VanishHandlerMasterPerki(VanishHandlerBase):
     VANISHED_PATTERN: Final = r"^\[\w+: \[Vanishmod\] \w+ vanished\]$"
     # [Iluvator: [Vanishmod] Iluvator unvanished]
     UNVANISHED_PATTERN: Final = r"^\[\w+: \[Vanishmod\] \w+ unvanished\]$"
+    def extract_username(self, msg):
+        for pattern in (self.VANISHED_PATTERN, self.UNVANISHED_PATTERN):
+            match = re.match(pattern, msg)
+            if match:
+                return match.group(1)
+        return ""
 
     def is_vanished(self, msg: str) -> bool:
         """True if msg indicates that player was vanished."""
