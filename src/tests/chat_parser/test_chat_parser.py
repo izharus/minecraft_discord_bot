@@ -8,7 +8,10 @@ from unittest.mock import MagicMock
 
 from pytest_mock import MockerFixture
 from src.chat_parser import chat_parser
-from src.chat_parser.chat_parser import VanishHandlerBase
+from src.chat_parser.chat_parser import (
+    VanishHandlerBase,
+    VanishHandlerMasterPerki,
+)
 
 
 class MockVanishHandlerBase(VanishHandlerBase):
@@ -643,3 +646,43 @@ class TestVanishHandlerBase:
         assert output == msg
         assert username.lower() not in handler._vanished_players
         handler._dump_data.assert_not_called()
+
+
+class TestVanishHandlerMasterPerki:
+    """Tests for VanishHandlerMasterPerki."""
+
+    def test_is_vanished_valid_message(self, tmp_path: Path):
+        """Test is_vanished with a valid vanished message."""
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        msg = "[Iluvator: [Vanishmod] Iluvator vanished]"
+        assert handler.is_vanished(msg) is True
+
+    def test_is_vanished_invalid_message(self, tmp_path: Path):
+        """Test is_vanished with an invalid vanished message."""
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        msg = "[Iluvator: [Vanishmod] Iluvator something else]"
+        assert handler.is_vanished(msg) is False
+
+    def test_is_unvanished_valid_message(self, tmp_path: Path):
+        """Test is_unvanished with a valid unvanished message."""
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        msg = "[Iluvator: [Vanishmod] Iluvator unvanished]"
+        assert handler.is_unvanished(msg) is True
+
+    def test_is_unvanished_invalid_message(self, tmp_path: Path):
+        """Test is_unvanished with an invalid unvanished message."""
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        msg = "[Iluvator: [Vanishmod] Iluvator vanished]"
+        assert handler.is_unvanished(msg) is False
+
+    def test_is_vanished_empty_message(self, tmp_path: Path):
+        """Test is_vanished with an empty message."""
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        msg = ""
+        assert handler.is_vanished(msg) is False
+
+    def test_is_unvanished_empty_message(self, tmp_path: Path):
+        """Test is_unvanished with an empty message."""
+        handler = VanishHandlerMasterPerki(tmp_path / "temp")
+        msg = ""
+        assert handler.is_unvanished(msg) is False

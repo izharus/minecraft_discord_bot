@@ -8,7 +8,7 @@ import re
 import time
 from abc import abstractmethod
 from pathlib import Path
-from typing import List
+from typing import Final, List
 
 from loguru import logger
 
@@ -266,6 +266,26 @@ class VanishHandlerBase:
             logger.info(f"Skipping vanished player msg: {msg}")
             return ""
         return msg
+
+
+class VanishHandlerMasterPerki(VanishHandlerBase):
+    """
+    Vanish handler for the mode from author MasterPerki:
+    https://www.curseforge.com/minecraft/mc-mods/vanishmod
+    """
+
+    # [Iluvator: [Vanishmod] Iluvator vanished]
+    VANISHED_PATTERN: Final = r"^\[\w+: \[Vanishmod\] \w+ vanished\]$"
+    # [Iluvator: [Vanishmod] Iluvator unvanished]
+    UNVANISHED_PATTERN: Final = r"^\[\w+: \[Vanishmod\] \w+ unvanished\]$"
+
+    def is_vanished(self, msg: str) -> bool:
+        """True if msg indicates that player was vanished."""
+        return bool(re.match(self.VANISHED_PATTERN, msg))
+
+    def is_unvanished(self, msg: str) -> bool:
+        """True if msg indicates that player was unvanished."""
+        return bool(re.match(self.UNVANISHED_PATTERN, msg))
 
 
 def main() -> None:
