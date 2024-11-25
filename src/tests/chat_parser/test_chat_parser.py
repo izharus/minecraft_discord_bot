@@ -6,6 +6,7 @@ import time
 from pathlib import Path
 from unittest.mock import MagicMock
 
+import pytest
 from pytest_mock import MockerFixture
 from src.chat_parser import chat_parser
 from src.chat_parser.chat_parser import (
@@ -430,7 +431,10 @@ def test_get_chat_message_1_19_2(vanish_handler):
     for expected, actual in zip(expected_messages, new_messages):
         assert expected == actual, f"Expected: {expected}, Actual: {actual}"
 
-@pytest.mark.parametrize("msg", (
+
+@pytest.mark.parametrize(
+    "msg",
+    (
         "Iluvator joined the game",
         "Iluvator has made the advancement [Alex's Mobs]",
         "Iluvator has made the advancement [A Small Smackerel]",
@@ -438,10 +442,12 @@ def test_get_chat_message_1_19_2(vanish_handler):
         "<Iluvator> kill",
         "Iluvator fell out of the world",
         "Iluvator left the game",
-))
+    ),
+)
 def test___extract_username_valid_format(
-        vanish_handler,
-        msg: str,):
+    vanish_handler,
+    msg: str,
+):
     """
     Tests the `_extract_username` method with messages
     that follow valid formats.
@@ -455,6 +461,7 @@ def test___extract_username_valid_format(
     username = chat._extract_username(msg)
 
     assert username == "Iluvator", f"Username was notfound: {msg}"
+
 
 class TestVanishHandlerBase:
     """Tests for VanishHandler class."""
@@ -626,7 +633,7 @@ class TestVanishHandlerBase:
         username = "MACTEP"
         msg = f"{username} vanished"
         mocker.patch.object(handler, "extract_username", return_value=username)
-        output = handler.process_message(msg)
+        output = handler.process_message(msg, None)
 
         assert output == handler.LEFT_GAME_PATTERN.format(username)
         assert username.lower() in handler._vanished_players
@@ -674,7 +681,7 @@ class TestVanishHandlerBase:
         msg = f"{username} unvanished"
         mocker.patch.object(handler, "extract_username", return_value=username)
 
-        output = handler.process_message(msg)
+        output = handler.process_message(msg, username)
 
         assert output == msg
         assert username.lower() not in handler._vanished_players
