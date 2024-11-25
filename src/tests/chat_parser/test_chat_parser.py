@@ -430,6 +430,31 @@ def test_get_chat_message_1_19_2(vanish_handler):
     for expected, actual in zip(expected_messages, new_messages):
         assert expected == actual, f"Expected: {expected}, Actual: {actual}"
 
+@pytest.mark.parametrize("msg", (
+        "Iluvator joined the game",
+        "Iluvator has made the advancement [Alex's Mobs]",
+        "Iluvator has made the advancement [A Small Smackerel]",
+        "<Iluvator> Test",
+        "<Iluvator> kill",
+        "Iluvator fell out of the world",
+        "Iluvator left the game",
+))
+def test___extract_username_valid_format(
+        vanish_handler,
+        msg: str,):
+    """
+    Tests the `_extract_username` method with messages
+    that follow valid formats.
+    """
+    temp_server_dir = os.path.join(
+        os.path.dirname(__file__),
+        "1.19.2",
+    )
+    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
+
+    username = chat._extract_username(msg)
+
+    assert username == "Iluvator", f"Username was notfound: {msg}"
 
 class TestVanishHandlerBase:
     """Tests for VanishHandler class."""
