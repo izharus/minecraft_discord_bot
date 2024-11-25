@@ -8,12 +8,13 @@ import re
 import time
 from abc import abstractmethod
 from pathlib import Path
-from typing import List
+from typing import List, Final
 
 from loguru import logger
 
 from .log_parser import FileChangesUtillity
 
+USERNAME_P: Final = r"[a-zA-Z]+[a-zA-z0-9]*"
 
 class MinecraftChatParser(FileChangesUtillity):
     """
@@ -179,6 +180,11 @@ class VanishHandlerBase:
     LEFT_GAME_PATTERN = "{} left the game"
     JOINED_GAME_PATTERN = "{} joined the game"
 
+    # [Iluvator: [Vanishmod] Iluvator vanished]
+    VANISHED_PATTERN: str
+    # [Iluvator: [Vanishmod] Iluvator unvanished]
+    UNVANISHED_PATTERN: str
+
     def __init__(self, data_path: Path):
         """
         Initializes the VanishHandler with the specified data file path.
@@ -291,9 +297,10 @@ class VanishHandlerMasterPerki(VanishHandlerBase):
     """
 
     # [Iluvator: [Vanishmod] Iluvator vanished]
-    VANISHED_PATTERN: Final = r"^\[\w+: \[Vanishmod\] \w+ vanished\]$"
+    VANISHED_PATTERN = fr"^\[({USERNAME_P}): \[Vanishmod\] {USERNAME_P} vanished\]$"  # pylint: disable=C0301 
     # [Iluvator: [Vanishmod] Iluvator unvanished]
-    UNVANISHED_PATTERN: Final = r"^\[\w+: \[Vanishmod\] \w+ unvanished\]$"
+    UNVANISHED_PATTERN = fr"^\[({USERNAME_P}): \[Vanishmod\] {USERNAME_P} unvanished\]$"  # pylint: disable=C0301 
+
     def extract_username(self, msg):
         for pattern in (self.VANISHED_PATTERN, self.UNVANISHED_PATTERN):
             match = re.match(pattern, msg)
