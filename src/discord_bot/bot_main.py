@@ -88,7 +88,7 @@ async def check_chat_messages():
         message = bot.chat_parser.get_chat_message()
         while message:
             logger.info(f"Message received: {message}")
-            await bot.channel.send(message)
+            # await bot.channel.send(message)
             await asyncio.sleep(0.1)  # Optional delay to prevent rate limits
             message = bot.chat_parser.get_chat_message()
 
