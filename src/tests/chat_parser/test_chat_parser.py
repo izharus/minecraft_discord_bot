@@ -471,7 +471,7 @@ class TestVanishHandlerBase:
         message = "Player123 joined the game"
         result = handler._extract_username(message)
 
-        assert result == "player123"
+        assert result == "Player123"
 
     def test_dump_data_creates_file(self, tmp_path: Path):
         """
@@ -590,7 +590,7 @@ class TestVanishHandlerBase:
         # Check final state in file
         with path.open(encoding="utf-8") as fr:
             data = json.load(fr)
-        assert data == ["user2", "user3"]
+        assert set(data) == {"user2", "user3"}
 
     def test_process_message_vanished_msg(
         self, tmp_path: Path, mocker: MockerFixture
@@ -608,7 +608,7 @@ class TestVanishHandlerBase:
         msg = f"{username} vanished"
         output = handler.process_message(msg)
 
-        assert output == ""
+        assert output == handler.LEFT_GAME_PATTERN.format(username)
         assert username.lower() in handler._vanished_players
         handler._dump_data.assert_called_once()
 
@@ -628,7 +628,7 @@ class TestVanishHandlerBase:
         msg = f"{username} unvanished"
         output = handler.process_message(msg)
 
-        assert output == ""
+        assert output == handler.JOINED_GAME_PATTERN.format(username)
         assert username.lower() not in handler._vanished_players
         handler._dump_data.assert_called_once()
 

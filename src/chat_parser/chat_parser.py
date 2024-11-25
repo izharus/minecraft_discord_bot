@@ -176,6 +176,9 @@ class MinecraftChatParser(FileChangesUtillity):
 class VanishHandlerBase:
     """A class to handle vanished players for a given data file."""
 
+    LEFT_GAME_PATTERN = "{} left the game"
+    JOINED_GAME_PATTERN = "{} joined the game"
+
     def __init__(self, data_path: Path):
         """
         Initializes the VanishHandler with the specified data file path.
@@ -217,7 +220,7 @@ class VanishHandlerBase:
             json.dump(list(self._vanished_players), fw)
 
     def _extract_username(self, msg: str) -> str:
-        return msg.split(" ")[0].lower()
+        return msg.split(" ")[0]
 
     @abstractmethod
     def is_vanished(self, msg: str) -> bool:
@@ -259,11 +262,11 @@ class VanishHandlerBase:
         if self.is_vanished(msg):
             self._vanish_player(username)
             logger.info(f"Player vanished: {username}")
-            return ""
+            return self.LEFT_GAME_PATTERN.format(username)
         if self.is_unvanished(msg):
             self._unvanish_player(username)
             logger.info(f"Player unvanished: {username}")
-            return ""
+            return self.JOINED_GAME_PATTERN.format(username)
         if username in self._vanished_players:
             logger.info(f"Skipping vanished player msg: {msg}")
             return ""
