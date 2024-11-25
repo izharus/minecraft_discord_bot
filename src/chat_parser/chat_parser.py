@@ -8,7 +8,7 @@ import re
 import time
 from abc import abstractmethod
 from pathlib import Path
-from typing import List, Final
+from typing import Final, List, Optional
 
 from loguru import logger
 
@@ -44,8 +44,8 @@ class MinecraftChatParser(FileChangesUtillity):
             "[Not Secure] ",
         ]
         self._message_struct_pattern = (
-            r"^\<[a-zA-Z]+[a-zA-z0-9]*\> .*?$|"
-            r"^[a-zA-Z]+[a-zA-z0-9]* [a-zA-Z]+[a-zA-z0-9]* .*?$"
+            rf"^\<({USERNAME_P})\> .*?$|"
+            rf"^({USERNAME_P}) [a-zA-Z]+[a-zA-z0-9]* .*?$"
         )
         FileChangesUtillity.__init__(self, self.log_path)
         self._is_server_working = is_server_working
@@ -172,6 +172,15 @@ class MinecraftChatParser(FileChangesUtillity):
             if chat_message:
                 return chat_message.rstrip()
         return ""
+
+    def _extract_username(self, msg: str) -> Optional[str]:
+        matched = re.match(self._message_struct_pattern, msg)
+        if matched:
+            # Find the first non-None group in the match
+            for group in matched.groups():
+                if group:
+                    return group
+        return None
 
 
 class VanishHandlerBase:
