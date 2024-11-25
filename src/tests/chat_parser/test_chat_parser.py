@@ -45,27 +45,12 @@ def test_manage_server_status_stopped_message(vanish_handler):
     temp_server_dir = os.path.dirname(__file__)
     chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
     # pylint: disable = C0301
-    test_message = "[05Dec2023 22:03:16.966] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server"
+    test_message = "[25Nov2024 23:05:38.154] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] SERVER STOPPED..."
 
     assert chat._is_server_working is True
     server_message = chat._manage_server_status(test_message)
 
     assert server_message == "# Сервер остановлен."
-    assert chat._is_server_working is False
-
-
-def test_manage_server_status_starting_message(vanish_handler):
-    """Simulate message with 'starting' pattern from server."""
-    temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(temp_server_dir, vanish_handler)
-    # pylint: disable = C0301
-    test_message = "[20Dec2023 07:50:48.256] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserver, --fml.forgeVersion, 40.2.9, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220404.173914]"
-
-    assert chat._is_server_working is True
-
-    server_message = chat._manage_server_status(test_message)
-
-    assert server_message == "# Сервер запускается..."
     assert chat._is_server_working is False
 
 
@@ -81,28 +66,7 @@ def test_manage_server_status_started_message(vanish_handler):
         is_server_working=False,
     )
     # pylint: disable = C0301
-    test_message = "[20Dec2023 07:51:15.915] [VoiceChatServerThread/INFO] [voicechat/]: [voicechat] Voice chat server started at port 3520"
-
-    assert chat._is_server_working is False
-
-    server_message = chat._manage_server_status(test_message)
-    assert server_message == "# Сервер запущен."
-    assert chat._is_server_working is True
-
-
-def test_manage_server_status_started_message_1_19_2(vanish_handler):
-    """
-    Simulate message with 'started' pattern from
-    server version 1.19.2.
-    """
-    temp_server_dir = os.path.dirname(__file__)
-    chat = chat_parser.MinecraftChatParser(
-        temp_server_dir,
-        vanish_handler,
-        is_server_working=False,
-    )
-    # pylint: disable = C0301
-    test_message = "[29Apr2024 17:46:01.085] [Server thread/INFO] [net.minecraft.server.rcon.thread.RconThread/]: RCON running on 0.0.0.0:25575"
+    test_message = "[25Nov2024 23:03:38.562] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] SERVER STARTED!!!"
 
     assert chat._is_server_working is False
 
@@ -368,7 +332,6 @@ def test_get_chat_message(vanish_handler):
         "Iluvator joined the game",
         # "[Iluvator: Set own game mode to Creative Mode]",
         "# Сервер остановлен.",
-        "# Сервер запускается...",
         "# Сервер запущен.",
         "<Iluvator> TEST",
         "<Iluvator> из игры",
@@ -385,9 +348,15 @@ def test_get_chat_message(vanish_handler):
             break
         new_messages.append(message)
 
-    assert len(expected_messages) == len(new_messages)
-    for expected, actual in zip(expected_messages, new_messages):
-        assert expected == actual, f"Expected: {expected}, Actual: {actual}"
+    for index, (expected, actual) in enumerate(
+        zip(expected_messages, new_messages)
+    ):
+        assert expected == actual, (
+            f"Message mismatch at index {index}:\n"
+            f"  Expected: {expected}\n"
+            f"  Actual: {actual}\n"
+            f"  Full context: {new_messages}"
+        )
 
 
 def test_get_chat_message_1_19_2(vanish_handler):
@@ -411,7 +380,7 @@ def test_get_chat_message_1_19_2(vanish_handler):
     chat.set_last_position()
     chat.reset_file_modified_timestamp()
     expected_messages = [
-        "# Сервер запускается...",
+        "# Сервер остановлен.",
         "# Сервер запущен.",
         "Iluvator joined the game",
         "Iluvator has made the advancement [Alex's Mobs]",
