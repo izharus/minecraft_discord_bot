@@ -80,6 +80,9 @@ async def on_ready():
     # Start the background task
     check_chat_messages.start()
 
+    await bot.aiomcrcon.send_cmd("/say Discord joined the game")
+    await bot.channel.send("## Discord joined the chat.")
+
 
 @tasks.loop(seconds=1.0)
 async def check_chat_messages():
@@ -217,6 +220,7 @@ async def on_close():
     """
     await bot.aiomcrcon.close()
     logger.debug("Bot and RCON client disconnected.")
+    await bot.channel.send("## Discord left the chat.")
 
 
 def main():
