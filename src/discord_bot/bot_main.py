@@ -1,7 +1,6 @@
 """Main module of discod bot."""
 # pylint: disable=C0411
 import asyncio
-import sys
 from pathlib import Path
 from typing import Any, Optional
 
@@ -13,7 +12,7 @@ from ..chat_parser.chat_parser import (
     MinecraftChatParser,
     VanishHandlerMasterPerki,
 )
-from ..rcon_sender.rcon import RconLocalDocker
+from ..rcon_sender.rcon import AIOMcRcon, RCONSendCmdError
 from .utillity import get_config, parse_message
 
 
@@ -24,20 +23,26 @@ class MyBot(commands.Bot):
         super().__init__(*args, **kwargs)
         self.chat_parser: Optional[MinecraftChatParser] = None
         self.channel: Optional[discord.TextChannel]
+        self.aiomcrcon: Optional[AIOMcRcon] = None
 
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = MyBot(command_prefix="/", intents=intents)
 
-DEBUG_MODE = "--debug" in sys.argv
 APP_VERSION = "1.3.1"
 
 DATA_PATH = Path("data")
 
 vanish_handler = VanishHandlerMasterPerki(DATA_PATH / "vanished.json")
 config = get_config(DATA_PATH / "config.ini")
-CONTAINER_NAME = config["DISCORD"]["CONTAINER_NAME"]
+RCON_HOST = config["MC_SERVER"]["RCON_HOST"]
+RCON_SECRET = config["MC_SERVER"]["RCON_SECRET"]
+try:
+    RCON_PORT = config.getint("MC_SERVER", "RCON_PORT")
+except ValueError as e:
+    raise ValueError(f"Invalid rcon port: {e}") from e
+
 try:
     CHANNEL_ID = config.getint("DISCORD", "CHANNEL_ID")
 except ValueError as e:
@@ -63,7 +68,8 @@ async def on_ready():
         MINECRAFT_SERVER_PATH,
         vanish_handler,
     )
-
+    bot.aiomcrcon = AIOMcRcon(RCON_HOST, RCON_PORT, RCON_SECRET)
+    await bot.aiomcrcon.connect()
     # Get the channel
     bot.channel = bot.get_channel(CHANNEL_ID)
     if bot.channel is None:
@@ -106,17 +112,16 @@ async def get_list_of_players(ctx: commands.Context) -> None:
     - ctx: Context object for the command execution.
     """
     logger.info("Command received: list")
-    rcon = RconLocalDocker(CONTAINER_NAME)
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         try:
-            players_list = rcon.send_command("/list")
-        except Exception as error:
-            logger.error(f"Failed to receive players_list: {error}")
-            await ctx.send("Некорректный ответ от сервера.")
+            if not bot.aiomcrcon:
+                raise RCONSendCmdError("Rcon have not initialized yet.")
+            players_list = await bot.aiomcrcon.send_cmd("/list")
+        except RCONSendCmdError:
+            await ctx.channel.send("Сервер в данный момент недоступен.")
         if players_list:
-            players_list = players_list.split("\n")[0]
-            await ctx.send(players_list)
+            await ctx.send(players_list[0].rstrip(":"))
         else:
             logger.error("Unable to get players_list")
             await ctx.send("Не удалось получить список игроков.")
@@ -150,7 +155,7 @@ async def on_command_error(ctx: commands.Context, error: Any) -> None:
     if isinstance(error, commands.CommandNotFound):
         logger.info("on_command_error entry")
         await ctx.send(
-            "Неизвестная комманда, введите /info "
+            "Неизвестная команда, введите /info "
             "чтобы узнать все доступные команды."
         )
 
@@ -168,14 +173,28 @@ async def on_message(message: discord.Message) -> None:
         None
     """
     await bot.process_commands(message)
-    rcon = RconLocalDocker(CONTAINER_NAME)
     if message.author == bot.user:
         return
     # Check if the message is from the desired channel
     if message.channel.id == CHANNEL_ID:
         message_text = await parse_message(message)
         logger.info(message_text)
-        rcon.send_say_command(message_text)
+        try:
+            if not bot.aiomcrcon:
+                raise RCONSendCmdError("Rcon have not initialized yet.")
+            await bot.aiomcrcon.send_cmd(f"/say {message_text}")
+        except RCONSendCmdError:
+            await message.channel.send("Сервер в данный момент недоступен.")
+
+
+@bot.event
+async def on_close():
+    """
+    Event triggered when the bot is shutting down.
+    Closes the RCON client connection.
+    """
+    await bot.aiomcrcon.close()
+    logger.debug("Bot and RCON client disconnected.")
 
 
 def main():

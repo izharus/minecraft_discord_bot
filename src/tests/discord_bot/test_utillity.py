@@ -340,7 +340,9 @@ def test_get_config_creating_new_config(
 
     assert "CHANNEL_ID" in config["DISCORD"].keys()
     assert "DISCORD_ACCESS_TOKEN" in config["DISCORD"].keys()
-    assert "CONTAINER_NAME" in config["DISCORD"].keys()
+    assert "rcon_host" in config["MC_SERVER"].keys()
+    assert "rcon_port" in config["MC_SERVER"].keys()
+    assert "rcon_port" in config["MC_SERVER"].keys()
 
 
 def test_get_config_amending_new_config(
@@ -352,12 +354,15 @@ def test_get_config_amending_new_config(
     """
     channel_id = "id_12345"
     server_path = "/etc/server/test_server"
+    rcon_secret = "1234567890"
     tmp_path = tmp_path / "config.ini"
     config = ConfigParser()
     config.add_section("DISCORD")
+    config.add_section("MC_SERVER")
 
     config["DISCORD"]["CHANNEL_ID"] = channel_id
     config["DISCORD"]["MINECRAFT_SERVER_PATH"] = server_path
+    config["MC_SERVER"]["RCON_SECRET"] = rcon_secret
 
     with tmp_path.open("w", encoding="utf-8") as fw:
         config.write(fw)
@@ -366,4 +371,6 @@ def test_get_config_amending_new_config(
 
     assert config["DISCORD"]["CHANNEL_ID"] == channel_id
     assert config["DISCORD"]["DISCORD_ACCESS_TOKEN"] == ""
-    assert config["DISCORD"]["CONTAINER_NAME"] == ""
+    assert config["MC_SERVER"]["rcon_host"] == ""
+    assert config["MC_SERVER"]["rcon_port"] == ""
+    assert config["MC_SERVER"]["rcon_secret"] == rcon_secret
