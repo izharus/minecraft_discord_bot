@@ -1,7 +1,6 @@
 """Main module of discod bot."""
 # pylint: disable=C0411
 import asyncio
-import sys
 from pathlib import Path
 from typing import Any, Optional
 
@@ -31,14 +30,12 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = MyBot(command_prefix="/", intents=intents)
 
-DEBUG_MODE = "--debug" in sys.argv
 APP_VERSION = "1.3.1"
 
 DATA_PATH = Path("data")
 
 vanish_handler = VanishHandlerMasterPerki(DATA_PATH / "vanished.json")
 config = get_config(DATA_PATH / "config.ini")
-CONTAINER_NAME = config["DISCORD"]["CONTAINER_NAME"]
 RCON_HOST = config["MC_SERVER"]["RCON_HOST"]
 RCON_SECRET = config["MC_SERVER"]["RCON_SECRET"]
 try:
