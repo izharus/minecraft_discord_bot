@@ -49,3 +49,8 @@
 - Updated Dockerfile to use a slim Python image.  
 - Restructured test data directories for better organization.  
 
+# Version 1.4.1 - Nov 21, 2024
+### Fixes
+- Close method was not called.
+- Duplicates in logs if mc-server connection failed.
+
