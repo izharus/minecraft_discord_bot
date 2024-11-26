@@ -30,7 +30,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = MyBot(command_prefix="/", intents=intents)
 
-APP_VERSION = "1.4.0"
+APP_VERSION = "1.4.1"
 
 DATA_PATH = Path("data")
 
