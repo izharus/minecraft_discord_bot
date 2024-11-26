@@ -1,0 +1,120 @@
+[14Dec2023 02:55:39.496] [User Authenticator #20/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player velada is 5cf8ce81-b42b-3f08-98cf-01f2cf277b31
+[14Dec2023 02:55:40.998] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@6409ff71
+[14Dec2023 02:55:41.018] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: velada[/172.17.0.1:42216] logged in with entity id 101655 at (-6809.822497269999, 63.0, -4273.428646270579)
+[14Dec2023 02:55:41.029] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: velada joined the game
+[14Dec2023 02:55:41.079] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[14Dec2023 02:55:41.079] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Reverted doDaylightCycle to true as players are logged in.
+[14Dec2023 02:55:41.272] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+***************************************
+SAVING DISABLED - PREPARING FOR BACKUP!
+***************************************
+
+[14Dec2023 02:55:41.378] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+*************************************
+SAVE COMPLETE - PREPARING FOR BACKUP!
+*************************************
+
+[14Dec2023 02:55:41.379] [AB Active Backup Thread/INFO] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: Preparing differential backup name: backup_2023-12-14_02-55-41
+[14Dec2023 02:55:42.169] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of velada (17)
+[14Dec2023 02:55:42.171] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to velada
+[14Dec2023 02:55:47.245] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player 5cf8ce81-b42b-3f08-98cf-01f2cf277b31
+[14Dec2023 02:55:48.246] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player 5cf8ce81-b42b-3f08-98cf-01f2cf277b31
+[14Dec2023 02:55:48.246] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player velada (5cf8ce81-b42b-3f08-98cf-01f2cf277b31) successfully connected to voice chat
+[14Dec2023 02:59:27.427] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+*********************************
+SAVING ENABLED - BACKUP COMPLETE!
+*********************************
+
+[14Dec2023 03:29:17.207] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: velada lost connection: Disconnected
+[14Dec2023 03:29:17.207] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: velada left the game
+[14Dec2023 03:29:17.208] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged Out - Checking for Calendar Updates.
+[14Dec2023 03:29:17.208] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Forced doDaylightCycle to false as no players are logged in. Will revert to true as soon as a player logs in.
+[14Dec2023 03:29:17.209] [Server thread/INFO] [voicechat/]: [voicechat] Disconnecting client velada
+[14Dec2023 03:59:27.415] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+***************************************
+SAVING DISABLED - PREPARING FOR BACKUP!
+***************************************
+
+[14Dec2023 03:59:27.506] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+*************************************
+SAVE COMPLETE - PREPARING FOR BACKUP!
+*************************************
+
+[14Dec2023 03:59:27.508] [AB Active Backup Thread/INFO] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: Preparing differential backup name: backup_2023-12-14_03-59-27
+[14Dec2023 04:02:36.685] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+*********************************
+SAVING ENABLED - BACKUP COMPLETE!
+*********************************
+
+[14Dec2023 06:31:55.148] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [Rcon] test
+[14Dec2023 06:31:58.689] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [Rcon] test
+[14Dec2023 06:32:02.925] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [Rcon] test11
+[14Dec2023 07:28:36.755] [User Authenticator #21/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player Iluvator is e6e59947-6186-371e-aef0-f1711c293196
+[14Dec2023 07:28:38.278] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@4be03b82
+[14Dec2023 07:28:38.318] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Iluvator[/172.17.0.1:55888] logged in with entity id 103910 at (-8410.512464251622, 73.29339919235986, -4044.345478698152)
+[14Dec2023 07:28:38.363] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Iluvator joined the game
+[14Dec2023 07:28:38.464] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[14Dec2023 07:28:38.465] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Reverted doDaylightCycle to true as players are logged in.
+[14Dec2023 07:28:38.925] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+[Rcon] SERVER STOPPED...
+***************************************
+SAVING DISABLED - PREPARING FOR BACKUP!
+***************************************
+
+[14Dec2023 07:28:39.092] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+*************************************
+SAVE COMPLETE - PREPARING FOR BACKUP!
+*************************************
+
+[14Dec2023 07:28:39.095] [AB Active Backup Thread/INFO] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: Preparing differential backup name: backup_2023-12-14_07-28-39
+[14Dec2023 07:28:39.302] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of Iluvator (17)
+[14Dec2023 07:28:39.305] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to Iluvator
+[14Dec2023 07:28:43.110] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player e6e59947-6186-371e-aef0-f1711c293196
+[14Dec2023 07:28:44.110] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player e6e59947-6186-371e-aef0-f1711c293196
+[14Dec2023 07:28:44.111] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player Iluvator (e6e59947-6186-371e-aef0-f1711c293196) successfully connected to voice chat
+[14Dec2023 07:28:49.239] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [Iluvator: Set own game mode to Creative Mode]
+[05Dec2023 22:03:16.966] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[20Dec2023 07:50:48.256] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserver, --fml.forgeVersion, 40.2.9, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220404.173914]
+[14Dec2023 07:29:06.982] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: <debug_serve_information> debug_info
+[20Dec2023 07:51:15.915] [VoiceChatServerThread/INFO] [voicechat/]: [voicechat] Voice chat server started at port 3520
+[Rcon] SERVER STARTED!!!
+[14Dec2023 07:29:06.982] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: <Iluvator> TEST
+[14Dec2023 07:29:24.600] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: <Iluvator> из игры
+[14Dec2023 15:57:22.986] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Iluvator was slain by Zombie
+[14Dec2023 07:30:26.763] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [Rcon] test
+[14Dec2023 07:30:31.422] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: <Iluvator> из игры
+[14Dec2023 07:30:37.546] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Iluvator lost connection: Disconnected
+[14Dec2023 07:30:37.546] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Iluvator left the game
+[14Dec2023 07:30:37.547] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged Out - Checking for Calendar Updates.
+[14Dec2023 07:30:37.548] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Forced doDaylightCycle to false as no players are logged in. Will revert to true as soon as a player logs in.
+[14Dec2023 07:30:37.548] [Server thread/INFO] [voicechat/]: [voicechat] Disconnecting client Iluvator
+[14Dec2023 07:30:41.818] [User Authenticator #22/INFO] [net.minecraft.server.network.ServerLoginPacketListenerImpl/]: UUID of player Iluvator is e6e59947-6186-371e-aef0-f1711c293196
+[14Dec2023 07:30:43.300] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@24c1a7e2
+[14Dec2023 07:30:43.315] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Iluvator[/172.17.0.1:46566] logged in with entity id 104170 at (-8410.605949718416, 73.0, -4044.3556342017814)
+[14Dec2023 07:30:43.329] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Iluvator joined the game
+[14Dec2023 07:30:43.347] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged In - Checking for Calendar Updates.
+[14Dec2023 07:30:43.348] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Reverted doDaylightCycle to true as players are logged in.
+[14Dec2023 07:30:43.433] [Server thread/INFO] [voicechat/]: [voicechat] Received secret request of Iluvator (17)
+[14Dec2023 07:30:43.435] [Server thread/INFO] [voicechat/]: [voicechat] Sent secret to Iluvator
+[14Dec2023 07:30:44.501] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully authenticated player e6e59947-6186-371e-aef0-f1711c293196
+[14Dec2023 07:30:45.501] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Successfully validated connection of player e6e59947-6186-371e-aef0-f1711c293196
+[14Dec2023 07:30:45.502] [VoiceChatPacketProcessingThread/INFO] [voicechat/]: [voicechat] Player Iluvator (e6e59947-6186-371e-aef0-f1711c293196) successfully connected to voice chat
+[14Dec2023 07:30:49.596] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Iluvator lost connection: Disconnected
+[14Dec2023 07:30:49.596] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Iluvator left the game
+[14Dec2023 07:30:49.597] [Server thread/INFO] [net.dries007.tfc.util.calendar.CalendarEventHandler/]: Player Logged Out - Checking for Calendar Updates.
+[14Dec2023 07:30:49.598] [Server thread/INFO] [net.dries007.tfc.util.calendar.Calendar/]: Forced doDaylightCycle to false as no players are logged in. Will revert to true as soon as a player logs in.
+[14Dec2023 07:30:49.598] [Server thread/INFO] [voicechat/]: [voicechat] Disconnecting client Iluvator
+[14Dec2023 07:32:46.389] [Server thread/WARN] [co.uk.mommyheather.advancedbackups.AdvancedBackups/]: 
+
+*********************************
+SAVING ENABLED - BACKUP COMPLETE!
+*********************************
+

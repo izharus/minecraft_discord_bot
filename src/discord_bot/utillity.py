@@ -164,7 +164,11 @@ def get_config(config_path: str | os.PathLike) -> ConfigParser:
         "DISCORD": {
             "CHANNEL_ID": "",
             "DISCORD_ACCESS_TOKEN": "",
-            "CONTAINER_NAME": "",
+        },
+        "MC_SERVER": {
+            "RCON_HOST": "",
+            "RCON_PORT": "",
+            "RCON_SECRET": "",
         },
     }
     config = ConfigParser()
