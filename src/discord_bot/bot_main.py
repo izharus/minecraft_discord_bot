@@ -207,7 +207,7 @@ async def on_message(message: discord.Message) -> None:
 
 
 @bot.event
-async def on_close():
+async def close():
     """
     Event triggered when the bot is shutting down.
     Closes the RCON client connection.
