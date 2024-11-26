@@ -38,6 +38,13 @@ DATA_PATH = Path("data")
 vanish_handler = VanishHandlerMasterPerki(DATA_PATH / "vanished.json")
 config = get_config(DATA_PATH / "config.ini")
 CONTAINER_NAME = config["DISCORD"]["CONTAINER_NAME"]
+RCON_HOST = config["MC_SERVER"]["RCON_HOST"]
+RCON_SECRET = config["MC_SERVER"]["RCON_SECRET"]
+try:
+    RCON_PORT = config.getint("MC_SERVER", "RCON_PORT")
+except ValueError as e:
+    raise ValueError(f"Invalid rcon port: {e}") from e
+
 try:
     CHANNEL_ID = config.getint("DISCORD", "CHANNEL_ID")
 except ValueError as e:
