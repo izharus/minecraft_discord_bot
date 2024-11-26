@@ -35,3 +35,17 @@
 
 # Version 1.3.1 - Nov 21, 2024
 - Deleted an infinite loop in on_ready method.
+
+# Version 1.4.0 - Nov 21, 2024
+### Features
+- Added `/tps` command for real-time server performance monitoring.  
+- Implemented "hello" messages from the bot.  
+- Integrated `aiomcrcon` into the bot for seamless server communication.  
+- Added a vanish mod handler to process player visibility.  
+
+### Fixes
+- Improved handling of server start and stop messages.  
+- Fixed username extraction logic for better chat parsing.  
+- Updated Dockerfile to use a slim Python image.  
+- Restructured test data directories for better organization.  
+
