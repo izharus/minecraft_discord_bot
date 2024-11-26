@@ -53,7 +53,6 @@ SUPPORTED_COMMANDS = "/info, /list, /tps"
 
 
 @bot.event
-@logger.catch(reraise=True)
 async def on_ready():
     """
     Event handler for when the bot has successfully connected to Discord.
@@ -107,7 +106,6 @@ async def check_chat_messages():
 
 
 @bot.command(name="tps")
-@logger.catch(reraise=True)
 async def get_server_tps(ctx: commands.Context) -> None:
     """
     Get the TPS of the Minecraft server.
@@ -129,7 +127,6 @@ async def get_server_tps(ctx: commands.Context) -> None:
 
 
 @bot.command(name="list")
-@logger.catch(reraise=True)
 async def get_list_of_players(ctx: commands.Context) -> None:
     """
     Get the list of online players on the Minecraft server.
@@ -154,7 +151,6 @@ async def get_list_of_players(ctx: commands.Context) -> None:
 
 
 @bot.command(name="info")
-@logger.catch(reraise=True)
 async def get_list_of_cammands(ctx: commands.Context) -> None:
     """
     Get the list of available commands.
@@ -169,7 +165,6 @@ async def get_list_of_cammands(ctx: commands.Context) -> None:
 
 
 @bot.event
-@logger.catch(reraise=True)
 async def on_command_error(ctx: commands.Context, error: Any) -> None:
     """
     Handle errors that occur during command execution.
@@ -186,7 +181,6 @@ async def on_command_error(ctx: commands.Context, error: Any) -> None:
 
 
 @bot.event
-@logger.catch(reraise=True)
 async def on_message(message: discord.Message) -> None:
     """
     Event handler for processing incoming messages.
