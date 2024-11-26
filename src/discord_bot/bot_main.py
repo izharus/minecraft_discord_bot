@@ -49,6 +49,7 @@ except ValueError as e:
     raise ValueError(f"Invalid CHANNEL_ID: {e}") from e
 DISCORD_ACCESS_TOKEN = config["DISCORD"]["DISCORD_ACCESS_TOKEN"]
 MINECRAFT_SERVER_PATH = "minecraft-root-dir"
+SUPPORTED_COMMANDS = "/info, /list, /tps"
 
 
 @bot.event
@@ -102,6 +103,28 @@ async def check_chat_messages():
         logger.exception(f"Error in chat message checking loop: {e}")
 
 
+@bot.command(name="tps")
+@logger.catch(reraise=True)
+async def get_server_tps(ctx: commands.Context) -> None:
+    """
+    Get the TPS of the Minecraft server.
+    """
+    logger.info("Command received: list")
+    # Check if the message is from the desired channel
+    if ctx.channel.id == CHANNEL_ID:
+        try:
+            if not bot.aiomcrcon:
+                raise RCONSendCmdError("Rcon have not initialized yet.")
+            tps = await bot.aiomcrcon.send_cmd("/forge tps")
+        except RCONSendCmdError:
+            await ctx.channel.send("Сервер в данный момент недоступен.")
+        if tps:
+            await ctx.send(tps[0])
+        else:
+            logger.error("Unable to get players_list")
+            await ctx.send("Не удалось получить список игроков.")
+
+
 @bot.command(name="list")
 @logger.catch(reraise=True)
 async def get_list_of_players(ctx: commands.Context) -> None:
@@ -139,7 +162,7 @@ async def get_list_of_cammands(ctx: commands.Context) -> None:
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         logger.info("get_list_of_cammands entry")
-        await ctx.send("Доступные команды: /list, /info")
+        await ctx.send(f"Доступные команды: {SUPPORTED_COMMANDS}")
 
 
 @bot.event
@@ -155,8 +178,7 @@ async def on_command_error(ctx: commands.Context, error: Any) -> None:
     if isinstance(error, commands.CommandNotFound):
         logger.info("on_command_error entry")
         await ctx.send(
-            "Неизвестная команда, введите /info "
-            "чтобы узнать все доступные команды."
+            "Неизвестная команда. Доступные команды:" f"{SUPPORTED_COMMANDS}"
         )
 
 
