@@ -117,8 +117,8 @@ async def get_server_tps(ctx: commands.Context) -> None:
             if not bot.aiomcrcon:
                 raise RCONSendCmdError("Rcon have not initialized yet.")
             tps = await bot.aiomcrcon.send_cmd("/forge tps")
-        except RCONSendCmdError:
-            await ctx.channel.send("Сервер в данный момент недоступен.")
+        except RCONSendCmdError as error:
+            logger.warning(f"/tps failed: {error}")
         if tps:
             await ctx.send(tps[0])
         else:
@@ -141,8 +141,8 @@ async def get_list_of_players(ctx: commands.Context) -> None:
             if not bot.aiomcrcon:
                 raise RCONSendCmdError("Rcon have not initialized yet.")
             players_list = await bot.aiomcrcon.send_cmd("/list")
-        except RCONSendCmdError:
-            await ctx.channel.send("Сервер в данный момент недоступен.")
+        except RCONSendCmdError as error:
+            logger.warning(f"/list failed: {error}")
         if players_list:
             await ctx.send(players_list[0].rstrip(":"))
         else:
