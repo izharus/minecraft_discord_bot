@@ -2,11 +2,17 @@
 This module implements a classes for sending commands
 into the console of minecraft server.
 """
+import asyncio
 import subprocess
 from abc import abstractmethod
 from typing import Optional
 
+import aiomcrcon
 from loguru import logger as log
+
+
+class RCONSendCmdError(RuntimeError):
+    """Raises if any error occurs due sending of cmd command."""
 
 
 class RconBase:
@@ -81,6 +87,54 @@ class RconLocalDocker(RconBase):
         except subprocess.CalledProcessError as error:
             log.error(f"Failed to send command: {error.stderr}")
             return None
+
+
+class AIOMcRcon(aiomcrcon.Client):
+    """
+    A subclass of `aiomcrcon.Client` that adds automatic reconnection logic
+    and improved error handling
+    """
+
+    def __init__(
+        self, host: str, port: int, password: str, reconnect_interval: int = 10
+    ):
+        """
+        Initializes the AIOMcRcon client with the specified host, port,
+        and password.
+
+        Args:
+            host (str): The host address of the RCON server.
+            port (int): The port number of the RCON server.
+            password (str): The password to authenticate with the RCON server.
+            reconnect_interval (int, optional): The time interval (in seconds)
+                to wait before retrying a failed connection.
+        """
+        super().__init__(host, port, password)
+        self.reconnect_interval = reconnect_interval
+
+    async def connect(self, *args, **kwargs):
+        while not self._ready:
+            try:
+                await super().connect(*args, **kwargs)
+                log.debug(
+                    f"Rcon connection success to to: {self.host}:{self.port}"
+                )
+                return
+            except aiomcrcon.errors.RCONConnectionError as error:
+                log.warning(f"Rcon connection failed: {error}")
+                await asyncio.sleep(self.reconnect_interval)
+
+    async def send_cmd(self, *args, **kwargs):
+        try:
+            return await super().send_cmd(*args, **kwargs)
+        except Exception as error:
+            log.debug(f"Failed to send_cmd command: {error}")
+            if self._ready:
+                await self.close()
+                asyncio.create_task(self.connect())
+            raise RCONSendCmdError(
+                f"Failed to send cmd command: {error}"
+            ) from error
 
 
 if __name__ == "__main__":
