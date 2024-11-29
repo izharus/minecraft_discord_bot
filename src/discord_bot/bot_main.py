@@ -1,6 +1,5 @@
 """Main module of discod bot."""
 # pylint: disable=C0411
-import asyncio
 from pathlib import Path
 from typing import Any, Optional
 
@@ -12,6 +11,7 @@ from ..chat_parser.chat_parser import (
     MinecraftChatParser,
     VanishHandlerMasterPerki,
 )
+from ..chat_parser.custom_exceptions import ServerStarted, ServerStopped
 from ..rcon_sender.rcon import AIOMcRcon, RCONSendCmdError
 from .utillity import get_config, parse_message
 
@@ -30,7 +30,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = MyBot(command_prefix="/", intents=intents)
 
-APP_VERSION = "1.4.1"
+APP_VERSION = "1.5.0"
 
 DATA_PATH = Path("data")
 
@@ -83,7 +83,7 @@ async def on_ready():
     await bot.channel.send("## Discord joined the chat.")
 
 
-@tasks.loop(seconds=1.0)
+@tasks.loop(seconds=0.1)
 async def check_chat_messages():
     """
     Periodically checks for new Minecraft chat messages and sends
@@ -93,13 +93,18 @@ async def check_chat_messages():
         if not bot.chat_parser or not bot.channel:
             logger.error("Chat parser or channel is not initialized.")
             return
-
-        message = bot.chat_parser.get_chat_message()
-        while message:
+        try:
+            message = bot.chat_parser.get_chat_message()
             logger.info(f"Message received: {message}")
             await bot.channel.send(message)
-            await asyncio.sleep(0.1)  # Optional delay to prevent rate limits
-            message = bot.chat_parser.get_chat_message()
+        except ServerStarted as msg:
+            logger.info("Server started.")
+            logger.info("Reconnecting to the mc-rcon...")
+            await bot.channel.send(str(msg))
+            await bot.aiomcrcon.connect()
+        except ServerStopped as msg:
+            logger.info("Server stopped.")
+            await bot.channel.send(str(msg))
 
     except Exception as e:
         logger.exception(f"Error in chat message checking loop: {e}")
@@ -110,7 +115,7 @@ async def get_server_tps(ctx: commands.Context) -> None:
     """
     Get the TPS of the Minecraft server.
     """
-    logger.info("Command received: list")
+    logger.info("Command received: tps")
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         try:
