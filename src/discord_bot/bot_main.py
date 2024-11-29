@@ -115,7 +115,7 @@ async def get_server_tps(ctx: commands.Context) -> None:
     """
     Get the TPS of the Minecraft server.
     """
-    logger.info("Command received: list")
+    logger.info("Command received: tps")
     # Check if the message is from the desired channel
     if ctx.channel.id == CHANNEL_ID:
         try:
