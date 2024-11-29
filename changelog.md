@@ -54,7 +54,7 @@
 - Close method was not called.
 - Duplicates in logs if mc-server connection failed.
 
-# Version 1.5.0 - Nov 29, 2024
+# Version 1.5.4 - Nov 29, 2024
 ### Features
 - Auto reconnect mc-rcon if server was restarted (ML-40).
 

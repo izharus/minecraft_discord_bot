@@ -95,12 +95,14 @@ async def check_chat_messages():
             return
         try:
             message = bot.chat_parser.get_chat_message()
-            logger.info(f"Message received: {message}")
-            await bot.channel.send(message)
+            if message:
+                logger.info(f"Message received: {message}")
+                await bot.channel.send(message)
         except ServerStarted as msg:
             logger.info("Server started.")
             logger.info("Reconnecting to the mc-rcon...")
             await bot.channel.send(str(msg))
+            await bot.aiomcrcon.close()
             await bot.aiomcrcon.connect()
         except ServerStopped as msg:
             logger.info("Server stopped.")
