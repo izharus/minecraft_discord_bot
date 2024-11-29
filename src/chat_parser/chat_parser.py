@@ -12,6 +12,7 @@ from typing import Final, Optional
 
 from loguru import logger
 
+from .custom_exceptions import ServerStarted, ServerStopped
 from .log_parser import FileChangesUtillity
 
 USERNAME_P: Final = r"[a-zA-Z]+[a-zA-z0-9]*"
@@ -50,29 +51,33 @@ class MinecraftChatParser(FileChangesUtillity):
         self._stopped_server_pattern = r"^.*\[Rcon\] SERVER STOPPED\.\.\.$"
         self._started_server_pattern = r"^.*\[Rcon\] SERVER STARTED!!!$"
 
-    def _manage_server_status(
+    def _detect_server_status_change(
         self,
         message: str,
     ) -> str:
         """
-        Changes _is_server_working server status if any patterns im nessage
-        will found.
+        Updates the server's working status based on specific
+        patterns found in the log message.
 
         Args:
-            message (str): New string on log file from server.
+            message (str): A log message from the server.
 
         Returns:
-            str: A custom server message in human-reading style or an
-                empty string, if no any patterns will be found.
+            str: A custom human-readable server message, or an empty string
+                if no patterns are found.
+
+        Raises:
+            ServerStopped: Raised when the server is detected to have stopped.
+            ServerStarted: Raised when the server is detected to have started.
         """
         if re.match(self._stopped_server_pattern, message):
             logger.info("SERVER WAS STOPPED")
             self._is_server_working = False
-            return "# Сервер остановлен."
-        elif re.match(self._started_server_pattern, message):
+            raise ServerStopped
+        if re.match(self._started_server_pattern, message):
             logger.info("SERVER WAS STARTED")
             self._is_server_working = True
-            return "# Сервер запущен."
+            raise ServerStarted
         return ""
 
     def extract_chat_message(self, message: str) -> str:
@@ -86,10 +91,13 @@ class MinecraftChatParser(FileChangesUtillity):
         Returns:
             str: The extracted user chat message, or an empty
                 string if not found.
+
+        Raises:
+            ServerStopped: Raised when the server is detected to have stopped.
+            ServerStarted: Raised when the server is detected to have started.
         """
-        server_message = self._manage_server_status(message)
-        if server_message:
-            return server_message
+        self._detect_server_status_change(message)
+
         if not self._is_server_working or (
             self._chat_message_patterns_list[0] not in message
             and self._chat_message_patterns_list[1] not in message

@@ -13,6 +13,7 @@ from src.chat_parser.chat_parser import (
     VanishHandlerBase,
     VanishHandlerMasterPerki,
 )
+from src.chat_parser.custom_exceptions import ServerStarted, ServerStopped
 
 TEST_DATA_DIR = Path(__file__).parent / "test_data"
 
@@ -51,9 +52,9 @@ def test_manage_server_status_stopped_message(vanish_handler):
     test_message = "[25Nov2024 23:05:38.154] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Rcon] SERVER STOPPED..."
 
     assert chat._is_server_working is True
-    server_message = chat._manage_server_status(test_message)
+    with pytest.raises(ServerStopped):
+        chat._detect_server_status_change(test_message)
 
-    assert server_message == "# Сервер остановлен."
     assert chat._is_server_working is False
 
 
@@ -72,8 +73,9 @@ def test_manage_server_status_started_message(vanish_handler):
 
     assert chat._is_server_working is False
 
-    server_message = chat._manage_server_status(test_message)
-    assert server_message == "# Сервер запущен."
+    with pytest.raises(ServerStarted):
+        chat._detect_server_status_change(test_message)
+
     assert chat._is_server_working is True
 
 
@@ -348,7 +350,10 @@ def test_get_chat_message(vanish_handler):
     ]
     new_messages = []
     while True:
-        message = chat.get_chat_message()
+        try:
+            message = chat.get_chat_message()
+        except (ServerStopped, ServerStarted) as msg:
+            message = str(msg)
         if not message:
             break
         new_messages.append(message)
@@ -396,7 +401,10 @@ def test_get_chat_message_1_19_2(vanish_handler):
     new_messages = []
 
     while True:
-        message = chat.get_chat_message()
+        try:
+            message = chat.get_chat_message()
+        except (ServerStopped, ServerStarted) as msg:
+            message = str(msg)
         if not message:
             break
         new_messages.append(message)
