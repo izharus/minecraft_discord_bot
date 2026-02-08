@@ -1,4 +1,5 @@
 """Main module of discod bot."""
+
 # pylint: disable=C0411
 from pathlib import Path
 from typing import Any, Optional
@@ -30,7 +31,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = MyBot(command_prefix="/", intents=intents)
 
-APP_VERSION = "1.5.0"
+APP_VERSION = "1.5.5"
 
 DATA_PATH = Path("data")
 

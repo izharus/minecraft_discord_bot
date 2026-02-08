@@ -1,8 +1,0 @@
-watchdog
-pytest
-pylint
-discord
-loguru
-aio-mc-rcon
-pytest-mock
-pytest-asyncio
