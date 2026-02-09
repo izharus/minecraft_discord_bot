@@ -66,3 +66,7 @@
 - Add new log messages in close().
 - Process crashes with try/except.
 
+# Version 1.5.7 - 10.02.2026
+- Fixes in close() method.
+
+

@@ -48,6 +48,6 @@ The Discord bot expects the following patterns in your server `run.sh` script:
 ## Docker Container
 To create a Docker container on Windows:
 ```bash
-docker build -t discord-bot:1.5.6 .
-docker save -o discord.tar discord-bot:1.5.6
+docker build -t discord-bot:1.5.7 .
+docker save -o discord.tar discord-bot:1.5.7
 ```
