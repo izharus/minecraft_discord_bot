@@ -220,9 +220,19 @@ async def close():
     Event triggered when the bot is shutting down.
     Closes the RCON client connection.
     """
-    await bot.aiomcrcon.close()
-    logger.debug("Bot and RCON client disconnected.")
-    await bot.channel.send("## Discord left the chat.")
+    logger.debug("Bot is shutting down...")
+
+    if bot.aiomcrcon:
+        await bot.aiomcrcon.close()
+        logger.debug("Bot and RCON client disconnected.")
+    else:
+        logger.debug("RCON client not initialized.")
+
+    if bot.channel:
+        await bot.channel.send("## Discord left the chat.")
+        logger.debug("Bot sent a goodbye message to the Discord channel.")
+    else:
+        logger.debug("Discord channel not initialized.")
 
 
 def main():
