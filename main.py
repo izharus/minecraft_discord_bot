@@ -1,6 +1,9 @@
 """
 Main entry point.
 """
+
+import asyncio
+
 from src.discord_bot.bot_main import main
 
-main()
+asyncio.run(main())

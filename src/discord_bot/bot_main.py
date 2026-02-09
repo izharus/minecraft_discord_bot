@@ -144,7 +144,7 @@ class MyBot(commands.Bot):
             logger.info("get_list_of_cammands entry")
             await ctx.send(f"Доступные команды: {SUPPORTED_COMMANDS}")
 
-    async def on_command_error(
+    async def on_command_error(  # pylint: disable=W0221
         self, ctx: commands.Context, error: Any
     ) -> None:
         """
@@ -161,7 +161,10 @@ class MyBot(commands.Bot):
                 f"{SUPPORTED_COMMANDS}"
             )
 
-    async def on_message(self, message: discord.Message) -> None:
+    async def on_message(  # pylint: disable=W0221
+        self,
+        message: discord.Message,
+    ) -> None:
         """
         Event handler for processing incoming messages.
 
@@ -232,7 +235,8 @@ DISCORD_ACCESS_TOKEN = config["DISCORD"]["DISCORD_ACCESS_TOKEN"]
 MINECRAFT_SERVER_PATH = "minecraft-root-dir"
 SUPPORTED_COMMANDS = "/info, /list, /tps"
 
-def main():
+
+async def main():
     """Main entry point."""
     # Configure logging to create a new log file each month
     # without deleting old ones
@@ -244,10 +248,14 @@ def main():
         level="DEBUG",
         serialize=False,
     )
+
     try:
-        bot = MyBot(command_prefix="/", intents=intents)
-        bot.run(DISCORD_ACCESS_TOKEN)
+        bot = MyBot(
+            command_prefix="/",
+            intents=intents,
+        )
+        await bot.start(DISCORD_ACCESS_TOKEN)
     except KeyboardInterrupt:
         logger.info("Bot stopped manually.")
     except Exception as e:
-        logger.exception(f"Bot crashed with exception: {e}")
+        logger.error(f"Bot crashed with exception: {e}")
