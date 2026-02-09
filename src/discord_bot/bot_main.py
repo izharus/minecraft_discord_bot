@@ -23,7 +23,7 @@ class MyBot(commands.Bot):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.chat_parser: Optional[MinecraftChatParser] = None
-        self.channel: Optional[discord.TextChannel]
+        self.channel: Optional[discord.TextChannel] = None
         self.aiomcrcon: Optional[AIOMcRcon] = None
 
 
