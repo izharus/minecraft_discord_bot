@@ -247,4 +247,9 @@ def main():
         level="DEBUG",
         serialize=False,
     )
-    bot.run(DISCORD_ACCESS_TOKEN)
+    try:
+        bot.run(DISCORD_ACCESS_TOKEN)
+    except KeyboardInterrupt:
+        logger.info("Bot stopped manually.")
+    except Exception as e:
+        logger.exception(f"Bot crashed with exception: {e}")
