@@ -58,3 +58,11 @@
 ### Features
 - Auto reconnect mc-rcon if server was restarted (ML-40).
 
+# Version 1.5.5 - 8.02.2026
+- integrate uv packet manager
+- update libs
+
+# Version 1.5.6 - 10.02.2026
+- Add new log messages in close().
+- Process crashes with try/except.
+
