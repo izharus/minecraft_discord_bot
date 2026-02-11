@@ -1,3 +1,25 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## 🚧 [Unreleased]
+### ✨ Features
+- Add support of proxy for discord bot.
+
+### 🐛 Fixes
+- 
+
+### ♻️ Refactoring
+- 
+
+### 📚 Documentation
+- 
+
+### ✅ Tests
+- 
+
+### 🛠️ Dev / Tooling
+-
+
 # Version 1.0.1 - December 16, 2023
 
 ## Changes:
