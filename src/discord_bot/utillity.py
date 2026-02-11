@@ -1,4 +1,5 @@
 """Module for discord_bot utillity finctions."""
+
 import os
 from configparser import ConfigParser
 from pathlib import Path
@@ -164,6 +165,7 @@ def get_config(config_path: str | os.PathLike) -> ConfigParser:
         "DISCORD": {
             "CHANNEL_ID": "",
             "DISCORD_ACCESS_TOKEN": "",
+            "PROXY_URL": "",
         },
         "MC_SERVER": {
             "RCON_HOST": "",

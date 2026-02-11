@@ -1,3 +1,25 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## 🚧 [Unreleased]
+### ✨ Features
+- Add support of proxy for discord bot.
+
+### 🐛 Fixes
+- 
+
+### ♻️ Refactoring
+- 
+
+### 📚 Documentation
+- 
+
+### ✅ Tests
+- 
+
+### 🛠️ Dev / Tooling
+-
+
 # Version 1.0.1 - December 16, 2023
 
 ## Changes:
@@ -54,7 +76,19 @@
 - Close method was not called.
 - Duplicates in logs if mc-server connection failed.
 
-# Version 1.5.0 - Nov 29, 2024
+# Version 1.5.4 - Nov 29, 2024
 ### Features
 - Auto reconnect mc-rcon if server was restarted (ML-40).
+
+# Version 1.5.5 - 8.02.2026
+- integrate uv packet manager
+- update libs
+
+# Version 1.5.6 - 10.02.2026
+- Add new log messages in close().
+- Process crashes with try/except.
+
+# Version 1.5.7 - 10.02.2026
+- Fixes in close() method.
+
 

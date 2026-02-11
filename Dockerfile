@@ -1,11 +1,11 @@
-# Use the official Python 3.11 image as the base image
-FROM python:3.11-slim
+# Use the official Python 3.12 image as the base image
+FROM python:3.12-slim
 
 # Set the working directory inside the container to /app
 WORKDIR /app
 
 # Copy the requirements.txt file from the local machine to the /app directory inside the container
-COPY requirements/prod.txt requirements.txt
+COPY requirements.txt requirements.txt
 
 # Install docker inside the webserver container
 RUN curl -sSL https://get.docker.com/ | sh
