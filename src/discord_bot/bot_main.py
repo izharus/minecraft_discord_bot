@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import discord
+from aiohttp_socks import ProxyConnector
 from discord.ext import commands, tasks
 from loguru import logger
 
@@ -214,7 +215,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 
-APP_VERSION = "1.5.7"
+APP_VERSION = "1.6.0b"
 
 DATA_PATH = Path("data")
 
@@ -234,6 +235,7 @@ except ValueError as e:
 DISCORD_ACCESS_TOKEN = config["DISCORD"]["DISCORD_ACCESS_TOKEN"]
 MINECRAFT_SERVER_PATH = "minecraft-root-dir"
 SUPPORTED_COMMANDS = "/info, /list, /tps"
+PROXY_URL = config["DISCORD"]["PROXY_URL"]
 
 
 async def main():
@@ -250,12 +252,25 @@ async def main():
     )
 
     try:
-        bot = MyBot(
+        proxy_connector = None
+        if PROXY_URL:
+            proxy_connector = ProxyConnector.from_url(PROXY_URL)
+            logger.info("Proxy connector created successfully.")
+        else:
+            logger.info("No proxy configured.")
+
+        async with MyBot(
             command_prefix="/",
             intents=intents,
-        )
-        await bot.start(DISCORD_ACCESS_TOKEN)
+            connector=proxy_connector,
+            channel_id=CHANNEL_ID,
+        ) as bot:
+            await bot.start(DISCORD_ACCESS_TOKEN)
     except KeyboardInterrupt:
         logger.info("Bot stopped manually.")
     except Exception as e:
         logger.error(f"Bot crashed with exception: {e}")
+        logger.warning(
+            "Check if proxy format is correct: "
+            "socks5://[PROXY_LOGIN:PROXY_PASS@]PROXY_HOST:PROXY_PORT"
+        )
