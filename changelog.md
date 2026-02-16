@@ -1,3 +1,25 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## 🚧 [Unreleased]
+### ✨ Features
+-
+
+### 🐛 Fixes
+- 
+
+### ♻️ Refactoring
+-
+
+### 📚 Documentation
+- 
+
+### ✅ Tests
+- 
+
+### 🛠️ Dev / Tooling
+-
+
 # Version 1.0.1 - December 16, 2023
 
 ## Changes:
@@ -65,4 +87,12 @@
 # Version 1.5.6 - 10.02.2026
 - Add new log messages in close().
 - Process crashes with try/except.
+
+# Version 1.5.7 - 10.02.2026
+- Fixes in close() method.
+
+## 📦 [1.6.0] - 2026-02-02
+### ✨ Features
+- Add support of proxy for discord bot.
+- Replace prefix commands with global slash commands.
 
