@@ -2,10 +2,11 @@
 
 # pylint: disable=C0411
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 import discord
 from aiohttp_socks import ProxyConnector
+from discord import app_commands
 from discord.ext import commands, tasks
 from loguru import logger
 
@@ -15,17 +16,33 @@ from ..chat_parser.chat_parser import (
 )
 from ..chat_parser.custom_exceptions import ServerStarted, ServerStopped
 from ..rcon_sender.rcon import AIOMcRcon, RCONSendCmdError
+from .cogs.server_commands import ServerCommands
 from .utillity import get_config, parse_message
 
 
-class MyBot(commands.Bot):
+class MCBot(commands.Bot):
     """Initialize variables."""
 
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self, *args, channel_id: int, **kwargs) -> None:
         super().__init__(*args, **kwargs)
-        self.chat_parser: Optional[MinecraftChatParser] = None
+
+        self._channel_id = channel_id
+        self.chat_parser = MinecraftChatParser(
+            MINECRAFT_SERVER_PATH,
+            vanish_handler,
+        )
+        self.aiomcrcon = AIOMcRcon(RCON_HOST, RCON_PORT, RCON_SECRET)
         self.channel: Optional[discord.TextChannel] = None
-        self.aiomcrcon: Optional[AIOMcRcon] = None
+
+    async def setup_hook(self) -> None:
+        await self.add_cog(ServerCommands(self))  # Register cog
+        self.tree.error(self.on_app_command_error)
+        await self.tree.sync()  # Register commands globally
+
+    @property
+    def channel_id(self) -> int:
+        """Return the channel ID."""
+        return self._channel_id
 
     async def on_ready(self):
         """
@@ -38,11 +55,8 @@ class MyBot(commands.Bot):
         logger.info(f"APP_VERSION: {APP_VERSION}")
         logger.info(f"We have logged in as {self.user}")
 
-        # Initialize chat parser
-        self.chat_parser = MinecraftChatParser(
-            MINECRAFT_SERVER_PATH,
-            vanish_handler,
-        )
+        await self.aiomcrcon.connect()
+        logger.info("Connected to Minecraft server via RCON.")
 
         # Get the channel
         self.channel = self.get_channel(CHANNEL_ID)
@@ -52,9 +66,6 @@ class MyBot(commands.Bot):
             )
             return
 
-        await self.channel.send("Тест")
-        self.aiomcrcon = AIOMcRcon(RCON_HOST, RCON_PORT, RCON_SECRET)
-        await self.aiomcrcon.connect()
         # Start the background task
         self.check_chat_messages.start()
 
@@ -89,78 +100,35 @@ class MyBot(commands.Bot):
         except Exception as e:
             logger.exception(f"Error in chat message checking loop: {e}")
 
-    @commands.command(name="tps")
-    async def get_server_tps(self, ctx: commands.Context) -> None:
-        """
-        Get the TPS of the Minecraft server.
-        """
-        logger.info("Command received: tps")
-        # Check if the message is from the desired channel
-        if ctx.channel.id == CHANNEL_ID:
-            try:
-                if not self.aiomcrcon:
-                    raise RCONSendCmdError("Rcon have not initialized yet.")
-                tps = await self.aiomcrcon.send_cmd("/forge tps")
-            except RCONSendCmdError as error:
-                logger.warning(f"/tps failed: {error}")
-            if tps:
-                await ctx.send(tps[0])
+    async def on_app_command_error(
+        self,
+        interaction: discord.Interaction,
+        error: app_commands.AppCommandError,
+    ):
+        """Handle application command errors."""
+
+        async def send(msg: str):
+            # If deffer is already done, use followup instead.
+            if interaction.response.is_done():
+                await interaction.followup.send(msg, ephemeral=True)
             else:
-                logger.error("Unable to get players_list")
-                await ctx.send("Не удалось получить список игроков.")
+                await interaction.response.send_message(msg, ephemeral=True)
 
-    @commands.command(name="list")
-    async def get_list_of_players(self, ctx: commands.Context) -> None:
-        """
-        Get the list of online players on the Minecraft server.
+        if isinstance(error, app_commands.CommandInvokeError):
+            original = error.original  # <- вот тут твоя реальная ошибка
 
-        Parameters:
-        - ctx: Context object for the command execution.
-        """
-        logger.info("Command received: list")
-        # Check if the message is from the desired channel
-        if ctx.channel.id == CHANNEL_ID:
-            try:
-                if not self.aiomcrcon:
-                    raise RCONSendCmdError("Rcon have not initialized yet.")
-                players_list = await self.aiomcrcon.send_cmd("/list")
-            except RCONSendCmdError as error:
-                logger.warning(f"/list failed: {error}")
-            if players_list:
-                await ctx.send(players_list[0].rstrip(":"))
-            else:
-                logger.error("Unable to get players_list")
-                await ctx.send("Не удалось получить список игроков.")
+            if isinstance(original, RCONSendCmdError):
+                await send(
+                    "Сервер не доступен. Попробуйте позже.",
+                )
+                logger.error(
+                    f"RCON error: {original}",
+                )
+                return
 
-    @commands.command(name="info")
-    async def get_list_of_cammands(self, ctx: commands.Context) -> None:
-        """
-        Get the list of available commands.
-
-        Parameters:
-        - ctx: Context object for the command execution.
-        """
-        # Check if the message is from the desired channel
-        if ctx.channel.id == CHANNEL_ID:
-            logger.info("get_list_of_cammands entry")
-            await ctx.send(f"Доступные команды: {SUPPORTED_COMMANDS}")
-
-    async def on_command_error(  # pylint: disable=W0221
-        self, ctx: commands.Context, error: Any
-    ) -> None:
-        """
-        Handle errors that occur during command execution.
-
-        Parameters:
-        - ctx: Context object for the command execution.
-        - error: The error that occurred during command execution.
-        """
-        if isinstance(error, commands.CommandNotFound):
-            logger.info("on_command_error entry")
-            await ctx.send(
-                "Неизвестная команда. Доступные команды:"
-                f"{SUPPORTED_COMMANDS}"
-            )
+        await send(
+            "Произошла ошибка при выполнении команды.",
+        )
 
     async def on_message(  # pylint: disable=W0221
         self,
@@ -259,7 +227,7 @@ async def main():
         else:
             logger.info("No proxy configured.")
 
-        async with MyBot(
+        async with MCBot(
             command_prefix="/",
             intents=intents,
             connector=proxy_connector,

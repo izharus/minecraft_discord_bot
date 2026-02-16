@@ -4,12 +4,13 @@ All notable changes to this project will be documented in this file.
 ## 🚧 [Unreleased]
 ### ✨ Features
 - Add support of proxy for discord bot.
+- Replace prefix commands with global slash commands.
 
 ### 🐛 Fixes
 - 
 
 ### ♻️ Refactoring
-- 
+-
 
 ### 📚 Documentation
 - 
