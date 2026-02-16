@@ -2,11 +2,12 @@
 This modules provides class for extracting a new chat messages from
 a minecraft log file.
 """
+
 import json
-import os
 import re
 import time
 from abc import abstractmethod
+from os import PathLike
 from pathlib import Path
 from typing import Final, Optional
 
@@ -27,7 +28,7 @@ class MinecraftChatParser(FileChangesUtillity):
 
     def __init__(
         self,
-        minecraft_server_dir: os.PathLike,
+        minecraft_server_dir: str | PathLike[str],
         vanish_handler: "VanishHandlerBase",
         is_server_working: bool = True,
     ) -> None:
