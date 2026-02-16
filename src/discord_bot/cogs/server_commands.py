@@ -20,7 +20,7 @@ class ServerCommands(commands.Cog):
     ):
         self._bot = bot
 
-    @app_commands.command(name="tps", description="Получит TPS сервера.")
+    @app_commands.command(name="tps", description="Получить TPS сервера.")
     async def tps_command(
         self,
         interaction: discord.Interaction,
