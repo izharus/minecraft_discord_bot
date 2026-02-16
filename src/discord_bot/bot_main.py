@@ -183,7 +183,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 
-APP_VERSION = "1.6.0b"
+APP_VERSION = "1.6.0"
 
 DATA_PATH = Path("data")
 

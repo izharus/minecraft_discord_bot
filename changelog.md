@@ -3,8 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## 🚧 [Unreleased]
 ### ✨ Features
-- Add support of proxy for discord bot.
-- Replace prefix commands with global slash commands.
+-
 
 ### 🐛 Fixes
 - 
@@ -92,4 +91,8 @@ All notable changes to this project will be documented in this file.
 # Version 1.5.7 - 10.02.2026
 - Fixes in close() method.
 
+## 📦 [1.6.0] - 2026-02-02
+### ✨ Features
+- Add support of proxy for discord bot.
+- Replace prefix commands with global slash commands.
 
