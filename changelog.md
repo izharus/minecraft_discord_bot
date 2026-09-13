@@ -96,3 +96,6 @@ All notable changes to this project will be documented in this file.
 - Add support of proxy for discord bot.
 - Replace prefix commands with global slash commands.
 
+## 📦 [1.6.1] - 2026-09-13
+### 🐛 Fixes
+- Recognize Minecraft usernames beginning with a digit or underscore in chat and vanish events.

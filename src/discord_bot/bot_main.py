@@ -24,6 +24,7 @@ class MCBot(commands.Bot):
     """Initialize variables."""
 
     def __init__(self, *args, channel_id: int, **kwargs) -> None:
+        """Initialize the Minecraft chat parser and RCON client."""
         super().__init__(*args, **kwargs)
 
         self._channel_id = channel_id
@@ -183,7 +184,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 
-APP_VERSION = "1.6.0"
+APP_VERSION = "1.6.1"
 
 DATA_PATH = Path("data")
 

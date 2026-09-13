@@ -1,4 +1,5 @@
 """Tests for src/chat_parser/chat_parser.py."""
+
 # pylint: disable = W0212
 import json
 import os
@@ -440,6 +441,32 @@ def test___extract_username_valid_format(
     username = chat._extract_username(msg)
 
     assert username == "Iluvator", f"Username was notfound: {msg}"
+
+
+@pytest.mark.parametrize(
+    "message, expected_username",
+    (
+        ("<1luvator> Test", "1luvator"),
+        ("1luvator joined the game", "1luvator"),
+        ("<123> Test", "123"),
+        ("<_player> Test", "_player"),
+    ),
+)
+def test_extract_username_with_numeric_or_underscore_start(
+    vanish_handler, message, expected_username
+):
+    """Extract names beginning with digits or underscores."""
+    chat = chat_parser.MinecraftChatParser(
+        TEST_DATA_DIR / "1.19.2", vanish_handler
+    )
+    assert chat._extract_username(message) == expected_username
+
+
+def test_numeric_username_vanish_event(vanish_handler):
+    """Handle vanish events for names beginning with a digit."""
+    message = "[1luvator: [Vanishmod] 1luvator vanished]"
+    assert vanish_handler.extract_username(message) == "1luvator"
+    assert vanish_handler.process_message(message) == "1luvator left the game"
 
 
 class TestVanishHandlerBase:

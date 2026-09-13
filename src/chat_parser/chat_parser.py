@@ -16,7 +16,7 @@ from loguru import logger
 from .custom_exceptions import ServerStarted, ServerStopped
 from .log_parser import FileChangesUtillity
 
-USERNAME_P: Final = r"[a-zA-Z]+[a-zA-z0-9]*"
+USERNAME_P: Final = r"[A-Za-z0-9_]+"
 
 
 class MinecraftChatParser(FileChangesUtillity):
